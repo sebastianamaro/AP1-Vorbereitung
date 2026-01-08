@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EUROPATHEK PDF Exporter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      background: #f5f5f5;
+    }
+    h1 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: #333;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #555;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #4a90d9;
+    }
+    .button-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    button {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #startBtn {
+      background: #4a90d9;
+      color: white;
+    }
+    #startBtn:hover {
+      background: #357abd;
+    }
+    #startBtn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    #stopBtn {
+      background: #e74c3c;
+      color: white;
+    }
+    #stopBtn:hover {
+      background: #c0392b;
+    }
+    #stopBtn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 16px;
+      padding: 12px;
+      background: white;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    .status-label {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .status-value {
+      color: #333;
+      font-size: 13px;
+    }
+    .progress {
+      margin-top: 8px;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #4a90d9;
+      transition: width 0.3s;
+    }
+    .error {
+      color: #e74c3c;
+    }
+    .success {
+      color: #27ae60;
+    }
+    .info {
+      margin-top: 12px;
+      padding: 8px;
+      background: #fff3cd;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #856404;
+    }
+  </style>
+</head>
+<body>
+  <h1>EUROPATHEK PDF Exporter</h1>
+
+  <div class="form-group">
+    <label for="startPage">Start Page</label>
+    <input type="number" id="startPage" value="1" min="1">
+  </div>
+
+  <div class="form-group">
+    <label for="endPage">End Page</label>
+    <input type="number" id="endPage" value="357" min="1">
+  </div>
+
+  <div class="form-group">
+    <label for="delay">Delay between pages (ms)</label>
+    <input type="number" id="delay" value="1500" min="500" step="100">
+  </div>
+
+  <div class="button-row">
+    <button id="startBtn">Start Export</button>
+    <button id="stopBtn" disabled>Stop</button>
+  </div>
+
+  <div class="status">
+    <div class="status-label">Status</div>
+    <div class="status-value" id="statusText">Ready to export</div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div class="info">
+    Make sure you have a book open in EUROPATHEK before starting.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

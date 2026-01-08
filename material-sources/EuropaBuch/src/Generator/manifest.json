@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "EUROPATHEK PDF Exporter",
+  "version": "1.0.0",
+  "description": "Export book pages from EUROPATHEK as individual PDFs",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://www.europathek.de/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.europathek.de/*"],
+      "js": ["content.js"],
+      "all_frames": false,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://www.europathek.de/dlm/*"],
+      "js": ["lib/html2canvas.min.js", "lib/jspdf.umd.min.js", "iframe-content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/*"],
+      "matches": ["*://www.europathek.de/*"]
+    }
+  ],
+  "icons": {
+    "128": "icons/icon128.png"
+  }
+}

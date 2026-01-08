@@ -1,0 +1,17 @@
+
+$("#toolbarElementMore").click()
+
+$("#printButtonMore").click()
+
+$("#slide-1 ~ img").click()
+
+print as pdf with counter page-XX
+
+
+then repeat and do slide-2  
+
+Then executes
+
+#paginationNextX > div
+
+and repeats process 
