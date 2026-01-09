@@ -15,7 +15,7 @@ export default defineConfig({
 				theme_color: '#1e40af',
 				background_color: '#0f172a',
 				display: 'standalone',
-				start_url: '/',
+				start_url: '/AP1-Vorbereitung/',
 				icons: [
 					{
 						src: 'icon-192.svg',
@@ -31,7 +31,7 @@ export default defineConfig({
 				]
 			},
 			workbox: {
-				globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+				globPatterns: ['**/*.{js,css,html,ico,png,svg,json,md}'],
 				runtimeCaching: [
 					{
 						urlPattern: /^.*\/content\/.*\.md$/,
