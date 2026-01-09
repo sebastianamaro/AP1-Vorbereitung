@@ -1,0 +1,2182 @@
+{
+  "version": "1.0.0",
+  "buildDate": "2026-01-09T12:44:23.349Z",
+  "languages": [
+    "de",
+    "en",
+    "es"
+  ],
+  "chapters": [
+    {
+      "id": "00",
+      "slug": "exam-overview",
+      "title": {
+        "de": "exam-overview",
+        "en": "exam-overview",
+        "es": "exam-overview"
+      },
+      "overviewPath": null,
+      "subchapters": [],
+      "topics": [
+        {
+          "id": "00-01",
+          "slug": "ihk-exam-structure",
+          "fileName": "00-01-ihk-exam-structure.md",
+          "title": {
+            "de": "IHK-Abschlussprüfung - Prüfungsstruktur",
+            "en": "IHK Final Examination - Exam Structure",
+            "es": "Examen Final de la IHK - Estructura del Examen"
+          },
+          "path": "00-exam-overview/00-01-ihk-exam-structure.md"
+        },
+        {
+          "id": "00-02",
+          "slug": "exam-catalog-2025",
+          "fileName": "00-02-exam-catalog-2025.md",
+          "title": {
+            "de": "Prüfungskatalog 2025 - Änderungen und Schwerpunkte",
+            "en": "Exam Catalog 2025 - Changes and Focus Areas",
+            "es": "Catálogo de Examen 2025 - Cambios y Áreas de Enfoque"
+          },
+          "path": "00-exam-overview/00-02-exam-catalog-2025.md"
+        },
+        {
+          "id": "00-03",
+          "slug": "learning-strategy",
+          "fileName": "00-03-learning-strategy.md",
+          "title": {
+            "de": "Lernstrategie für die AP1",
+            "en": "Learning Strategy for AP1",
+            "es": "Estrategia de Aprendizaje para AP1"
+          },
+          "path": "00-exam-overview/00-03-learning-strategy.md"
+        }
+      ]
+    },
+    {
+      "id": "01",
+      "slug": "project-management",
+      "title": {
+        "de": "Projektmanagement - Übersicht",
+        "en": "Project Management - Overview",
+        "es": "Gestión de Proyectos - Visión General"
+      },
+      "overviewPath": "01-project-management/01-00-overview.md",
+      "subchapters": [
+        {
+          "id": "01-01",
+          "slug": "fundamentals",
+          "title": {
+            "de": "Fundamentals",
+            "en": "Fundamentals",
+            "es": "Fundamentals"
+          },
+          "topics": [
+            {
+              "id": "01-01-01",
+              "slug": "project-definition",
+              "fileName": "01-01-01-project-definition.md",
+              "title": {
+                "de": "Projektdefinition",
+                "en": "Project Definition",
+                "es": "Definición de Proyecto"
+              },
+              "path": "01-project-management/01-01-fundamentals/01-01-01-project-definition.md"
+            },
+            {
+              "id": "01-01-02",
+              "slug": "project-phases",
+              "fileName": "01-01-02-project-phases.md",
+              "title": {
+                "de": "Projektphasen",
+                "en": "Project Phases",
+                "es": "Fases del Proyecto"
+              },
+              "path": "01-project-management/01-01-fundamentals/01-01-02-project-phases.md"
+            },
+            {
+              "id": "01-01-03",
+              "slug": "smart-principle",
+              "fileName": "01-01-03-smart-principle.md",
+              "title": {
+                "de": "SMART-Prinzip",
+                "en": "SMART Principle",
+                "es": "Principio SMART"
+              },
+              "path": "01-project-management/01-01-fundamentals/01-01-03-smart-principle.md"
+            }
+          ]
+        },
+        {
+          "id": "01-02",
+          "slug": "planning-tools",
+          "title": {
+            "de": "Planning Tools",
+            "en": "Planning Tools",
+            "es": "Planning Tools"
+          },
+          "topics": [
+            {
+              "id": "01-02-01",
+              "slug": "gantt-chart",
+              "fileName": "01-02-01-gantt-chart.md",
+              "title": {
+                "de": "Gantt-Diagramm",
+                "en": "Gantt Chart",
+                "es": "Diagrama de Gantt"
+              },
+              "path": "01-project-management/01-02-planning-tools/01-02-01-gantt-chart.md"
+            },
+            {
+              "id": "01-02-02",
+              "slug": "network-plan",
+              "fileName": "01-02-02-network-plan.md",
+              "title": {
+                "de": "Netzplantechnik",
+                "en": "Network Diagram Technique",
+                "es": "Técnica del Diagrama de Red"
+              },
+              "path": "01-project-management/01-02-planning-tools/01-02-02-network-plan.md"
+            }
+          ]
+        },
+        {
+          "id": "01-03",
+          "slug": "process-models",
+          "title": {
+            "de": "Process Models",
+            "en": "Process Models",
+            "es": "Process Models"
+          },
+          "topics": [
+            {
+              "id": "01-03-01",
+              "slug": "waterfall-model",
+              "fileName": "01-03-01-waterfall-model.md",
+              "title": {
+                "de": "Wasserfallmodell",
+                "en": "Waterfall Model",
+                "es": "Modelo en Cascada"
+              },
+              "path": "01-project-management/01-03-process-models/01-03-01-waterfall-model.md"
+            },
+            {
+              "id": "01-03-02",
+              "slug": "scrum",
+              "fileName": "01-03-02-scrum.md",
+              "title": {
+                "de": "Scrum",
+                "en": "Scrum",
+                "es": "Scrum"
+              },
+              "path": "01-project-management/01-03-process-models/01-03-02-scrum.md"
+            }
+          ]
+        },
+        {
+          "id": "01-04",
+          "slug": "documentation",
+          "title": {
+            "de": "Documentation",
+            "en": "Documentation",
+            "es": "Documentation"
+          },
+          "topics": [
+            {
+              "id": "01-04-01",
+              "slug": "requirements-specification",
+              "fileName": "01-04-01-requirements-specification.md",
+              "title": {
+                "de": "Lastenheft und Pflichtenheft",
+                "en": "Requirements Specification and Functional Specification",
+                "es": "Especificación de Requisitos y Especificación Funcional"
+              },
+              "path": "01-project-management/01-04-documentation/01-04-01-requirements-specification.md"
+            },
+            {
+              "id": "01-04-02",
+              "slug": "needs-analysis",
+              "fileName": "01-04-02-needs-analysis.md",
+              "title": {
+                "de": "Bedarfsanalyse",
+                "en": "Needs Analysis",
+                "es": "Análisis de Necesidades"
+              },
+              "path": "01-project-management/01-04-documentation/01-04-02-needs-analysis.md"
+            }
+          ]
+        },
+        {
+          "id": "01-05",
+          "slug": "teamwork",
+          "title": {
+            "de": "Teamwork",
+            "en": "Teamwork",
+            "es": "Teamwork"
+          },
+          "topics": [
+            {
+              "id": "01-05-01",
+              "slug": "team-formation-phases",
+              "fileName": "01-05-01-team-formation-phases.md",
+              "title": {
+                "de": "Teambildungsphasen (Tuckman-Modell)",
+                "en": "Team Formation Phases (Tuckman Model)",
+                "es": "Fases de Formación del Equipo (Modelo de Tuckman)"
+              },
+              "path": "01-project-management/01-05-teamwork/01-05-01-team-formation-phases.md"
+            },
+            {
+              "id": "01-05-02",
+              "slug": "reflection-methods",
+              "fileName": "01-05-02-reflection-methods.md",
+              "title": {
+                "de": "Reflexionsmethoden",
+                "en": "Reflection Methods",
+                "es": "Métodos de Reflexión"
+              },
+              "path": "01-project-management/01-05-teamwork/01-05-02-reflection-methods.md"
+            }
+          ]
+        }
+      ],
+      "topics": []
+    },
+    {
+      "id": "02",
+      "slug": "quality-management",
+      "title": {
+        "de": "Qualitätsmanagement - Kapitelübersicht",
+        "en": "Quality Management - Chapter Overview",
+        "es": "Gestión de Calidad - Visión General del Capítulo"
+      },
+      "overviewPath": "02-quality-management/02-00-overview.md",
+      "subchapters": [
+        {
+          "id": "02-01",
+          "slug": "fundamentals",
+          "title": {
+            "de": "Fundamentals",
+            "en": "Fundamentals",
+            "es": "Fundamentals"
+          },
+          "topics": [
+            {
+              "id": "02-01-01",
+              "slug": "quality-concept",
+              "fileName": "02-01-01-quality-concept.md",
+              "title": {
+                "de": "Qualitätsbegriff",
+                "en": "Quality Concept",
+                "es": "Concepto de Calidad"
+              },
+              "path": "02-quality-management/02-01-fundamentals/02-01-01-quality-concept.md"
+            },
+            {
+              "id": "02-01-02",
+              "slug": "qm-systems",
+              "fileName": "02-01-02-qm-systems.md",
+              "title": {
+                "de": "Qualitätsmanagementsysteme (QMS)",
+                "en": "Quality Management Systems (QMS)",
+                "es": "Sistemas de Gestión de Calidad (SGC)"
+              },
+              "path": "02-quality-management/02-01-fundamentals/02-01-02-qm-systems.md"
+            }
+          ]
+        },
+        {
+          "id": "02-02",
+          "slug": "standards-certification",
+          "title": {
+            "de": "Standards Certification",
+            "en": "Standards Certification",
+            "es": "Standards Certification"
+          },
+          "topics": [
+            {
+              "id": "02-02-01",
+              "slug": "din-en-iso-9000",
+              "fileName": "02-02-01-din-en-iso-9000.md",
+              "title": {
+                "de": "DIN EN ISO 9000ff.",
+                "en": "DIN EN ISO 9000ff.",
+                "es": "DIN EN ISO 9000ff."
+              },
+              "path": "02-quality-management/02-02-standards-certification/02-02-01-din-en-iso-9000.md"
+            },
+            {
+              "id": "02-02-02",
+              "slug": "certification",
+              "fileName": "02-02-02-certification.md",
+              "title": {
+                "de": "Zertifizierung",
+                "en": "Certification",
+                "es": "Certificación"
+              },
+              "path": "02-quality-management/02-02-standards-certification/02-02-02-certification.md"
+            }
+          ]
+        },
+        {
+          "id": "02-03",
+          "slug": "management-approaches",
+          "title": {
+            "de": "Management Approaches",
+            "en": "Management Approaches",
+            "es": "Management Approaches"
+          },
+          "topics": [
+            {
+              "id": "02-03-01",
+              "slug": "tqm",
+              "fileName": "02-03-01-tqm.md",
+              "title": {
+                "de": "Total Quality Management (TQM)",
+                "en": "Total Quality Management (TQM)",
+                "es": "Gestión de Calidad Total (TQM)"
+              },
+              "path": "02-quality-management/02-03-management-approaches/02-03-01-tqm.md"
+            },
+            {
+              "id": "02-03-02",
+              "slug": "pdca-cycle",
+              "fileName": "02-03-02-pdca-cycle.md",
+              "title": {
+                "de": "PDCA-Zyklus",
+                "en": "PDCA Cycle",
+                "es": "Ciclo PDCA"
+              },
+              "path": "02-quality-management/02-03-management-approaches/02-03-02-pdca-cycle.md"
+            }
+          ]
+        }
+      ],
+      "topics": [
+        {
+          "id": "02-04",
+          "slug": "software-quality",
+          "fileName": "02-04-software-quality.md",
+          "title": {
+            "de": "Softwarequalität",
+            "en": "Software Quality",
+            "es": "Calidad del Software"
+          },
+          "path": "02-quality-management/02-04-software-quality.md"
+        },
+        {
+          "id": "02-05",
+          "slug": "accessibility",
+          "fileName": "02-05-accessibility.md",
+          "title": {
+            "de": "Barrierefreiheit in der IT",
+            "en": "Accessibility in IT",
+            "es": "Accesibilidad en TI"
+          },
+          "path": "02-quality-management/02-05-accessibility.md"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "slug": "data-protection",
+      "title": {
+        "de": "Datenschutz - Kapitelübersicht",
+        "en": "Data Protection - Chapter Overview",
+        "es": "Proteccion de Datos - Vision General del Capitulo"
+      },
+      "overviewPath": "03-data-protection/03-00-overview.md",
+      "subchapters": [
+        {
+          "id": "03-01",
+          "slug": "fundamentals",
+          "title": {
+            "de": "Fundamentals",
+            "en": "Fundamentals",
+            "es": "Fundamentals"
+          },
+          "topics": [
+            {
+              "id": "03-01-01",
+              "slug": "gdpr-principles",
+              "fileName": "03-01-01-gdpr-principles.md",
+              "title": {
+                "de": "DSGVO-Grundsätze",
+                "en": "GDPR Principles",
+                "es": "Principios del RGPD"
+              },
+              "path": "03-data-protection/03-01-fundamentals/03-01-01-gdpr-principles.md"
+            },
+            {
+              "id": "03-01-02",
+              "slug": "personal-data",
+              "fileName": "03-01-02-personal-data.md",
+              "title": {
+                "de": "Personenbezogene Daten",
+                "en": "Personal Data",
+                "es": "Datos Personales"
+              },
+              "path": "03-data-protection/03-01-fundamentals/03-01-02-personal-data.md"
+            },
+            {
+              "id": "03-01-03",
+              "slug": "data-subject-rights",
+              "fileName": "03-01-03-data-subject-rights.md",
+              "title": {
+                "de": "Betroffenenrechte",
+                "en": "Data Subject Rights",
+                "es": "Derechos de los Interesados"
+              },
+              "path": "03-data-protection/03-01-fundamentals/03-01-03-data-subject-rights.md"
+            }
+          ]
+        },
+        {
+          "id": "03-02",
+          "slug": "technical-measures",
+          "title": {
+            "de": "Technical Measures",
+            "en": "Technical Measures",
+            "es": "Technical Measures"
+          },
+          "topics": [
+            {
+              "id": "03-02-01",
+              "slug": "tom",
+              "fileName": "03-02-01-tom.md",
+              "title": {
+                "de": "Technisch-Organisatorische Maßnahmen (TOM)",
+                "en": "Technical and Organizational Measures (TOM)",
+                "es": "Medidas Tecnicas y Organizativas (TOM)"
+              },
+              "path": "03-data-protection/03-02-technical-measures/03-02-01-tom.md"
+            },
+            {
+              "id": "03-02-02",
+              "slug": "anonymization-pseudonymization",
+              "fileName": "03-02-02-anonymization-pseudonymization.md",
+              "title": {
+                "de": "Anonymisierung und Pseudonymisierung",
+                "en": "Anonymization and Pseudonymization",
+                "es": "Anonimizacion y Seudonimizacion"
+              },
+              "path": "03-data-protection/03-02-technical-measures/03-02-02-anonymization-pseudonymization.md"
+            },
+            {
+              "id": "03-02-03",
+              "slug": "standard-data-protection-model",
+              "fileName": "03-02-03-standard-data-protection-model.md",
+              "title": {
+                "de": "Standard-Datenschutzmodell (SDM)",
+                "en": "Standard Data Protection Model (SDM)",
+                "es": "Modelo Estandar de Proteccion de Datos (SDM)"
+              },
+              "path": "03-data-protection/03-02-technical-measures/03-02-03-standard-data-protection-model.md"
+            }
+          ]
+        }
+      ],
+      "topics": [
+        {
+          "id": "03-03",
+          "slug": "roles-responsibilities",
+          "fileName": "03-03-roles-responsibilities.md",
+          "title": {
+            "de": "Rollen und Verantwortlichkeiten im Datenschutz",
+            "en": "Roles and Responsibilities in Data Protection",
+            "es": "Roles y Responsabilidades en la Proteccion de Datos"
+          },
+          "path": "03-data-protection/03-03-roles-responsibilities.md"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "slug": "it-security",
+      "title": {
+        "de": "IT-Sicherheit - Kapitelübersicht",
+        "en": "IT Security - Chapter Overview",
+        "es": "Seguridad TI - Vision General del Capitulo"
+      },
+      "overviewPath": "04-it-security/04-00-overview.md",
+      "subchapters": [
+        {
+          "id": "04-01",
+          "slug": "protection-goals",
+          "title": {
+            "de": "Protection Goals",
+            "en": "Protection Goals",
+            "es": "Protection Goals"
+          },
+          "topics": [
+            {
+              "id": "04-01-01",
+              "slug": "cia-triad",
+              "fileName": "04-01-01-cia-triad.md",
+              "title": {
+                "de": "CIA-Triade - Schutzziele der IT-Sicherheit",
+                "en": "CIA Triad - Protection Goals of IT Security",
+                "es": "Triada CIA - Objetivos de Proteccion de la Seguridad TI"
+              },
+              "path": "04-it-security/04-01-protection-goals/04-01-01-cia-triad.md"
+            }
+          ]
+        },
+        {
+          "id": "04-02",
+          "slug": "threats-risks",
+          "title": {
+            "de": "Threats Risks",
+            "en": "Threats Risks",
+            "es": "Threats Risks"
+          },
+          "topics": [
+            {
+              "id": "04-02-01",
+              "slug": "threat-types",
+              "fileName": "04-02-01-threat-types.md",
+              "title": {
+                "de": "Bedrohungsarten",
+                "en": "Threat Types",
+                "es": "Tipos de Amenazas"
+              },
+              "path": "04-it-security/04-02-threats-risks/04-02-01-threat-types.md"
+            },
+            {
+              "id": "04-02-02",
+              "slug": "protection-needs-analysis",
+              "fileName": "04-02-02-protection-needs-analysis.md",
+              "title": {
+                "de": "Schutzneeds-analysis",
+                "en": "Protection Needs Analysis",
+                "es": "Analisis de Necesidades de Proteccion"
+              },
+              "path": "04-it-security/04-02-threats-risks/04-02-02-protection-needs-analysis.md"
+            }
+          ]
+        },
+        {
+          "id": "04-03",
+          "slug": "protective-measures",
+          "title": {
+            "de": "Protective Measures",
+            "en": "Protective Measures",
+            "es": "Protective Measures"
+          },
+          "topics": [
+            {
+              "id": "04-03-01",
+              "slug": "technical-measures",
+              "fileName": "04-03-01-technical-measures.md",
+              "title": {
+                "de": "Technische Schutzmaßnahmen",
+                "en": "Technical Protective Measures",
+                "es": "Medidas de Proteccion Tecnicas"
+              },
+              "path": "04-it-security/04-03-protective-measures/04-03-01-technical-measures.md"
+            },
+            {
+              "id": "04-03-02",
+              "slug": "authentication-2fa",
+              "fileName": "04-03-02-authentication-2fa.md",
+              "title": {
+                "de": "Authentifizierung und Zwei-Faktor-Authentifizierung (2FA)",
+                "en": "Authentication and Two-Factor Authentication (2FA)",
+                "es": "Autenticacion y Autenticacion de Dos Factores (2FA)"
+              },
+              "path": "04-it-security/04-03-protective-measures/04-03-02-authentication-2fa.md"
+            },
+            {
+              "id": "04-03-03",
+              "slug": "os-hardening",
+              "fileName": "04-03-03-os-hardening.md",
+              "title": {
+                "de": "Betriebssystem-Härtung (OS Hardening)",
+                "en": "Operating System Hardening (OS Hardening)",
+                "es": "Fortalecimiento del Sistema Operativo (OS Hardening)"
+              },
+              "path": "04-it-security/04-03-protective-measures/04-03-03-os-hardening.md"
+            },
+            {
+              "id": "04-03-04",
+              "slug": "personal-firewall",
+              "fileName": "04-03-04-personal-firewall.md",
+              "title": {
+                "de": "Personal Firewall",
+                "en": "Personal Firewall",
+                "es": "Cortafuegos Personal"
+              },
+              "path": "04-it-security/04-03-protective-measures/04-03-04-personal-firewall.md"
+            }
+          ]
+        },
+        {
+          "id": "04-04",
+          "slug": "frameworks-standards",
+          "title": {
+            "de": "Frameworks Standards",
+            "en": "Frameworks Standards",
+            "es": "Frameworks Standards"
+          },
+          "topics": [
+            {
+              "id": "04-04-01",
+              "slug": "bsi-baseline-protection",
+              "fileName": "04-04-01-bsi-baseline-protection.md",
+              "title": {
+                "de": "BSI-Grundschutz",
+                "en": "BSI Baseline Protection",
+                "es": "Proteccion de Linea Base BSI"
+              },
+              "path": "04-it-security/04-04-frameworks-standards/04-04-01-bsi-baseline-protection.md"
+            },
+            {
+              "id": "04-04-02",
+              "slug": "isms",
+              "fileName": "04-04-02-isms.md",
+              "title": {
+                "de": "Informationssicherheits-Managementsystem (ISMS)",
+                "en": "Information Security Management System (ISMS)",
+                "es": "Sistema de Gestion de Seguridad de la Informacion (SGSI)"
+              },
+              "path": "04-it-security/04-04-frameworks-standards/04-04-02-isms.md"
+            },
+            {
+              "id": "04-04-03",
+              "slug": "security-by-design-default",
+              "fileName": "04-04-03-security-by-design-default.md",
+              "title": {
+                "de": "Security by Design und Security by Default",
+                "en": "Security by Design and Security by Default",
+                "es": "Seguridad por Diseno y Seguridad por Defecto"
+              },
+              "path": "04-it-security/04-04-frameworks-standards/04-04-03-security-by-design-default.md"
+            }
+          ]
+        },
+        {
+          "id": "04-05",
+          "slug": "cryptography",
+          "title": {
+            "de": "Cryptography",
+            "en": "Cryptography",
+            "es": "Cryptography"
+          },
+          "topics": [
+            {
+              "id": "04-05-01",
+              "slug": "encryption-methods",
+              "fileName": "04-05-01-encryption-methods.md",
+              "title": {
+                "de": "Verschlüsselungsverfahren",
+                "en": "Encryption Methods",
+                "es": "Métodos de Cifrado"
+              },
+              "path": "04-it-security/04-05-cryptography/04-05-01-encryption-methods.md"
+            },
+            {
+              "id": "04-05-02",
+              "slug": "hash-values",
+              "fileName": "04-05-02-hash-values.md",
+              "title": {
+                "de": "Hashwerte",
+                "en": "Hash Values",
+                "es": "Valores Hash"
+              },
+              "path": "04-it-security/04-05-cryptography/04-05-02-hash-values.md"
+            },
+            {
+              "id": "04-05-03",
+              "slug": "certificates",
+              "fileName": "04-05-03-certificates.md",
+              "title": {
+                "de": "Digitale Zertifikate",
+                "en": "Digital Certificates",
+                "es": "Certificados Digitales"
+              },
+              "path": "04-it-security/04-05-cryptography/04-05-03-certificates.md"
+            },
+            {
+              "id": "04-05-04",
+              "slug": "digital-signatures",
+              "fileName": "04-05-04-digital-signatures.md",
+              "title": {
+                "de": "Digitale Signaturen",
+                "en": "Digital Signatures",
+                "es": "Firmas Digitales"
+              },
+              "path": "04-it-security/04-05-cryptography/04-05-04-digital-signatures.md"
+            }
+          ]
+        }
+      ],
+      "topics": []
+    },
+    {
+      "id": "05",
+      "slug": "it-systems",
+      "title": {
+        "de": "IT-Systeme - Kapitelübersicht",
+        "en": "IT Systems - Chapter Overview",
+        "es": "Sistemas de TI - Resumen del Capítulo"
+      },
+      "overviewPath": "05-it-systems/05-00-overview.md",
+      "subchapters": [
+        {
+          "id": "05-01",
+          "slug": "fundamentals",
+          "title": {
+            "de": "Fundamentals",
+            "en": "Fundamentals",
+            "es": "Fundamentals"
+          },
+          "topics": [
+            {
+              "id": "05-01-01",
+              "slug": "bits-bytes-number-systems",
+              "fileName": "05-01-01-bits-bytes-number-systems.md",
+              "title": {
+                "de": "Bits, Bytes und Zahlensysteme",
+                "en": "Bits, Bytes and Number Systems",
+                "es": "Bits, Bytes y Sistemas Numéricos"
+              },
+              "path": "05-it-systems/05-01-fundamentals/05-01-01-bits-bytes-number-systems.md"
+            },
+            {
+              "id": "05-01-02",
+              "slug": "ieee-754",
+              "fileName": "05-01-02-ieee-754.md",
+              "title": {
+                "de": "IEEE 754 - Gleitkommazahlen",
+                "en": "IEEE 754 - Floating-Point Numbers",
+                "es": "IEEE 754 - Números de Punto Flotante"
+              },
+              "path": "05-it-systems/05-01-fundamentals/05-01-02-ieee-754.md"
+            },
+            {
+              "id": "05-01-03",
+              "slug": "character-encoding",
+              "fileName": "05-01-03-character-encoding.md",
+              "title": {
+                "de": "Zeichenkodierung",
+                "en": "Character Encoding",
+                "es": "Codificación de Caracteres"
+              },
+              "path": "05-it-systems/05-01-fundamentals/05-01-03-character-encoding.md"
+            }
+          ]
+        },
+        {
+          "id": "05-02",
+          "slug": "hardware",
+          "title": {
+            "de": "Hardware",
+            "en": "Hardware",
+            "es": "Hardware"
+          },
+          "topics": [
+            {
+              "id": "05-02-01",
+              "slug": "processors",
+              "fileName": "05-02-01-processors.md",
+              "title": {
+                "de": "Prozessoren (CPU)",
+                "en": "Processors (CPU)",
+                "es": "Procesadores (CPU)"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-01-processors.md"
+            },
+            {
+              "id": "05-02-02",
+              "slug": "memory-ram",
+              "fileName": "05-02-02-memory-ram.md",
+              "title": {
+                "de": "Speicher (RAM)",
+                "en": "Memory (RAM)",
+                "es": "Memoria (RAM)"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-02-memory-ram.md"
+            },
+            {
+              "id": "05-02-03",
+              "slug": "storage-hdd-ssd",
+              "fileName": "05-02-03-storage-hdd-ssd.md",
+              "title": {
+                "de": "Datenspeicher - HDD vs. SSD",
+                "en": "Storage - HDD vs. SSD",
+                "es": "Almacenamiento - HDD vs. SSD"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-03-storage-hdd-ssd.md"
+            },
+            {
+              "id": "05-02-04",
+              "slug": "nas-availability",
+              "fileName": "05-02-04-nas-availability.md",
+              "title": {
+                "de": "NAS und Verfügbarkeit",
+                "en": "NAS and Availability",
+                "es": "NAS y Disponibilidad"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-04-nas-availability.md"
+            },
+            {
+              "id": "05-02-05",
+              "slug": "interfaces",
+              "fileName": "05-02-05-interfaces.md",
+              "title": {
+                "de": "Schnittstellen",
+                "en": "Interfaces",
+                "es": "Interfaces"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-05-interfaces.md"
+            },
+            {
+              "id": "05-02-06",
+              "slug": "graphics-cards",
+              "fileName": "05-02-06-graphics-cards.md",
+              "title": {
+                "de": "Grafikkarten (GPU)",
+                "en": "Graphics Cards (GPU)",
+                "es": "Tarjetas Gráficas (GPU)"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-06-graphics-cards.md"
+            },
+            {
+              "id": "05-02-07",
+              "slug": "usv",
+              "fileName": "05-02-07-usv.md",
+              "title": {
+                "de": "USV (Unterbrechungsfreie Stromversorgung)",
+                "en": "UPS (Uninterruptible Power Supply)",
+                "es": "SAI (Sistema de Alimentación Ininterrumpida)"
+              },
+              "path": "05-it-systems/05-02-hardware/05-02-07-usv.md"
+            }
+          ]
+        },
+        {
+          "id": "05-03",
+          "slug": "operating-systems",
+          "title": {
+            "de": "Operating Systems",
+            "en": "Operating Systems",
+            "es": "Operating Systems"
+          },
+          "topics": [
+            {
+              "id": "05-03-01",
+              "slug": "fundamentals-operating-systems",
+              "fileName": "05-03-01-fundamentals-operating-systems.md",
+              "title": {
+                "de": "Grundlagen Betriebssysteme",
+                "en": "Operating System Fundamentals",
+                "es": "Fundamentos de Sistemas Operativos"
+              },
+              "path": "05-it-systems/05-03-operating-systems/05-03-01-fundamentals-operating-systems.md"
+            },
+            {
+              "id": "05-03-02",
+              "slug": "bios-uefi",
+              "fileName": "05-03-02-bios-uefi.md",
+              "title": {
+                "de": "BIOS und UEFI",
+                "en": "BIOS and UEFI",
+                "es": "BIOS y UEFI"
+              },
+              "path": "05-it-systems/05-03-operating-systems/05-03-02-bios-uefi.md"
+            },
+            {
+              "id": "05-03-03",
+              "slug": "command-line",
+              "fileName": "05-03-03-command-line.md",
+              "title": {
+                "de": "Kommandozeile (CLI)",
+                "en": "Command Line (CLI)",
+                "es": "Línea de Comandos (CLI)"
+              },
+              "path": "05-it-systems/05-03-operating-systems/05-03-03-command-line.md"
+            }
+          ]
+        },
+        {
+          "id": "05-04",
+          "slug": "virtualization-cloud",
+          "title": {
+            "de": "Virtualization Cloud",
+            "en": "Virtualization Cloud",
+            "es": "Virtualization Cloud"
+          },
+          "topics": [
+            {
+              "id": "05-04-01",
+              "slug": "virtualization",
+              "fileName": "05-04-01-virtualization.md",
+              "title": {
+                "de": "Virtualisierung",
+                "en": "Virtualization",
+                "es": "Virtualización"
+              },
+              "path": "05-it-systems/05-04-virtualization-cloud/05-04-01-virtualization.md"
+            },
+            {
+              "id": "05-04-02",
+              "slug": "cloud-computing",
+              "fileName": "05-04-02-cloud-computing.md",
+              "title": {
+                "de": "Cloud Computing",
+                "en": "Cloud Computing",
+                "es": "Computación en la Nube"
+              },
+              "path": "05-it-systems/05-04-virtualization-cloud/05-04-02-cloud-computing.md"
+            },
+            {
+              "id": "05-04-03",
+              "slug": "virtual-desktops",
+              "fileName": "05-04-03-virtual-desktops.md",
+              "title": {
+                "de": "Virtuelle Desktops (VDI)",
+                "en": "Virtual Desktops (VDI)",
+                "es": "Escritorios Virtuales (VDI)"
+              },
+              "path": "05-it-systems/05-04-virtualization-cloud/05-04-03-virtual-desktops.md"
+            }
+          ]
+        },
+        {
+          "id": "05-05",
+          "slug": "data-backup",
+          "title": {
+            "de": "Data Backup",
+            "en": "Data Backup",
+            "es": "Data Backup"
+          },
+          "topics": [
+            {
+              "id": "05-05-01",
+              "slug": "backup-types",
+              "fileName": "05-05-01-backup-types.md",
+              "title": {
+                "de": "Backup-Arten",
+                "en": "Backup Types",
+                "es": "Tipos de Backup"
+              },
+              "path": "05-it-systems/05-05-data-backup/05-05-01-backup-types.md"
+            },
+            {
+              "id": "05-05-02",
+              "slug": "backup-strategies",
+              "fileName": "05-05-02-backup-strategies.md",
+              "title": {
+                "de": "Backup-Strategien",
+                "en": "Backup Strategies",
+                "es": "Estrategias de Backup"
+              },
+              "path": "05-it-systems/05-05-data-backup/05-05-02-backup-strategies.md"
+            }
+          ]
+        },
+        {
+          "id": "05-06",
+          "slug": "artificial-intelligence",
+          "title": {
+            "de": "Artificial Intelligence",
+            "en": "Artificial Intelligence",
+            "es": "Artificial Intelligence"
+          },
+          "topics": [
+            {
+              "id": "05-06-01",
+              "slug": "ai-fundamentals",
+              "fileName": "05-06-01-ai-fundamentals.md",
+              "title": {
+                "de": "KI-Grundlagen",
+                "en": "AI Fundamentals",
+                "es": "Fundamentos de IA"
+              },
+              "path": "05-it-systems/05-06-artificial-intelligence/05-06-01-ai-fundamentals.md"
+            },
+            {
+              "id": "05-06-02",
+              "slug": "ai-applications",
+              "fileName": "05-06-02-ai-applications.md",
+              "title": {
+                "de": "KI-Anwendungen",
+                "en": "AI Applications",
+                "es": "Aplicaciones de IA"
+              },
+              "path": "05-it-systems/05-06-artificial-intelligence/05-06-02-ai-applications.md"
+            },
+            {
+              "id": "05-06-03",
+              "slug": "ai-code-assistants",
+              "fileName": "05-06-03-ai-code-assistants.md",
+              "title": {
+                "de": "KI-Codeassistenten",
+                "en": "AI Code Assistants",
+                "es": "Asistentes de Codigo IA"
+              },
+              "path": "05-it-systems/05-06-artificial-intelligence/05-06-03-ai-code-assistants.md"
+            },
+            {
+              "id": "05-06-04",
+              "slug": "eu-ai-act",
+              "fileName": "05-06-04-eu-ai-act.md",
+              "title": {
+                "de": "EU AI Act",
+                "en": "EU AI Act",
+                "es": "Ley de IA de la UE"
+              },
+              "path": "05-it-systems/05-06-artificial-intelligence/05-06-04-eu-ai-act.md"
+            }
+          ]
+        },
+        {
+          "id": "05-08",
+          "slug": "enterprise-software",
+          "title": {
+            "de": "Enterprise Software",
+            "en": "Enterprise Software",
+            "es": "Enterprise Software"
+          },
+          "topics": [
+            {
+              "id": "05-08-01",
+              "slug": "erp-systems",
+              "fileName": "05-08-01-erp-systems.md",
+              "title": {
+                "de": "ERP-Systeme",
+                "en": "ERP Systems",
+                "es": "Sistemas ERP"
+              },
+              "path": "05-it-systems/05-08-enterprise-software/05-08-01-erp-systems.md"
+            },
+            {
+              "id": "05-08-02",
+              "slug": "crm-scm",
+              "fileName": "05-08-02-crm-scm.md",
+              "title": {
+                "de": "CRM und SCM",
+                "en": "CRM and SCM",
+                "es": "CRM y SCM"
+              },
+              "path": "05-it-systems/05-08-enterprise-software/05-08-02-crm-scm.md"
+            },
+            {
+              "id": "05-08-03",
+              "slug": "social-media",
+              "fileName": "05-08-03-social-media.md",
+              "title": {
+                "de": "Social Media im Unternehmen",
+                "en": "Social Media in Business",
+                "es": "Redes Sociales en la Empresa"
+              },
+              "path": "05-it-systems/05-08-enterprise-software/05-08-03-social-media.md"
+            }
+          ]
+        },
+        {
+          "id": "05-09",
+          "slug": "energy-environment",
+          "title": {
+            "de": "Energy Environment",
+            "en": "Energy Environment",
+            "es": "Energy Environment"
+          },
+          "topics": [
+            {
+              "id": "05-09-01",
+              "slug": "energy-efficiency",
+              "fileName": "05-09-01-energy-efficiency.md",
+              "title": {
+                "de": "Energieeffizienz in der IT",
+                "en": "Energy Efficiency in IT",
+                "es": "Eficiencia Energetica en TI"
+              },
+              "path": "05-it-systems/05-09-energy-environment/05-09-01-energy-efficiency.md"
+            },
+            {
+              "id": "05-09-02",
+              "slug": "device-classes",
+              "fileName": "05-09-02-device-classes.md",
+              "title": {
+                "de": "Geräteklassen und Energielabel",
+                "en": "Device Classes and Energy Labels",
+                "es": "Clases de Dispositivos y Etiquetas Energeticas"
+              },
+              "path": "05-it-systems/05-09-energy-environment/05-09-02-device-classes.md"
+            }
+          ]
+        }
+      ],
+      "topics": [
+        {
+          "id": "05-07",
+          "slug": "industry-40",
+          "fileName": "05-07-industry-40.md",
+          "title": {
+            "de": "Industrie 4.0",
+            "en": "Industry 4.0",
+            "es": "Industria 4.0"
+          },
+          "path": "05-it-systems/05-07-industry-40.md"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "slug": "software",
+      "title": {
+        "de": "Kapitel 06: Software - Übersicht",
+        "en": "Chapter 06: Software - Overview",
+        "es": "Capítulo 06: Software - Resumen"
+      },
+      "overviewPath": "06-software/06-00-overview.md",
+      "subchapters": [
+        {
+          "id": "06-01",
+          "slug": "fundamentals",
+          "title": {
+            "de": "Fundamentals",
+            "en": "Fundamentals",
+            "es": "Fundamentals"
+          },
+          "topics": [
+            {
+              "id": "06-01-01",
+              "slug": "software-types",
+              "fileName": "06-01-01-software-types.md",
+              "title": {
+                "de": "Softwarearten",
+                "en": "Software Types",
+                "es": "Tipos de Software"
+              },
+              "path": "06-software/06-01-fundamentals/06-01-01-software-types.md"
+            },
+            {
+              "id": "06-01-02",
+              "slug": "programming-paradigms",
+              "fileName": "06-01-02-programming-paradigms.md",
+              "title": {
+                "de": "Programmierparadigmen",
+                "en": "Programming Paradigms",
+                "es": "Paradigmas de Programación"
+              },
+              "path": "06-software/06-01-fundamentals/06-01-02-programming-paradigms.md"
+            },
+            {
+              "id": "06-01-03",
+              "slug": "evaluation-criteria",
+              "fileName": "06-01-03-evaluation-criteria.md",
+              "title": {
+                "de": "Beurteilungskriterien für Software",
+                "en": "Evaluation Criteria for Software",
+                "es": "Criterios de Evaluación para Software"
+              },
+              "path": "06-software/06-01-fundamentals/06-01-03-evaluation-criteria.md"
+            }
+          ]
+        },
+        {
+          "id": "06-02",
+          "slug": "programming",
+          "title": {
+            "de": "Programming",
+            "en": "Programming",
+            "es": "Programming"
+          },
+          "topics": [
+            {
+              "id": "06-02-01",
+              "slug": "variables-datatypes",
+              "fileName": "06-02-01-variables-datatypes.md",
+              "title": {
+                "de": "Variablen und Datentypen",
+                "en": "Variables and Data Types",
+                "es": "Variables y Tipos de Datos"
+              },
+              "path": "06-software/06-02-programming/06-02-01-variables-datatypes.md"
+            },
+            {
+              "id": "06-02-02",
+              "slug": "control-structures",
+              "fileName": "06-02-02-control-structures.md",
+              "title": {
+                "de": "Kontrollstrukturen",
+                "en": "Control Structures",
+                "es": "Estructuras de Control"
+              },
+              "path": "06-software/06-02-programming/06-02-02-control-structures.md"
+            },
+            {
+              "id": "06-02-03",
+              "slug": "procedures-functions",
+              "fileName": "06-02-03-procedures-functions.md",
+              "title": {
+                "de": "Prozeduren und Funktionen",
+                "en": "Procedures and Functions",
+                "es": "Procedimientos y Funciones"
+              },
+              "path": "06-software/06-02-programming/06-02-03-procedures-functions.md"
+            },
+            {
+              "id": "06-02-04",
+              "slug": "oop-fundamentals",
+              "fileName": "06-02-04-oop-fundamentals.md",
+              "title": {
+                "de": "OOP-Grundlagen",
+                "en": "OOP Fundamentals",
+                "es": "Fundamentos de OOP"
+              },
+              "path": "06-software/06-02-programming/06-02-04-oop-fundamentals.md"
+            },
+            {
+              "id": "06-02-05",
+              "slug": "pseudocode",
+              "fileName": "06-02-05-pseudocode.md",
+              "title": {
+                "de": "Pseudocode",
+                "en": "Pseudocode",
+                "es": "Pseudocódigo"
+              },
+              "path": "06-software/06-02-programming/06-02-05-pseudocode.md"
+            },
+            {
+              "id": "06-02-06",
+              "slug": "desk-check",
+              "fileName": "06-02-06-desk-check.md",
+              "title": {
+                "de": "Schreibtischtest (Desk Checking)",
+                "en": "Desk Check",
+                "es": "Prueba de Escritorio"
+              },
+              "path": "06-software/06-02-programming/06-02-06-desk-check.md"
+            },
+            {
+              "id": "06-02-07",
+              "slug": "code-debugging",
+              "fileName": "06-02-07-code-debugging.md",
+              "title": {
+                "de": "Fehlersuche im Code",
+                "en": "Code Debugging",
+                "es": "Depuración de Código"
+              },
+              "path": "06-software/06-02-programming/06-02-07-code-debugging.md"
+            }
+          ]
+        },
+        {
+          "id": "06-03",
+          "slug": "uml",
+          "title": {
+            "de": "Uml",
+            "en": "Uml",
+            "es": "Uml"
+          },
+          "topics": [
+            {
+              "id": "06-03-01",
+              "slug": "class-diagram",
+              "fileName": "06-03-01-class-diagram.md",
+              "title": {
+                "de": "UML-Klassendiagramm",
+                "en": "UML Class Diagram",
+                "es": "Diagrama de Clases UML"
+              },
+              "path": "06-software/06-03-uml/06-03-01-class-diagram.md"
+            },
+            {
+              "id": "06-03-02",
+              "slug": "use-case-diagram",
+              "fileName": "06-03-02-use-case-diagram.md",
+              "title": {
+                "de": "UML Use-Case-Diagramm",
+                "en": "UML Use Case Diagram",
+                "es": "Diagrama de Casos de Uso UML"
+              },
+              "path": "06-software/06-03-uml/06-03-02-use-case-diagram.md"
+            },
+            {
+              "id": "06-03-03",
+              "slug": "activity-diagram",
+              "fileName": "06-03-03-activity-diagram.md",
+              "title": {
+                "de": "UML-Aktivitätsdiagramm",
+                "en": "UML Activity Diagram",
+                "es": "Diagrama de Actividad UML"
+              },
+              "path": "06-software/06-03-uml/06-03-03-activity-diagram.md"
+            }
+          ]
+        },
+        {
+          "id": "06-04",
+          "slug": "databases",
+          "title": {
+            "de": "Databases",
+            "en": "Databases",
+            "es": "Databases"
+          },
+          "topics": [
+            {
+              "id": "06-04-01",
+              "slug": "relational-databases",
+              "fileName": "06-04-01-relational-databases.md",
+              "title": {
+                "de": "Relationale Datenbanken",
+                "en": "Relational Databases",
+                "es": "Bases de Datos Relacionales"
+              },
+              "path": "06-software/06-04-databases/06-04-01-relational-databases.md"
+            },
+            {
+              "id": "06-04-02",
+              "slug": "erd",
+              "fileName": "06-04-02-erd.md",
+              "title": {
+                "de": "Entity-Relationship-Diagramm (ERD)",
+                "en": "Entity-Relationship Diagram (ERD)",
+                "es": "Diagrama Entidad-Relación (ERD)"
+              },
+              "path": "06-software/06-04-databases/06-04-02-erd.md"
+            },
+            {
+              "id": "06-04-03",
+              "slug": "redundancy-normal-forms",
+              "fileName": "06-04-03-redundancy-normal-forms.md",
+              "title": {
+                "de": "Redundanz und Normalformen",
+                "en": "Redundancy and Normal Forms",
+                "es": "Redundancia y Formas Normales"
+              },
+              "path": "06-software/06-04-databases/06-04-03-redundancy-normal-forms.md"
+            }
+          ]
+        },
+        {
+          "id": "06-05",
+          "slug": "web-development",
+          "title": {
+            "de": "Web Development",
+            "en": "Web Development",
+            "es": "Web Development"
+          },
+          "topics": [
+            {
+              "id": "06-05-01",
+              "slug": "html-xml",
+              "fileName": "06-05-01-html-xml.md",
+              "title": {
+                "de": "HTML und XML",
+                "en": "HTML and XML",
+                "es": "HTML y XML"
+              },
+              "path": "06-software/06-05-web-development/06-05-01-html-xml.md"
+            }
+          ]
+        },
+        {
+          "id": "06-06",
+          "slug": "development-process",
+          "title": {
+            "de": "Development Process",
+            "en": "Development Process",
+            "es": "Development Process"
+          },
+          "topics": [
+            {
+              "id": "06-06-01",
+              "slug": "sdlc",
+              "fileName": "06-06-01-sdlc.md",
+              "title": {
+                "de": "Software Development Life Cycle (SDLC)",
+                "en": "Software Development Life Cycle (SDLC)",
+                "es": "Ciclo de Vida del Desarrollo de Software (SDLC)"
+              },
+              "path": "06-software/06-06-development-process/06-06-01-sdlc.md"
+            },
+            {
+              "id": "06-06-02",
+              "slug": "testing",
+              "fileName": "06-06-02-testing.md",
+              "title": {
+                "de": "Softwaretests",
+                "en": "Software Testing",
+                "es": "Pruebas de Software"
+              },
+              "path": "06-software/06-06-development-process/06-06-02-testing.md"
+            },
+            {
+              "id": "06-06-03",
+              "slug": "debugging",
+              "fileName": "06-06-03-debugging.md",
+              "title": {
+                "de": "Debugging",
+                "en": "Debugging",
+                "es": "Depuración"
+              },
+              "path": "06-software/06-06-development-process/06-06-03-debugging.md"
+            }
+          ]
+        },
+        {
+          "id": "06-07",
+          "slug": "licenses",
+          "title": {
+            "de": "Licenses",
+            "en": "Licenses",
+            "es": "Licenses"
+          },
+          "topics": [
+            {
+              "id": "06-07-01",
+              "slug": "copyright",
+              "fileName": "06-07-01-copyright.md",
+              "title": {
+                "de": "Urheberrecht in der IT",
+                "en": "Copyright in IT",
+                "es": "Derechos de Autor en TI"
+              },
+              "path": "06-software/06-07-licenses/06-07-01-copyright.md"
+            },
+            {
+              "id": "06-07-02",
+              "slug": "license-types",
+              "fileName": "06-07-02-license-types.md",
+              "title": {
+                "de": "Lizenzarten",
+                "en": "License Types",
+                "es": "Tipos de Licencias"
+              },
+              "path": "06-software/06-07-licenses/06-07-02-license-types.md"
+            }
+          ]
+        }
+      ],
+      "topics": []
+    },
+    {
+      "id": "07",
+      "slug": "networks",
+      "title": {
+        "de": "Netzwerke - Übersicht",
+        "en": "Networks - Overview",
+        "es": "Redes - Descripción General"
+      },
+      "overviewPath": "07-networks/07-00-overview.md",
+      "subchapters": [
+        {
+          "id": "07-01",
+          "slug": "network-fundamentals",
+          "title": {
+            "de": "Network Fundamentals",
+            "en": "Network Fundamentals",
+            "es": "Network Fundamentals"
+          },
+          "topics": [
+            {
+              "id": "07-01-01",
+              "slug": "osi-model",
+              "fileName": "07-01-01-osi-model.md",
+              "title": {
+                "de": "OSI-Modell",
+                "en": "OSI Model",
+                "es": "Modelo OSI"
+              },
+              "path": "07-networks/07-01-network-fundamentals/07-01-01-osi-model.md"
+            },
+            {
+              "id": "07-01-02",
+              "slug": "tcp-ip-model",
+              "fileName": "07-01-02-tcp-ip-model.md",
+              "title": {
+                "de": "TCP/IP-Modell",
+                "en": "TCP/IP Model",
+                "es": "Modelo TCP/IP"
+              },
+              "path": "07-networks/07-01-network-fundamentals/07-01-02-tcp-ip-model.md"
+            },
+            {
+              "id": "07-01-03",
+              "slug": "protocols",
+              "fileName": "07-01-03-protocols.md",
+              "title": {
+                "de": "Netzwerkprotocols",
+                "en": "Network Protocols",
+                "es": "Protocolos de Red"
+              },
+              "path": "07-networks/07-01-network-fundamentals/07-01-03-protocols.md"
+            }
+          ]
+        },
+        {
+          "id": "07-02",
+          "slug": "ip-addressing",
+          "title": {
+            "de": "Ip Addressing",
+            "en": "Ip Addressing",
+            "es": "Ip Addressing"
+          },
+          "topics": [
+            {
+              "id": "07-02-01",
+              "slug": "ipv4",
+              "fileName": "07-02-01-ipv4.md",
+              "title": {
+                "de": "IPv4-Adressierung",
+                "en": "IPv4 Addressing",
+                "es": "Direccionamiento IPv4"
+              },
+              "path": "07-networks/07-02-ip-addressing/07-02-01-ipv4.md"
+            },
+            {
+              "id": "07-02-02",
+              "slug": "ipv6",
+              "fileName": "07-02-02-ipv6.md",
+              "title": {
+                "de": "IPv6-Adressierung [NEU 2025]",
+                "en": "IPv6 Addressing [NEW 2025]",
+                "es": "Direccionamiento IPv6 [NUEVO 2025]"
+              },
+              "path": "07-networks/07-02-ip-addressing/07-02-02-ipv6.md"
+            },
+            {
+              "id": "07-02-03",
+              "slug": "subnetting",
+              "fileName": "07-02-03-subnetting.md",
+              "title": {
+                "de": "Subnetting",
+                "en": "Subnetting",
+                "es": "Subnetting"
+              },
+              "path": "07-networks/07-02-ip-addressing/07-02-03-subnetting.md"
+            },
+            {
+              "id": "07-02-04",
+              "slug": "dhcp",
+              "fileName": "07-02-04-dhcp.md",
+              "title": {
+                "de": "DHCP",
+                "en": "DHCP",
+                "es": "DHCP"
+              },
+              "path": "07-networks/07-02-ip-addressing/07-02-04-dhcp.md"
+            }
+          ]
+        },
+        {
+          "id": "07-03",
+          "slug": "wlan",
+          "title": {
+            "de": "Wlan",
+            "en": "Wlan",
+            "es": "Wlan"
+          },
+          "topics": [
+            {
+              "id": "07-03-01",
+              "slug": "wlan-fundamentals",
+              "fileName": "07-03-01-wlan-fundamentals.md",
+              "title": {
+                "de": "WLAN-Grundlagen",
+                "en": "WLAN Fundamentals",
+                "es": "Fundamentos de WLAN"
+              },
+              "path": "07-networks/07-03-wlan/07-03-01-wlan-fundamentals.md"
+            }
+          ]
+        },
+        {
+          "id": "07-04",
+          "slug": "cabling",
+          "title": {
+            "de": "Cabling",
+            "en": "Cabling",
+            "es": "Cabling"
+          },
+          "topics": [
+            {
+              "id": "07-04-01",
+              "slug": "structured-cabling",
+              "fileName": "07-04-01-structured-cabling.md",
+              "title": {
+                "de": "Strukturierte Verkabelung",
+                "en": "Structured Cabling",
+                "es": "Cableado Estructurado"
+              },
+              "path": "07-networks/07-04-cabling/07-04-01-structured-cabling.md"
+            },
+            {
+              "id": "07-04-02",
+              "slug": "copper-cables",
+              "fileName": "07-04-02-copper-cables.md",
+              "title": {
+                "de": "Kupferkabel und Kategorien",
+                "en": "Copper Cables and Categories",
+                "es": "Cables de Cobre y Categorías"
+              },
+              "path": "07-networks/07-04-cabling/07-04-02-copper-cables.md"
+            }
+          ]
+        },
+        {
+          "id": "07-06",
+          "slug": "data-transmission",
+          "title": {
+            "de": "Data Transmission",
+            "en": "Data Transmission",
+            "es": "Data Transmission"
+          },
+          "topics": [
+            {
+              "id": "07-06-01",
+              "slug": "transmission-rates",
+              "fileName": "07-06-01-transmission-rates.md",
+              "title": {
+                "de": "Übertragungsraten berechnen [NEU 2025]",
+                "en": "Calculating Transmission Rates [NEW 2025]",
+                "es": "Cálculo de Tasas de Transmisión [NUEVO 2025]"
+              },
+              "path": "07-networks/07-06-data-transmission/07-06-01-transmission-rates.md"
+            }
+          ]
+        },
+        {
+          "id": "07-07",
+          "slug": "network-troubleshooting",
+          "title": {
+            "de": "Network Troubleshooting",
+            "en": "Network Troubleshooting",
+            "es": "Network Troubleshooting"
+          },
+          "topics": [
+            {
+              "id": "07-07-01",
+              "slug": "diagnostic-tools",
+              "fileName": "07-07-01-diagnostic-tools.md",
+              "title": {
+                "de": "Netzwerk-Diagnose-Tools",
+                "en": "Network Diagnostic Tools",
+                "es": "Herramientas de Diagnóstico de Red"
+              },
+              "path": "07-networks/07-07-network-troubleshooting/07-07-01-diagnostic-tools.md"
+            },
+            {
+              "id": "07-07-02",
+              "slug": "troubleshooting",
+              "fileName": "07-07-02-troubleshooting.md",
+              "title": {
+                "de": "Systematische Netzwerk-Fehlersuche",
+                "en": "Systematic Network Troubleshooting",
+                "es": "Solución Sistemática de Problemas de Red"
+              },
+              "path": "07-networks/07-07-network-troubleshooting/07-07-02-troubleshooting.md"
+            }
+          ]
+        }
+      ],
+      "topics": [
+        {
+          "id": "07-05",
+          "slug": "network-hardware",
+          "fileName": "07-05-network-hardware.md",
+          "title": {
+            "de": "Netzwerk-Hardware",
+            "en": "Network Hardware",
+            "es": "Hardware de Red"
+          },
+          "path": "07-networks/07-05-network-hardware.md"
+        },
+        {
+          "id": "07-08",
+          "slug": "remote-maintenance",
+          "fileName": "07-08-remote-maintenance.md",
+          "title": {
+            "de": "Fernwartung und Remote-Zugriff",
+            "en": "Remote Maintenance and Remote Access",
+            "es": "Mantenimiento Remoto y Acceso Remoto"
+          },
+          "path": "07-networks/07-08-remote-maintenance.md"
+        },
+        {
+          "id": "07-09",
+          "slug": "domain-integration",
+          "fileName": "07-09-domain-integration.md",
+          "title": {
+            "de": "Domänenintegration [NEU 2025]",
+            "en": "Domain Integration [NEW 2025]",
+            "es": "Integración de Dominio [NUEVO 2025]"
+          },
+          "path": "07-networks/07-09-domain-integration.md"
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "slug": "business-processes",
+      "title": {
+        "de": "Kapitel 08: Arbeits- und Geschäftsprozesse - Übersicht",
+        "en": "Chapter 08: Work and Business Processes - Overview",
+        "es": "Capitulo 08: Procesos de Trabajo y Negocio - Vision General"
+      },
+      "overviewPath": "08-business-processes/08-00-overview.md",
+      "subchapters": [
+        {
+          "id": "08-01",
+          "slug": "enterprise",
+          "title": {
+            "de": "Enterprise",
+            "en": "Enterprise",
+            "es": "Enterprise"
+          },
+          "topics": [
+            {
+              "id": "08-01-01",
+              "slug": "business-environment",
+              "fileName": "08-01-01-business-environment.md",
+              "title": {
+                "de": "Unternehmensumfeld",
+                "en": "Business Environment",
+                "es": "Entorno Empresarial"
+              },
+              "path": "08-business-processes/08-01-enterprise/08-01-01-business-environment.md"
+            },
+            {
+              "id": "08-01-02",
+              "slug": "market-forms",
+              "fileName": "08-01-02-market-forms.md",
+              "title": {
+                "de": "Marktformen",
+                "en": "Market Forms",
+                "es": "Formas de Mercado"
+              },
+              "path": "08-business-processes/08-01-enterprise/08-01-02-market-forms.md"
+            },
+            {
+              "id": "08-01-03",
+              "slug": "distribution-channels",
+              "fileName": "08-01-03-distribution-channels.md",
+              "title": {
+                "de": "Vertriebsformen",
+                "en": "Distribution Channels",
+                "es": "Canales de Distribucion"
+              },
+              "path": "08-business-processes/08-01-enterprise/08-01-03-distribution-channels.md"
+            },
+            {
+              "id": "08-01-04",
+              "slug": "organizational-structure",
+              "fileName": "08-01-04-organizational-structure.md",
+              "title": {
+                "de": "Aufbauorganisation",
+                "en": "Organizational Structure",
+                "es": "Estructura Organizativa"
+              },
+              "path": "08-business-processes/08-01-enterprise/08-01-04-organizational-structure.md"
+            }
+          ]
+        },
+        {
+          "id": "08-02",
+          "slug": "economics",
+          "title": {
+            "de": "Economics",
+            "en": "Economics",
+            "es": "Economics"
+          },
+          "topics": [
+            {
+              "id": "08-02-01",
+              "slug": "costs-cost-types",
+              "fileName": "08-02-01-costs-cost-types.md",
+              "title": {
+                "de": "Kosten und Kostenarten",
+                "en": "Costs and Cost Types",
+                "es": "Costos y Tipos de Costos"
+              },
+              "path": "08-business-processes/08-02-economics/08-02-01-costs-cost-types.md"
+            },
+            {
+              "id": "08-02-02",
+              "slug": "roi-tco",
+              "fileName": "08-02-02-roi-tco.md",
+              "title": {
+                "de": "ROI und TCO",
+                "en": "ROI and TCO",
+                "es": "ROI y TCO"
+              },
+              "path": "08-business-processes/08-02-economics/08-02-02-roi-tco.md"
+            },
+            {
+              "id": "08-02-03",
+              "slug": "utility-analysis",
+              "fileName": "08-02-03-utility-analysis.md",
+              "title": {
+                "de": "Nutzwertanalyse",
+                "en": "Utility Analysis",
+                "es": "Analisis de Utilidad"
+              },
+              "path": "08-business-processes/08-02-economics/08-02-03-utility-analysis.md"
+            },
+            {
+              "id": "08-02-04",
+              "slug": "offer-comparison",
+              "fileName": "08-02-04-offer-comparison.md",
+              "title": {
+                "de": "Angebotsvergleich",
+                "en": "Offer Comparison",
+                "es": "Comparación de Ofertas"
+              },
+              "path": "08-business-processes/08-02-economics/08-02-04-offer-comparison.md"
+            }
+          ]
+        },
+        {
+          "id": "08-03",
+          "slug": "procurement",
+          "title": {
+            "de": "Procurement",
+            "en": "Procurement",
+            "es": "Procurement"
+          },
+          "topics": [
+            {
+              "id": "08-03-01",
+              "slug": "procurement-process",
+              "fileName": "08-03-01-procurement-process.md",
+              "title": {
+                "de": "Beschaffungsprozess",
+                "en": "Procurement Process",
+                "es": "Proceso de Aprovisionamiento"
+              },
+              "path": "08-business-processes/08-03-procurement/08-03-01-procurement-process.md"
+            },
+            {
+              "id": "08-03-02",
+              "slug": "value-chain",
+              "fileName": "08-03-02-value-chain.md",
+              "title": {
+                "de": "Wertschöpfung und Wertschöpfungskette",
+                "en": "Value Creation and Value Chain",
+                "es": "Creación de Valor y Cadena de Valor"
+              },
+              "path": "08-business-processes/08-03-procurement/08-03-02-value-chain.md"
+            }
+          ]
+        },
+        {
+          "id": "08-04",
+          "slug": "contract-law",
+          "title": {
+            "de": "Contract Law",
+            "en": "Contract Law",
+            "es": "Contract Law"
+          },
+          "topics": [
+            {
+              "id": "08-04-01",
+              "slug": "contract-types",
+              "fileName": "08-04-01-contract-types.md",
+              "title": {
+                "de": "Vertragsarten",
+                "en": "Contract Types",
+                "es": "Tipos de Contrato"
+              },
+              "path": "08-business-processes/08-04-contract-law/08-04-01-contract-types.md"
+            },
+            {
+              "id": "08-04-02",
+              "slug": "contract-components",
+              "fileName": "08-04-02-contract-components.md",
+              "title": {
+                "de": "Vertragsbestandteile",
+                "en": "Contract Components",
+                "es": "Componentes del Contrato"
+              },
+              "path": "08-business-processes/08-04-contract-law/08-04-02-contract-components.md"
+            },
+            {
+              "id": "08-04-03",
+              "slug": "contract-disruptions",
+              "fileName": "08-04-03-contract-disruptions.md",
+              "title": {
+                "de": "Vertragsstörungen und Mängelrechte",
+                "en": "Contract Disruptions and Warranty Rights",
+                "es": "Perturbaciones Contractuales y Derechos de Garantía"
+              },
+              "path": "08-business-processes/08-04-contract-law/08-04-03-contract-disruptions.md"
+            }
+          ]
+        },
+        {
+          "id": "08-05",
+          "slug": "pricing",
+          "title": {
+            "de": "Pricing",
+            "en": "Pricing",
+            "es": "Pricing"
+          },
+          "topics": [
+            {
+              "id": "08-05-01",
+              "slug": "price-calculation",
+              "fileName": "08-05-01-price-calculation.md",
+              "title": {
+                "de": "Preiskalkulation",
+                "en": "Price Calculation",
+                "es": "Cálculo de Precios"
+              },
+              "path": "08-business-processes/08-05-pricing/08-05-01-price-calculation.md"
+            }
+          ]
+        },
+        {
+          "id": "08-06",
+          "slug": "service-management",
+          "title": {
+            "de": "Service Management",
+            "en": "Service Management",
+            "es": "Service Management"
+          },
+          "topics": [
+            {
+              "id": "08-06-01",
+              "slug": "service-requests",
+              "fileName": "08-06-01-service-requests.md",
+              "title": {
+                "de": "Serviceanfragen",
+                "en": "Service Requests",
+                "es": "Solicitudes de Servicio"
+              },
+              "path": "08-business-processes/08-06-service-management/08-06-01-service-requests.md"
+            },
+            {
+              "id": "08-06-02",
+              "slug": "ticket-system",
+              "fileName": "08-06-02-ticket-system.md",
+              "title": {
+                "de": "Ticketsystem",
+                "en": "Ticket System",
+                "es": "Sistema de Tickets"
+              },
+              "path": "08-business-processes/08-06-service-management/08-06-02-ticket-system.md"
+            },
+            {
+              "id": "08-06-03",
+              "slug": "service-level",
+              "fileName": "08-06-03-service-level.md",
+              "title": {
+                "de": "Service Level (Support-Stufen)",
+                "en": "Service Level (Support Tiers)",
+                "es": "Nivel de Servicio (Niveles de Soporte)"
+              },
+              "path": "08-business-processes/08-06-service-management/08-06-03-service-level.md"
+            },
+            {
+              "id": "08-06-04",
+              "slug": "sla",
+              "fileName": "08-06-04-sla.md",
+              "title": {
+                "de": "Service Level Agreement (SLA)",
+                "en": "Service Level Agreement (SLA)",
+                "es": "Service Level Agreement (SLA)"
+              },
+              "path": "08-business-processes/08-06-service-management/08-06-04-sla.md"
+            }
+          ]
+        }
+      ],
+      "topics": []
+    },
+    {
+      "id": "09",
+      "slug": "support-communication",
+      "title": {
+        "de": "support-communication",
+        "en": "support-communication",
+        "es": "support-communication"
+      },
+      "overviewPath": null,
+      "subchapters": [
+        {
+          "id": "09-01",
+          "slug": "communication",
+          "title": {
+            "de": "Communication",
+            "en": "Communication",
+            "es": "Communication"
+          },
+          "topics": [
+            {
+              "id": "09-01-01",
+              "slug": "communication-types",
+              "fileName": "09-01-01-communication-types.md",
+              "title": {
+                "de": "Kommunikationsarten im IT-Support",
+                "en": "Communication Types in IT Support",
+                "es": "Tipos de Comunicación en Soporte TI"
+              },
+              "path": "09-support-communication/09-01-communication/09-01-01-communication-types.md"
+            },
+            {
+              "id": "09-01-02",
+              "slug": "four-ears-model",
+              "fileName": "09-01-02-four-ears-model.md",
+              "title": {
+                "de": "Das Vier-Ohren-Modell (Schulz von Thun)",
+                "en": "The Four-Ears Model (Schulz von Thun)",
+                "es": "El Modelo de las Cuatro Orejas (Schulz von Thun)"
+              },
+              "path": "09-support-communication/09-01-communication/09-01-02-four-ears-model.md"
+            },
+            {
+              "id": "09-01-03",
+              "slug": "conflict-management",
+              "fileName": "09-01-03-conflict-management.md",
+              "title": {
+                "de": "Konfliktmanagement im IT-Support",
+                "en": "Conflict Management in IT Support",
+                "es": "Gestión de Conflictos en Soporte TI"
+              },
+              "path": "09-support-communication/09-01-communication/09-01-03-conflict-management.md"
+            }
+          ]
+        },
+        {
+          "id": "09-02",
+          "slug": "error-management",
+          "title": {
+            "de": "Error Management",
+            "en": "Error Management",
+            "es": "Error Management"
+          },
+          "topics": [
+            {
+              "id": "09-02-01",
+              "slug": "error-analysis",
+              "fileName": "09-02-01-error-analysis.md",
+              "title": {
+                "de": "Fehleranalyse im IT-Support",
+                "en": "Error Analysis in IT Support",
+                "es": "Análisis de Errores en Soporte TI"
+              },
+              "path": "09-support-communication/09-02-error-management/09-02-01-error-analysis.md"
+            },
+            {
+              "id": "09-02-02",
+              "slug": "incident-management",
+              "fileName": "09-02-02-incident-management.md",
+              "title": {
+                "de": "Störungsmanagement (Incident Management)",
+                "en": "Incident Management",
+                "es": "Gestión de Incidentes"
+              },
+              "path": "09-support-communication/09-02-error-management/09-02-02-incident-management.md"
+            }
+          ]
+        }
+      ],
+      "topics": []
+    },
+    {
+      "id": "10",
+      "slug": "exam-preparation",
+      "title": {
+        "de": "Prüfungsvorbereitung - Übersicht",
+        "en": "Exam Preparation - Overview",
+        "es": "Preparacion para el Examen - Resumen"
+      },
+      "overviewPath": "10-exam-preparation/10-00-overview.md",
+      "subchapters": [
+        {
+          "id": "10-02",
+          "slug": "exam-simulations",
+          "title": {
+            "de": "Exam Simulations",
+            "en": "Exam Simulations",
+            "es": "Exam Simulations"
+          },
+          "topics": [
+            {
+              "id": "10-02-01",
+              "slug": "simulation-travel-agency",
+              "fileName": "10-02-01-simulation-travel-agency.md",
+              "title": {
+                "de": "Prüfungssimulation 1: Reisebüro „SunTravel GmbH\"",
+                "en": "Exam Simulation 1: Travel Agency \"SunTravel GmbH\"",
+                "es": "Simulacion de Examen 1: Agencia de Viajes \"SunTravel GmbH\""
+              },
+              "path": "10-exam-preparation/10-02-exam-simulations/10-02-01-simulation-travel-agency.md"
+            },
+            {
+              "id": "10-02-02",
+              "slug": "simulation-insurance",
+              "fileName": "10-02-02-simulation-insurance.md",
+              "title": {
+                "de": "Prüfungssimulation 2: Versicherung „SecureLife AG\"",
+                "en": "Exam Simulation 2: Insurance \"SecureLife AG\"",
+                "es": "Simulacion de Examen 2: Seguros \"SecureLife AG\""
+              },
+              "path": "10-exam-preparation/10-02-exam-simulations/10-02-02-simulation-insurance.md"
+            },
+            {
+              "id": "10-02-03",
+              "slug": "simulation-cnc-industry40",
+              "fileName": "10-02-03-simulation-cnc-industry40.md",
+              "title": {
+                "de": "Prüfungssimulation 3: CNC-Fertigung „PräzisionsTech GmbH\"",
+                "en": "Exam Simulation 3: CNC Manufacturing \"PrecisionTech GmbH\"",
+                "es": "Simulacion de Examen 3: Fabricacion CNC \"PrecisionTech GmbH\""
+              },
+              "path": "10-exam-preparation/10-02-exam-simulations/10-02-03-simulation-cnc-industry40.md"
+            }
+          ]
+        },
+        {
+          "id": "10-03",
+          "slug": "solutions",
+          "title": {
+            "de": "Solutions",
+            "en": "Solutions",
+            "es": "Solutions"
+          },
+          "topics": [
+            {
+              "id": "10-03-01",
+              "slug": "solution-travel-agency",
+              "fileName": "10-03-01-solution-travel-agency.md",
+              "title": {
+                "de": "Lösung: Prüfungssimulation 1 - Reisebüro „SunTravel GmbH\"",
+                "en": "Solution: Exam Simulation 1 - Travel Agency \"SunTravel GmbH\"",
+                "es": "Solucion: Simulacion de Examen 1 - Agencia de Viajes \"SunTravel GmbH\""
+              },
+              "path": "10-exam-preparation/10-03-solutions/10-03-01-solution-travel-agency.md"
+            },
+            {
+              "id": "10-03-02",
+              "slug": "solution-insurance",
+              "fileName": "10-03-02-solution-insurance.md",
+              "title": {
+                "de": "Lösung: Prüfungssimulation 2 - Versicherung „SecureLife AG\"",
+                "en": "Solution: Exam Simulation 2 - Insurance \"SecureLife AG\"",
+                "es": "Solucion: Simulacion de Examen 2 - Seguros \"SecureLife AG\""
+              },
+              "path": "10-exam-preparation/10-03-solutions/10-03-02-solution-insurance.md"
+            },
+            {
+              "id": "10-03-03",
+              "slug": "solution-cnc-industry40",
+              "fileName": "10-03-03-solution-cnc-industry40.md",
+              "title": {
+                "de": "Lösung: Prüfungssimulation 3 - CNC-Fertigung „PräzisionsTech GmbH\"",
+                "en": "Solution: Exam Simulation 3 - CNC Manufacturing \"PrecisionTech GmbH\"",
+                "es": "Solucion: Simulacion de Examen 3 - Fabricacion CNC \"PrecisionTech GmbH\""
+              },
+              "path": "10-exam-preparation/10-03-solutions/10-03-03-solution-cnc-industry40.md"
+            }
+          ]
+        }
+      ],
+      "topics": []
+    }
+  ]
+}
