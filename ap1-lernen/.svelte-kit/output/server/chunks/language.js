@@ -1,6 +1,8 @@
 import { w as writable } from "./index.js";
 import { g as goto } from "./client.js";
 import "clsx";
+import { b as base } from "./server.js";
+import "@sveltejs/kit/internal/server";
 const DEFAULT_LANG = "de";
 const VALID_LANGS = ["de", "en", "es"];
 function getStoredLanguage() {
@@ -16,7 +18,11 @@ function createLanguageStore() {
     switchTo: async (newLang, currentPath) => {
       if (!VALID_LANGS.includes(newLang)) return;
       set(newLang);
-      const pathMatch = currentPath.match(/^\/(de|en|es)(\/.*)?$/);
+      let pathWithoutBase = currentPath;
+      if (base && currentPath.startsWith(base)) {
+        pathWithoutBase = currentPath.slice(base.length) || "/";
+      }
+      const pathMatch = pathWithoutBase.match(/^\/(de|en|es)(\/.*)?$/);
       if (pathMatch) {
         pathMatch[2] || "";
         await goto();

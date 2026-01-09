@@ -46,7 +46,6 @@ declare module '$env/static/private' {
 	export const COLOR: string;
 	export const NVM_DIR: string;
 	export const WAYLAND_DISPLAY: string;
-	export const LOCAL_BUILD: string;
 	export const LOGNAME: string;
 	export const NAME: string;
 	export const WSL_INTEROP: string;
@@ -138,7 +137,6 @@ declare module '$env/dynamic/private' {
 		COLOR: string;
 		NVM_DIR: string;
 		WAYLAND_DISPLAY: string;
-		LOCAL_BUILD: string;
 		LOGNAME: string;
 		NAME: string;
 		WSL_INTEROP: string;

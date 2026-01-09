@@ -2,6 +2,7 @@
 import type { PageLoad } from './$types';
 import type { ContentManifest, Chapter, Subchapter, Topic, Language } from '$lib/types/content';
 import { error } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ params, fetch, parent }: Parameters<PageLoad>[0]) => {
 	const { manifest } = await parent();
@@ -80,7 +81,7 @@ export const load = async ({ params, fetch, parent }: Parameters<PageLoad>[0]) =
 
 	// Fetch the markdown content
 	try {
-		const response = await fetch(`/content/${lang}/${filePath}`);
+		const response = await fetch(`${base}/content/${lang}/${filePath}`);
 		if (!response.ok) {
 			throw error(404, 'Content file not found');
 		}

@@ -2,6 +2,7 @@ import { writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
+import { base } from '$app/paths';
 import type { Language } from '$lib/types/content';
 
 const STORAGE_KEY = 'ap1-language';
@@ -30,19 +31,25 @@ function createLanguageStore() {
 		},
 		switchTo: async (newLang: Language, currentPath: string) => {
 			if (!VALID_LANGS.includes(newLang)) return;
-			
+
 			if (browser) {
 				localStorage.setItem(STORAGE_KEY, newLang);
 			}
 			set(newLang);
-			
+
 			// Navigate to same content in new language
-			const pathMatch = currentPath.match(/^\/(de|en|es)(\/.*)?$/);
+			// Strip base path if present
+			let pathWithoutBase = currentPath;
+			if (base && currentPath.startsWith(base)) {
+				pathWithoutBase = currentPath.slice(base.length) || '/';
+			}
+
+			const pathMatch = pathWithoutBase.match(/^\/(de|en|es)(\/.*)?$/);
 			if (pathMatch) {
 				const restOfPath = pathMatch[2] || '';
-				await goto(`/${newLang}${restOfPath}`);
+				await goto(`${base}/${newLang}${restOfPath}`);
 			} else {
-				await goto(`/${newLang}`);
+				await goto(`${base}/${newLang}`);
 			}
 		}
 	};

@@ -72,7 +72,8 @@
     "name": "language",
     "imports": [
       "_index.js",
-      "_client.js"
+      "_client.js",
+      "_server.js"
     ]
   },
   "_progress.js": {
@@ -159,7 +160,10 @@
     "file": "entries/pages/_layout.ts.js",
     "name": "entries/pages/_layout.ts",
     "src": "src/routes/+layout.ts",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ]
   },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
@@ -200,6 +204,9 @@
     "file": "entries/pages/_lang_/_...slug_/_page.ts.js",
     "name": "entries/pages/_lang_/_...slug_/_page.ts",
     "src": "src/routes/[lang]/[...slug]/+page.ts",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ]
   }
 }

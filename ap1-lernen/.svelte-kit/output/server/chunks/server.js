@@ -1,4 +1,4 @@
-let base = "";
+let base = "/AP1-Vorbereitung";
 let assets = base;
 const app_dir = "_app";
 const relative = true;

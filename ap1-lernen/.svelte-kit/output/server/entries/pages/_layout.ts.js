@@ -1,8 +1,10 @@
+import { b as base } from "../../chunks/server.js";
+import "@sveltejs/kit/internal/server";
 const prerender = true;
 const ssr = false;
 const load = async ({ fetch }) => {
   try {
-    const response = await fetch("/manifest.json");
+    const response = await fetch(`${base}/manifest.json`);
     const manifest = await response.json();
     return { manifest };
   } catch (error) {

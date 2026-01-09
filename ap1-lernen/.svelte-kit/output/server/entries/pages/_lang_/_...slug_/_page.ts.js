@@ -1,4 +1,6 @@
 import { error } from "@sveltejs/kit";
+import { b as base } from "../../../../chunks/server.js";
+import "@sveltejs/kit/internal/server";
 const load = async ({ params, fetch, parent }) => {
   const { manifest } = await parent();
   const { lang, slug } = params;
@@ -55,7 +57,7 @@ const load = async ({ params, fetch, parent }) => {
     throw error(404, "Invalid path");
   }
   try {
-    const response = await fetch(`/content/${lang}/${filePath}`);
+    const response = await fetch(`${base}/content/${lang}/${filePath}`);
     if (!response.ok) {
       throw error(404, "Content file not found");
     }
