@@ -2,11 +2,15 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const base = process.env.LOCAL_BUILD === 'true' ? '/' : '/AP1-Vorbereitung/';
+
 export default defineConfig({
 	plugins: [
 		sveltekit(),
 		VitePWA({
 			registerType: 'autoUpdate',
+			base: base,
+			scope: base,
 			includeAssets: ['favicon.svg', 'icon-192.svg', 'icon-512.svg'],
 			manifest: {
 				name: 'AP1 Lernen',

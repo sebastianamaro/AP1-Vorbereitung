@@ -13,12 +13,12 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 		
-		<link rel="modulepreload" href="./_app/immutable/entry/start.FoLT-bc3.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/CJKjsTp3.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.BH8w5fdC.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C0BHu-qf.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/BMxztsR7.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/D-NNtcC2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DGDHb1aQ.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/Cm27TbpX.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.06HG_I7R.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.CfzLh-UW.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/jBwWl7xB.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/DmCeWRjx.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/YRf6eFZU.js">
@@ -27,7 +27,7 @@
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_18asnkm = {
+					__sveltekit_4ssuji = {
 						base: new URL(".", location).pathname.slice(0, -1),
 						assets: "/AP1-Vorbereitung"
 					};
@@ -35,13 +35,22 @@
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.FoLT-bc3.js"),
-						import("./_app/immutable/entry/app.06HG_I7R.js")
+						import("./_app/immutable/entry/start.BH8w5fdC.js"),
+						import("./_app/immutable/entry/app.CfzLh-UW.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
 				}
 			</script>
 		</div>
+		<script>
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.register('./sw.js', { scope: './' })
+						.then(reg => console.log('SW registered:', reg.scope))
+						.catch(err => console.error('SW registration failed:', err));
+				});
+			}
+		</script>
 	</body>
 </html>

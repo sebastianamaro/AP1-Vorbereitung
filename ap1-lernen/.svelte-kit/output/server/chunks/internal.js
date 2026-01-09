@@ -879,7 +879,7 @@ const options = {
   service_worker: false,
   service_worker_options: void 0,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="de">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets + '/favicon.ico" />\n		<link rel="apple-touch-icon" href="' + assets + '/apple-touch-icon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />\n		<meta name="theme-color" content="#1e40af" />\n		<meta name="apple-mobile-web-app-capable" content="yes" />\n		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n		<meta name="description" content="AP1 Prüfungsvorbereitung für Fachinformatiker - IHK" />\n		<link rel="preconnect" href="https://fonts.googleapis.com" />\n		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="de">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets + '/favicon.ico" />\n		<link rel="apple-touch-icon" href="' + assets + '/apple-touch-icon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />\n		<meta name="theme-color" content="#1e40af" />\n		<meta name="apple-mobile-web-app-capable" content="yes" />\n		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n		<meta name="description" content="AP1 Prüfungsvorbereitung für Fachinformatiker - IHK" />\n		<link rel="preconnect" href="https://fonts.googleapis.com" />\n		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n		<script>\n			if ('serviceWorker' in navigator) {\n				window.addEventListener('load', () => {\n					navigator.serviceWorker.register('" + assets + "/sw.js', { scope: '" + assets + "/' })\n						.then(reg => console.log('SW registered:', reg.scope))\n						.catch(err => console.error('SW registration failed:', err));\n				});\n			}\n		<\/script>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -951,7 +951,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "18asnkm"
+  version_hash: "4ssuji"
 };
 async function get_hooks() {
   let handle;
