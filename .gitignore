@@ -416,3 +416,10 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# SvelteKit / Vite build artifacts
+ap1-lernen/.svelte-kit/
+ap1-lernen/build/
+ap1-lernen/static/content/
+ap1-lernen/static/manifest.json
+ap1-lernen/static/search-index-*.json
