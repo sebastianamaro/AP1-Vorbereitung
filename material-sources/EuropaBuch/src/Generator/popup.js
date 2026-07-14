@@ -8,14 +8,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const delayInput = document.getElementById('delay');
   const statusText = document.getElementById('statusText');
   const progressBar = document.getElementById('progressBar');
+  const screenshotMode = document.getElementById('screenshotMode');
+  const lblStart = document.getElementById('lblStart');
+  const lblEnd = document.getElementById('lblEnd');
+  const lblDelay = document.getElementById('lblDelay');
+  const infoNote = document.getElementById('infoNote');
 
   let isRunning = false;
 
+  // Relabel the form for whichever mode is active.
+  function applyMode() {
+    if (screenshotMode.checked) {
+      lblStart.textContent = 'First file number';
+      lblEnd.textContent = 'Last file number (= number of screenshots)';
+      lblDelay.textContent = 'Delay after page flip (ms)';
+      infoNote.innerHTML = 'Open the book and navigate to the FIRST page you want, then Start. ' +
+        'It screenshots the visible page, presses →, waits, and repeats. ' +
+        'Keep this Chrome window visible and do not switch tabs while it runs.';
+    } else {
+      lblStart.textContent = 'Start Page';
+      lblEnd.textContent = 'End Page';
+      lblDelay.textContent = 'Delay between pages (ms)';
+      infoNote.textContent = 'Make sure you have a book open in EUROPATHEK before starting.';
+    }
+  }
+
   // Load saved settings
-  chrome.storage.local.get(['startPage', 'endPage', 'delay'], (result) => {
+  chrome.storage.local.get(['startPage', 'endPage', 'delay', 'screenshotMode', 'ssLastSaved', 'ssTotal'], (result) => {
     if (result.startPage) startPageInput.value = result.startPage;
     if (result.endPage) endPageInput.value = result.endPage;
     if (result.delay) delayInput.value = result.delay;
+    if (result.screenshotMode) screenshotMode.checked = true;
+    applyMode();
+    // Resume hint: show where the last screenshot run got to.
+    if (screenshotMode.checked && result.ssLastSaved) {
+      const total = result.ssTotal ? `/${result.ssTotal}` : '';
+      updateStatus(`Last saved: capture ${result.ssLastSaved}${total}. To resume, set First = ${result.ssLastSaved + 1} and navigate the reader to that spread.`, '');
+    }
   });
 
   // Save settings on change
@@ -27,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
         delay: parseInt(delayInput.value)
       });
     });
+  });
+
+  screenshotMode.addEventListener('change', () => {
+    chrome.storage.local.set({ screenshotMode: screenshotMode.checked });
+    applyMode();
   });
 
   // Start extraction
@@ -55,9 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Send start command to content script
+    const mode = screenshotMode.checked ? 'screenshot' : 'fetch';
     chrome.tabs.sendMessage(tab.id, {
       action: 'START_EXPORT',
-      config: { startPage, endPage, delay }
+      config: { startPage, endPage, delay, mode }
     });
   });
 

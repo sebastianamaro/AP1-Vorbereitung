@@ -127,18 +127,23 @@
 <body>
   <h1>EUROPATHEK PDF Exporter</h1>
 
+  <div class="form-group" style="display:flex; align-items:center; gap:8px;">
+    <input type="checkbox" id="screenshotMode" style="width:auto; margin:0;">
+    <label for="screenshotMode" style="margin:0;">Screenshot mode (capture rendered pages)</label>
+  </div>
+
   <div class="form-group">
-    <label for="startPage">Start Page</label>
+    <label for="startPage" id="lblStart">Start Page</label>
     <input type="number" id="startPage" value="1" min="1">
   </div>
 
   <div class="form-group">
-    <label for="endPage">End Page</label>
+    <label for="endPage" id="lblEnd">End Page</label>
     <input type="number" id="endPage" value="357" min="1">
   </div>
 
   <div class="form-group">
-    <label for="delay">Delay between pages (ms)</label>
+    <label for="delay" id="lblDelay">Delay between pages (ms)</label>
     <input type="number" id="delay" value="1500" min="500" step="100">
   </div>
 
@@ -155,7 +160,7 @@
     </div>
   </div>
 
-  <div class="info">
+  <div class="info" id="infoNote">
     Make sure you have a book open in EUROPATHEK before starting.
   </div>
 

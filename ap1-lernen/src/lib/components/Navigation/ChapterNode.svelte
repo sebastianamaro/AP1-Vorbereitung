@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type { Chapter, Subchapter, Topic, ProgressState, Language } from '$lib/types/content';
+	import type { Chapter, Subchapter, Topic, ProgressState, Language, Exam } from '$lib/types/content';
 
 	export let chapter: Chapter;
+	export let exam: Exam;
 	export let lang: Language;
 	export let currentPath: string;
 	export let progressState: ProgressState;
@@ -10,7 +11,7 @@
 
 	let expanded = false;
 
-	$: chapterPath = `${base}/${lang}/${chapter.id}-${chapter.slug}`;
+	$: chapterPath = `${base}/${exam}/${lang}/${chapter.id}-${chapter.slug}`;
 	$: isActive = currentPath.startsWith(chapterPath);
 	$: if (isActive && !expanded) expanded = true;
 

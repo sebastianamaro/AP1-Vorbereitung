@@ -13,9 +13,9 @@ export default defineConfig({
 			scope: base,
 			includeAssets: ['favicon.svg', 'icon-192.svg', 'icon-512.svg'],
 			manifest: {
-				name: 'AP1 Lernen',
-				short_name: 'AP1',
-				description: 'IHK AP1 Prüfungsvorbereitung - Fachinformatiker',
+				name: 'FIAE Lernen',
+				short_name: 'FIAE',
+				description: 'IHK Prüfungsvorbereitung Fachinformatiker/-in Anwendungsentwicklung (AP1 & AP2)',
 				theme_color: '#1e40af',
 				background_color: '#0f172a',
 				display: 'standalone',

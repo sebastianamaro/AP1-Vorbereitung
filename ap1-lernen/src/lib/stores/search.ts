@@ -1,14 +1,13 @@
 import { writable, get } from 'svelte/store';
-import { browser } from '$app/environment';
 import MiniSearch from 'minisearch';
-import type { Language } from '$lib/types/content';
+import type { Language, Exam } from '$lib/types/content';
 
 interface SearchState {
 	isOpen: boolean;
 	query: string;
 	results: SearchResultItem[];
 	isLoading: boolean;
-	loadedLang: Language | null;
+	loadedKey: string | null;
 }
 
 interface SearchResultItem {
@@ -28,7 +27,7 @@ function createSearchStore() {
 		query: '',
 		results: [],
 		isLoading: false,
-		loadedLang: null
+		loadedKey: null
 	});
 
 	return {
@@ -40,35 +39,36 @@ function createSearchStore() {
 		
 		setQuery: (query: string) => {
 			update(s => {
-				const results = query.length >= 2 && searchIndex
+				const raw = query.length >= 2 && searchIndex
 					? searchIndex.search(query, {
-						limit: 15,
 						prefix: true,      // "proj" matches "project"
 						fuzzy: 0.2,        // Tolerates typos
 						boost: { title: 3, sections: 2 }
-					}) as SearchResultItem[]
+					})
 					: [];
+				const results = (raw as unknown as SearchResultItem[]).slice(0, 15);
 				return { ...s, query, results };
 			});
 		},
 		
-		loadIndex: async (lang: Language, basePath: string = '') => {
+		loadIndex: async (exam: Exam, lang: Language, basePath: string = '') => {
+			const key = `${exam}-${lang}`;
 			const state = get({ subscribe });
-			if (state.loadedLang === lang) return;
-			
+			if (state.loadedKey === key) return;
+
 			update(s => ({ ...s, isLoading: true }));
-			
+
 			try {
-				const response = await fetch(`${basePath}/search-index-${lang}.json`);
+				const response = await fetch(`${basePath}/${exam}-search-index-${lang}.json`);
 				if (!response.ok) throw new Error('Failed to load search index');
-				
+
 				const indexData = await response.text();
 				searchIndex = MiniSearch.loadJSON(indexData, {
 					fields: ['title', 'content', 'sections'],
 					storeFields: ['title', 'path', 'chapterTitle']
 				});
-				
-				update(s => ({ ...s, isLoading: false, loadedLang: lang }));
+
+				update(s => ({ ...s, isLoading: false, loadedKey: key, results: [] }));
 			} catch (error) {
 				console.error('Error loading search index:', error);
 				update(s => ({ ...s, isLoading: false }));

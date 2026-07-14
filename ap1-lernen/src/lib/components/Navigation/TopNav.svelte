@@ -4,12 +4,14 @@
 	import { theme } from '$lib/stores/theme';
 	import { language, languageLabels } from '$lib/stores/language';
 	import { search } from '$lib/stores/search';
-	import type { ContentManifest, Language } from '$lib/types/content';
+	import type { ContentManifest, Language, Exam } from '$lib/types/content';
 
 	export let sidebarOpen: boolean;
 	export let manifest: ContentManifest;
+	export let exam: Exam;
 
 	const languages: Language[] = ['de', 'en', 'es'];
+	const exams: Exam[] = ['ap1', 'ap2'];
 
 	function handleLanguageChange(e: Event) {
 		const newLang = (e.target as HTMLSelectElement).value as Language;
@@ -31,9 +33,22 @@
 			</svg>
 		</button>
 		<a href="{base}/" class="logo">
-			<span class="logo-text">AP1</span>
+			<span class="logo-text">FIAE</span>
 			<span class="logo-subtitle">Lernen</span>
 		</a>
+
+		<div class="exam-switch" role="group" aria-label="Prüfung wählen">
+			{#each exams as e}
+				<a
+					href="{base}/{e}"
+					class="exam-tab"
+					class:active={e === exam}
+					aria-current={e === exam ? 'page' : undefined}
+				>
+					{e.toUpperCase()}
+				</a>
+			{/each}
+		</div>
 	</div>
 
 	<div class="nav-right">
@@ -137,6 +152,34 @@
 	.logo-subtitle {
 		font-size: var(--text-sm);
 		color: var(--color-text-muted);
+	}
+
+	.exam-switch {
+		display: flex;
+		gap: 2px;
+		margin-left: 0.75rem;
+		padding: 2px;
+		background: var(--color-bg-tertiary);
+		border-radius: var(--radius-md);
+	}
+
+	.exam-tab {
+		padding: 0.25rem 0.625rem;
+		border-radius: var(--radius-sm);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--color-text-muted);
+		text-decoration: none;
+		transition: background var(--transition-fast), color var(--transition-fast);
+	}
+
+	.exam-tab:hover {
+		color: var(--color-text);
+	}
+
+	.exam-tab.active {
+		background: var(--color-primary);
+		color: #fff;
 	}
 
 	.search-btn {

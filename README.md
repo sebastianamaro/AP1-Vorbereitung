@@ -1,1 +1,229 @@
 # AP1-Vorbereitung
+
+Exam-preparation project for the German IHK **Fachinformatiker/-in Anwendungsentwicklung** certification. It was built for **AP1** (Abschlussprüfung Teil 1) and is now being extended for **AP2** (Teil 2).
+
+The repo contains three things:
+
+1. **A learning web app** ([ap1-lernen/](ap1-lernen/)) — a multilingual, offline-capable SvelteKit site that renders the curated study material with search and progress tracking. Deployed to GitHub Pages.
+2. **Curated learning material** ([learning-material/](learning-material/)) — the single source of truth for the app's content: Markdown topic files in German, English, and Spanish.
+3. **Source material + extraction tooling** ([material-sources/](material-sources/)) — the raw books/notes the material was derived from, plus the tools to acquire them: a Chrome extension that downloads books from the EUROPATHEK reader and Python scripts that convert the OCR'd PDF into Markdown.
+
+```
+AP1-Vorbereitung/
+├── .github/workflows/deploy.yml   # GitHub Pages deployment (the authoritative copy)
+├── ap1-lernen/                    # SvelteKit learning app
+├── learning-material/             # Curated content: de/ en/ es/
+├── material-sources/              # Raw sources + acquisition/extraction tooling
+│   ├── EuropaBuch/                # Europa-Lehrmittel book (AP1, 359 pages)
+│   │   ├── PDFs/                  # full-book.pdf (OCR'd), full-book-noOCR.pdf
+│   │   ├── extraction/            # Output: pages/*.md, images/, full-book.md, indexes
+│   │   └── src/
+│   │       ├── Generator/         # ⭐ EUROPATHEK PDF Exporter (Chrome extension)
+│   │       └── extraction/        # Python PDF→Markdown scripts (PyMuPDF)
+│   ├── AP1_Lernzettel/            # Second source: 125 study-note PDFs + extraction
+│   └── sources.txt                # Reference URLs (AP1 above the separator, AP2 below)
+├── rename-to-english.sh           # One-off: renamed German file slugs to English
+└── update-references.sh           # One-off: fixed cross-links after the rename
+```
+
+---
+
+## 1. The learning app (`ap1-lernen/`)
+
+A static **SvelteKit 2 / Svelte 5** app (TypeScript, Vite 5, `adapter-static`) that works as an installable PWA with full offline support. There is no backend — content is plain Markdown fetched at runtime.
+
+**Features**
+
+- Dashboard with reading progress (read / marked-for-review counters per chapter)
+- Content reader with prev/next navigation and per-topic status buttons
+- Collapsible sidebar tree (chapter → subchapter → topic) with progress indicators
+- Full-text search (MiniSearch, fuzzy + prefix) via `Ctrl/⌘+K`
+- Three languages (de / en / es), switchable while keeping the current article
+- Dark/light theme
+- "Download for offline" button that pre-warms the service-worker cache with all content
+
+Progress, language, and theme are persisted in `localStorage` (keys: `ap1-progress`, `ap1-language`, `theme`).
+
+**Content pipeline**
+
+[ap1-lernen/scripts/build-content.js](ap1-lernen/scripts/build-content.js) scans `../learning-material/{de,en,es}`, parses the numeric naming convention (see §2), and generates into `static/`:
+
+- `manifest.json` — the chapter/subchapter/topic tree with per-language titles (from each file's first `# H1`)
+- `search-index-{de,en,es}.json` — serialized MiniSearch indexes
+- `static/content/{lang}/**` — a copy of all Markdown, fetched per page at runtime
+
+**Run locally** (Node 20, inside `ap1-lernen/`):
+
+```bash
+npm ci
+npm run dev            # dev server
+npm run build:content  # regenerate manifest + search indexes only
+npm run build:local    # production build with empty base path, then: npm run preview
+npm run build          # production build for GitHub Pages (base /AP1-Vorbereitung)
+npm run check          # svelte-check
+```
+
+**Deployment:** pushing to `main` triggers [.github/workflows/deploy.yml](.github/workflows/deploy.yml), which runs the content build + `vite build` (Node 20, `working-directory: ap1-lernen`) and deploys `ap1-lernen/build` to GitHub Pages under the base path `/AP1-Vorbereitung` (set in [svelte.config.js](ap1-lernen/svelte.config.js) / [vite.config.ts](ap1-lernen/vite.config.ts)). The copy of the workflow inside `ap1-lernen/.github/` is redundant — GitHub only runs the root one.
+
+---
+
+## 2. Learning material (`learning-material/`)
+
+Three mirrored language trees (`de/`, `en/`, `es/`), 11 chapters each:
+
+`00-exam-overview` … `10-exam-preparation` (project management, quality management, data protection, IT security, IT systems, software, networks, business processes, support/communication).
+
+**Naming convention drives the app** — IDs and routes are parsed from paths:
+
+- Chapter folder: `NN-slug/` (e.g. `04-it-security/`)
+- Subchapter folder: `NN-NN-slug/` (e.g. `04-01-protection-goals/`)
+- Topic file: `NN-NN-NN-slug.md` (e.g. `04-01-01-cia-triad.md`)
+- Chapter overview: `NN-00-overview.md`
+
+Note: subchapter display titles are auto-generated by title-casing the English slug — they are not read from file contents.
+
+**Topic file template** (keep this consistent; the app and search rely on H1/H2 structure):
+
+```markdown
+# Title
+## Learning Objectives
+## Core Content        (definitions, ASCII diagrams, comparison tables)
+## Key Terms           (table)
+## Exam Tips           (frequent questions, mnemonics)
+## Practice Exercises  (with solutions)
+## Cross-References    (relative links to sibling topics)
+```
+
+The helper scripts at repo root ([rename-to-english.sh](rename-to-english.sh), [update-references.sh](update-references.sh)) were a one-off migration that renamed the originally German slugs in `de/` to English and then fixed all cross-reference links. They use WSL-style paths (`/mnt/c/...`) — run them from WSL/Git Bash if ever needed again.
+
+---
+
+## 3. Getting a book: the EUROPATHEK PDF Exporter extension
+
+The Europa-Lehrmittel books ("Prüfungsvorbereitung aktuell") are only readable in the **EUROPATHEK** web reader (europathek.de). The Chrome extension at [material-sources/EuropaBuch/src/Generator/](material-sources/EuropaBuch/src/Generator/) captures a purchased book page by page. It has **two modes**:
+
+- **Image-fetch mode** (original, used for AP1) — produces per-page PDFs. Described just below.
+- **Screenshot mode** (added for AP2) — screenshots the rendered reader. Use this when image-fetch no longer works (see the Screenshot-mode subsection).
+
+**How image-fetch mode works:** while you are logged in and have the book open in the reader, the extension fetches each page's high-resolution preview image (`…/preview/big/{page}.jpg`) using your session cookies, converts each image to a one-page A4 PDF client-side with jsPDF, and saves them via Chrome downloads as `page-001.pdf`, `page-002.pdf`, … A configurable delay throttles the requests.
+
+### Installation (unpacked, Chrome/Edge/Brave)
+
+1. Open `chrome://extensions` (Edge: `edge://extensions`).
+2. Enable **Developer mode** (toggle in the top-right corner).
+3. Click **Load unpacked** and select the folder
+   `material-sources/EuropaBuch/src/Generator/`.
+4. The "EUROPATHEK PDF Exporter" icon appears in the toolbar (pin it for convenience).
+
+### Usage
+
+1. Log in at [www.europathek.de](https://www.europathek.de) and **open the book in the reader**. If you installed or reloaded the extension while the tab was already open, **reload the tab once** so the content scripts inject.
+2. Click the extension icon. Set **Start Page**, **End Page** (check the reader for the total page count), and **Delay** in ms (default 1500 — don't go much lower; it throttles requests against the server).
+3. Click **Start Export**. The popup shows progress; pages land in your Downloads folder as `page-NNN.pdf`. **Stop** aborts.
+4. Settings persist between sessions (`chrome.storage.local`).
+
+### Screenshot mode (when image-fetch is blocked)
+
+EUROPATHEK changed its delivery: the `preview/big/*.jpg` fetch above and the reader's own "download" button (which now yields a scrambled, DRM-protected zip of empty decoy files) no longer produce usable pages. **Screenshot mode** captures what the reader renders on screen instead — the analog-hole approach, for a book you own, for private study. Tesseract OCR (§4) recovers the text, so no page-image watermark survives.
+
+Tick **Screenshot mode** in the popup, then:
+
+1. Open the book and navigate to the **first page** you want to capture.
+2. Set **First file number** = `1`, **Last file number** = number of reader views to capture (the AP2 book is ~195 two-page spreads → ~200), **Delay after page flip** = `3000` ms. The 3000 ms lets the page-turn animation and the reader's "Seite X | Y" toast fade before each shot — too short and the toast lands on the text.
+3. **Start.** Keep the Chrome window visible and don't switch tabs. Each reader view is screenshotted to `Downloads/europathek-capture/capture-NNN.jpg`, and the extension presses → between shots (once per step — it dispatches the key on `document` only).
+
+Captures are whole reader views (mostly two-page spreads) at screen resolution (~1900 px per page — ample for OCR). The split step (§4) crops the reader chrome and cuts each spread into single pages.
+
+### After downloading: build the master PDF (image-fetch mode only)
+
+1. Merge the per-page PDFs **in page order** into one file, e.g. `full-book-noOCR.pdf` (any PDF tool works: `pdftk`, `qpdf`, PDF24, Acrobat…).
+2. The pages are pure images — **run OCR** over the merged file to get a text layer (e.g. `ocrmypdf -l deu full-book-noOCR.pdf full-book.pdf`, or Acrobat's "Recognize Text").
+3. Place both files under `material-sources/<BookName>/PDFs/` — the extraction scripts expect the OCR'd file to be named **`full-book.pdf`**.
+
+---
+
+## 4. PDF → Markdown extraction (Python + PyMuPDF)
+
+The scripts live in [material-sources/EuropaBuch/src/extraction/](material-sources/EuropaBuch/src/extraction/):
+
+- **`extract_pdf.py`** — text-only extraction. Walks the OCR text layer with PyMuPDF, reconstructs headings via font-size/bold heuristics, writes `pages/page-NNN.md` per page plus a combined `full-book.md`.
+- **`extract_with_images.py`** — same, plus extracts embedded images to `images/` and inserts references with TODO markers (this produced the current AP1 output).
+- **`cleanup_images.py`** — optional post-pass that strips the (mostly redundant full-page-scan) image references again and deletes `images/`.
+
+**⚠️ Path caveat:** each script `chdir`s to its own location and uses relative paths (`../PDFs/full-book.pdf` for input, `./pages` for output). They only resolve correctly when the script sits in a book's `extraction/` folder with `PDFs/` as a sibling — i.e. for a new book, **copy the script into `material-sources/<BookName>/extraction/`** and run it there:
+
+```bash
+cd material-sources/<BookName>/extraction
+pip install pymupdf          # the only dependency (no requirements.txt exists)
+python extract_pdf.py        # or extract_with_images.py
+```
+
+Output per book (see `EuropaBuch/extraction/` for the AP1 example):
+
+- `pages/page-NNN.md` — one Markdown file per book page
+- `full-book.md` — combined searchable text
+- `full-index.md` — hand-curated chapter/topic index with page ranges
+- `VISUAL_CONTENT_INDEX.md` — hand-curated catalog of diagrams/tables that need textual descriptions (pulled from the PDF when writing learning material)
+
+The extracted pages are **raw material** — the curated content in `learning-material/` was written from them (restructured, cleaned, translated), not copied verbatim.
+
+---
+
+## 5. Workflow: adding the AP2 book (screenshot → split → OCR)
+
+The AP2 book is *Prüfungsvorbereitung aktuell – Teil 2 der gestreckten Abschlussprüfung, Fachinformatiker Anwendungsentwicklung*, Europa-Nr. 31682, ISBN 978-3-7585-3368-6, 3. Auflage 2026 (~384 pages). Because EUROPATHEK's image-fetch/download is now DRM-blocked, AP2 uses **screenshot capture + Tesseract OCR** instead of the PDF route AP1 used. Tooling lives in [material-sources/EuropaBuch-AP2/](material-sources/EuropaBuch-AP2/) and reuses the `EuropaBuch/.venv`.
+
+One-time setup:
+
+```bash
+winget install -e --id UB-Mannheim.TesseractOCR
+curl -L -o material-sources/EuropaBuch-AP2/tessdata/deu.traineddata \
+  https://github.com/tesseract-ocr/tessdata_best/raw/main/deu.traineddata
+material-sources/EuropaBuch/.venv/Scripts/python.exe -m pip install pillow numpy
+```
+
+Pipeline (`PY=material-sources/EuropaBuch/.venv/Scripts/python.exe`):
+
+1. **Capture** with the extension's Screenshot mode (§3) → `Downloads/europathek-capture/capture-NNN.jpg`.
+2. **Split** spreads into single pages — crops reader chrome, splits at the gutter, auto-detects single vs double page:
+   ```bash
+   $PY material-sources/EuropaBuch-AP2/src/extraction/split_captures.py \
+       <captures_dir> <pages_dir>
+   ```
+3. **OCR** the pages (German) → per-page Markdown + combined `full-book.md`:
+   ```bash
+   $PY material-sources/EuropaBuch-AP2/src/extraction/ocr_pages.py \
+       <pages_dir> material-sources/EuropaBuch-AP2/extraction
+   ```
+   Output mirrors AP1: `extraction/pages/page-NNNN.md` + `extraction/full-book.md`. Figures/diagrams OCR as noise — expected; cleaned during curation.
+4. **Index & curate**: build `full-index.md` (chapter → page ranges) from the TOC (pages 4–6), then write `learning-material` topic files (template §2) in `de/`, and translate to `en/`/`es/`. The chapter structure maps almost 1:1 onto AP1 (Projektmanagement, Qualitätsmanagement, Datenschutz, IT-Sicherheit, IT-Systeme, Software/AE, Netzwerke, Arbeits-/Geschäftsprozesse) plus AP2's Prüfungssimulationen.
+5. **Adapt the app** for AP2 (next section).
+
+Like AP1, the OCR'd pages are **raw material** — the curated `learning-material/` is written from them, not copied verbatim.
+
+## 6. Reusing the website for AP2 — hardcoded AP1 references
+
+Decide first whether AP2 becomes a **separate deployment** (fork/copy of the repo) or a **combined app** (AP1 + AP2 content side by side). Either way, these are all the places "AP1" is hardcoded:
+
+| Where | What |
+|---|---|
+| [svelte.config.js:15-19](ap1-lernen/svelte.config.js#L15-L19) | base path `/AP1-Vorbereitung` (must match the repo name on GitHub Pages) |
+| [vite.config.ts](ap1-lernen/vite.config.ts) | PWA base/scope `/AP1-Vorbereitung/`, manifest `name: 'AP1 Lernen'`, `short_name: 'AP1'`, description, `start_url` |
+| [package.json](ap1-lernen/package.json) | `"name": "ap1-lernen"` |
+| [scripts/build-content.js:10](ap1-lernen/scripts/build-content.js#L10) | `CONTENT_SOURCE = ../learning-material` |
+| [src/lib/stores/progress.ts:5](ap1-lernen/src/lib/stores/progress.ts#L5) | localStorage key `ap1-progress` (change it for a combined app, or AP1/AP2 progress collide) |
+| [src/lib/stores/language.ts:8](ap1-lernen/src/lib/stores/language.ts#L8) | localStorage key `ap1-language` |
+| [src/app.html](ap1-lernen/src/app.html) | meta description "AP1 Prüfungsvorbereitung…" |
+| [src/routes/+page.svelte](ap1-lernen/src/routes/+page.svelte) | `<title>`, `<h1>AP1 Prüfungsvorbereitung</h1>`, subtitle "…Teil 1" |
+| [src/routes/[lang]/[...slug]/+page.svelte](ap1-lernen/src/routes/[lang]/[...slug]/+page.svelte) | `<title>… - AP1 Lernen</title>` |
+| [src/lib/components/Navigation/TopNav.svelte](ap1-lernen/src/lib/components/Navigation/TopNav.svelte) | logo text "AP1" |
+| [static/404.html](ap1-lernen/static/404.html), `static/icon-192.svg`, `static/icon-512.svg`, `favicon.svg` | title + icons render literal "AP1" |
+| [.github/workflows/deploy.yml](.github/workflows/deploy.yml) | `working-directory: ap1-lernen` (5 references to the folder name) |
+
+The generated artifacts (`static/manifest.json`, `static/search-index-*.json`, `static/content/**`) are rebuilt from `learning-material/` on every build — no manual changes needed there.
+
+---
+
+## Sources
+
+Reference URLs (exam info, prep sites, IHK dates) are collected in [material-sources/sources.txt](material-sources/sources.txt) — AP1 links above the `-----` separator, AP2 links below.

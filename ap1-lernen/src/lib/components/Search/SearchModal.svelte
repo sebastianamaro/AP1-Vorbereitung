@@ -3,9 +3,10 @@
 	import { base } from '$app/paths';
 	import { language } from '$lib/stores/language';
 	import { search } from '$lib/stores/search';
-	import type { ContentManifest } from '$lib/types/content';
+	import type { ContentManifest, Exam } from '$lib/types/content';
 
 	export let manifest: ContentManifest;
+	export let exam: Exam;
 
 	let inputRef: HTMLInputElement;
 
@@ -15,7 +16,7 @@
 
 	function handleSelect(path: string) {
 		search.close();
-		goto(`${base}/${$language}/${path}`);
+		goto(`${base}/${exam}/${$language}/${path}`);
 	}
 
 	function handleKeydown(e: KeyboardEvent) {

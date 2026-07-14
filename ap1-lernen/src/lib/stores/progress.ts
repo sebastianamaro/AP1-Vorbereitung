@@ -1,116 +1,94 @@
-import { writable, derived, get } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 import { browser } from '$app/environment';
-import type { ProgressState, ContentManifest, Chapter, Subchapter } from '$lib/types/content';
+import type { ProgressState, ContentManifest, Chapter, Exam } from '$lib/types/content';
 
-const STORAGE_KEY = 'ap1-progress';
+// Progress is namespaced per exam because topic IDs collide between AP1 and AP2
+// (e.g. both have "01-01-01"). Shape: { ap1: {...}, ap2: {...} }.
+type AllProgress = Record<Exam, ProgressState>;
 
-function getStoredProgress(): ProgressState {
-	if (!browser) return {};
+const STORAGE_KEY = 'ap-progress';
+const LEGACY_AP1_KEY = 'ap1-progress';
+
+function emptyAll(): AllProgress {
+	return { ap1: {}, ap2: {} };
+}
+
+function getStored(): AllProgress {
+	if (!browser) return emptyAll();
 	try {
 		const stored = localStorage.getItem(STORAGE_KEY);
-		return stored ? JSON.parse(stored) : {};
+		if (stored) {
+			return { ...emptyAll(), ...JSON.parse(stored) };
+		}
+		// One-time migration from the old single-exam key.
+		const legacy = localStorage.getItem(LEGACY_AP1_KEY);
+		if (legacy) {
+			const migrated: AllProgress = { ap1: JSON.parse(legacy), ap2: {} };
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+			return migrated;
+		}
+		return emptyAll();
 	} catch {
-		return {};
+		return emptyAll();
 	}
 }
 
-function saveProgress(state: ProgressState): void {
-	if (browser) {
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-	}
+function save(state: AllProgress): void {
+	if (browser) localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
 function createProgressStore() {
-	const { subscribe, set, update } = writable<ProgressState>(getStoredProgress());
+	const { subscribe, set, update } = writable<AllProgress>(getStored());
+
+	const setStatus = (exam: Exam, topicId: string, status: 'read' | 'review' | 'unread') => {
+		update((state) => {
+			const examState = { ...(state[exam] || {}) };
+			if (status === 'unread') {
+				delete examState[topicId];
+			} else {
+				examState[topicId] = {
+					status,
+					lastRead: examState[topicId]?.lastRead || new Date().toISOString()
+				};
+				if (status === 'read') examState[topicId].lastRead = new Date().toISOString();
+			}
+			const newState = { ...state, [exam]: examState };
+			save(newState);
+			return newState;
+		});
+	};
 
 	return {
 		subscribe,
+		markRead: (exam: Exam, topicId: string) => setStatus(exam, topicId, 'read'),
+		markReview: (exam: Exam, topicId: string) => setStatus(exam, topicId, 'review'),
+		markUnread: (exam: Exam, topicId: string) => setStatus(exam, topicId, 'unread'),
 
-		markRead: (topicId: string) => {
+		toggleStatus: (exam: Exam, topicId: string) => {
+			const current = get({ subscribe })[exam]?.[topicId]?.status;
+			const next = !current ? 'read' : current === 'read' ? 'review' : 'unread';
+			setStatus(exam, topicId, next);
+		},
+
+		getStatus: (exam: Exam, topicId: string) => {
+			return get({ subscribe })[exam]?.[topicId]?.status || 'unread';
+		},
+
+		reset: (exam: Exam) => {
 			update((state) => {
-				const newState = {
-					...state,
-					[topicId]: {
-						status: 'read' as const,
-						lastRead: new Date().toISOString()
-					}
-				};
-				saveProgress(newState);
+				const newState = { ...state, [exam]: {} };
+				save(newState);
 				return newState;
 			});
-		},
-
-		markReview: (topicId: string) => {
-			update((state) => {
-				const newState = {
-					...state,
-					[topicId]: {
-						status: 'review' as const,
-						lastRead: state[topicId]?.lastRead || new Date().toISOString()
-					}
-				};
-				saveProgress(newState);
-				return newState;
-			});
-		},
-
-		markUnread: (topicId: string) => {
-			update((state) => {
-				const { [topicId]: _, ...rest } = state;
-				saveProgress(rest);
-				return rest;
-			});
-		},
-
-		toggleStatus: (topicId: string) => {
-			update((state) => {
-				const current = state[topicId]?.status || 'unread';
-				let newStatus: 'unread' | 'read' | 'review';
-
-				if (current === 'unread') newStatus = 'read';
-				else if (current === 'read') newStatus = 'review';
-				else newStatus = 'unread';
-
-				let newState: ProgressState;
-				if (newStatus === 'unread') {
-					const { [topicId]: _, ...rest } = state;
-					newState = rest;
-				} else {
-					newState = {
-						...state,
-						[topicId]: {
-							status: newStatus,
-							lastRead: new Date().toISOString()
-						}
-					};
-				}
-				saveProgress(newState);
-				return newState;
-			});
-		},
-
-		getStatus: (topicId: string) => {
-			const state = get({ subscribe });
-			return state[topicId]?.status || 'unread';
-		},
-
-		reset: () => {
-			const newState = {};
-			saveProgress(newState);
-			set(newState);
 		}
 	};
 }
 
 export const progress = createProgressStore();
 
-// Derived store for counting progress
 export function getChapterProgress(manifest: ContentManifest | null, progressState: ProgressState) {
 	if (!manifest) return { total: 0, read: 0, review: 0 };
-
-	let total = 0;
-	let read = 0;
-	let review = 0;
+	let total = 0, read = 0, review = 0;
 
 	function countTopics(topics: { id: string }[]) {
 		for (const topic of topics) {
@@ -121,39 +99,31 @@ export function getChapterProgress(manifest: ContentManifest | null, progressSta
 		}
 	}
 
-	function processChapter(chapter: Chapter) {
-		countTopics(chapter.topics);
-		for (const sub of chapter.subchapters) {
-			countTopics(sub.topics);
-		}
-	}
-
 	for (const chapter of manifest.chapters) {
-		processChapter(chapter);
+		countTopics(chapter.topics);
+		for (const sub of chapter.subchapters) countTopics(sub.topics);
 	}
-
 	return { total, read, review };
 }
 
 export function getReviewTopics(manifest: ContentManifest | null, progressState: ProgressState) {
 	if (!manifest) return [];
+	const reviewTopics: {
+		id: string;
+		title: Record<string, string>;
+		path: string;
+		chapterTitle: Record<string, string>;
+	}[] = [];
 
-	const reviewTopics: { id: string; title: Record<string, string>; path: string; chapterTitle: Record<string, string> }[] = [];
-
-	function findReviewTopics(topics: { id: string; title: Record<string, string>; path: string }[], chapterTitle: Record<string, string>) {
+	function find(topics: { id: string; title: Record<string, string>; path: string }[], chapterTitle: Record<string, string>) {
 		for (const topic of topics) {
-			if (progressState[topic.id]?.status === 'review') {
-				reviewTopics.push({ ...topic, chapterTitle });
-			}
+			if (progressState[topic.id]?.status === 'review') reviewTopics.push({ ...topic, chapterTitle });
 		}
 	}
 
 	for (const chapter of manifest.chapters) {
-		findReviewTopics(chapter.topics, chapter.title);
-		for (const sub of chapter.subchapters) {
-			findReviewTopics(sub.topics, chapter.title);
-		}
+		find(chapter.topics, chapter.title);
+		for (const sub of chapter.subchapters) find(sub.topics, chapter.title);
 	}
-
 	return reviewTopics;
 }

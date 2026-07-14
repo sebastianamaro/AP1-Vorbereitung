@@ -21,8 +21,17 @@
       if (!isRunning) {
         config = message.config;
         shouldStop = false;
-        console.log('[EUROPATHEK-IFRAME] Starting extraction with config:', config);
-        runExtraction();
+        if (config.mode === 'screenshot') {
+          // Only the reader frame (a direct child of the top window) drives the
+          // capture loop, so nested frames don't fire duplicate screenshots.
+          if (window.parent === window.top) {
+            console.log('[EUROPATHEK-IFRAME] Starting SCREENSHOT capture with config:', config);
+            runScreenshotCapture();
+          }
+        } else {
+          console.log('[EUROPATHEK-IFRAME] Starting extraction with config:', config);
+          runExtraction();
+        }
       }
       sendResponse({ success: true });
       return true;
@@ -31,6 +40,14 @@
     if (message.type === 'STOP_EXTRACTION') {
       console.log('[EUROPATHEK-IFRAME] Stopping extraction');
       shouldStop = true;
+      sendResponse({ success: true });
+      return true;
+    }
+
+    // Advance the reader by one spread. Broadcast to every frame so the key
+    // reaches whichever frame the zippo reader listens on.
+    if (message.type === 'ADVANCE') {
+      advancePage();
       sendResponse({ success: true });
       return true;
     }
@@ -247,6 +264,102 @@
       }
     } catch (error) {
       console.error('[EUROPATHEK-IFRAME] Extraction error:', error);
+      sendError(error.message);
+    } finally {
+      isRunning = false;
+      shouldStop = false;
+    }
+  }
+
+  // ---- Screenshot mode --------------------------------------------------
+
+  // Advance to the next spread. Primary mechanism is the Right-Arrow key
+  // (works with most flipbook readers). If the reader needs a click instead,
+  // set config.nextSelector to the next-button CSS selector.
+  function advancePage() {
+    const opts = { key: 'ArrowRight', code: 'ArrowRight', keyCode: 39, which: 39, bubbles: true, cancelable: true };
+    // Dispatch ONCE on document. The event bubbles up to window, so it reaches
+    // whichever of the two the reader listens on. Dispatching on several targets
+    // (document + documentElement + body) makes the reader turn multiple pages.
+    try {
+      document.dispatchEvent(new KeyboardEvent('keydown', opts));
+      document.dispatchEvent(new KeyboardEvent('keyup', opts));
+    } catch (e) { /* ignore */ }
+    try {
+      if (config && config.nextSelector) {
+        const el = document.querySelector(config.nextSelector);
+        if (el) el.click();
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  // Reject a promise if it doesn't settle in time (guards against a hung
+  // message when the background service worker was suspended).
+  function withTimeout(promise, ms) {
+    return Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms)),
+    ]);
+  }
+
+  // Request one screenshot from the background worker, retrying transient
+  // failures (worker asleep, window/tab briefly not focused, capture throttle).
+  // Retrying also re-wakes a suspended worker. Only gives up after MAX tries.
+  async function captureWithRetry(filename, n, endNum) {
+    const MAX = 8;
+    for (let attempt = 1; attempt <= MAX && !shouldStop; attempt++) {
+      let resp;
+      try {
+        resp = await withTimeout(chrome.runtime.sendMessage({ type: 'CAPTURE_TAB', filename }), 15000);
+      } catch (e) {
+        resp = { success: false, error: (e && e.message) || String(e) };
+      }
+      if (resp && resp.success) return resp;
+      const why = resp ? resp.error : 'no response';
+      console.warn(`[EUROPATHEK-IFRAME] capture ${n} attempt ${attempt}/${MAX} failed: ${why}`);
+      sendProgress(`Page ${n}/${endNum}: retry ${attempt}/${MAX} (${why})`, n);
+      await delay(3000);
+    }
+    return { success: false, error: shouldStop ? 'stopped by user' : 'failed after retries' };
+  }
+
+  // Capture loop: ask the background worker to screenshot the visible tab and
+  // save it, then advance and wait for the flip animation before the next shot.
+  async function runScreenshotCapture() {
+    isRunning = true;
+    const startNum = parseInt(config.startPage, 10) || 1;
+    const endNum = parseInt(config.endPage, 10) || startNum;
+
+    try {
+      // Let the current spread settle before the first shot.
+      await delay(400);
+
+      let count = 0;
+      for (let n = startNum; n <= endNum && !shouldStop; n++) {
+        const filename = `europathek-capture/capture-${String(n).padStart(3, '0')}.jpg`;
+        sendProgress(`Capturing ${n}/${endNum}`, n);
+
+        const resp = await captureWithRetry(filename, n, endNum);
+        if (!resp.success) {
+          sendError(`Stopped at page ${n} (${resp.error}). Last saved: page ${n - 1}. ` +
+                    `To resume: set First file number = ${n}, navigate the reader to that spread, then Start.`);
+          return;
+        }
+        count++;
+        chrome.storage.local.set({ ssLastSaved: n, ssTotal: endNum });
+
+        if (n < endNum && !shouldStop) {
+          advancePage(); // runs in the reader frame directly — no cross-frame broadcast
+          await delay(config.delay || 1500);
+        }
+      }
+
+      if (shouldStop) {
+        sendProgress(`Stopped after ${count} captures`);
+      } else {
+        sendComplete();
+      }
+    } catch (error) {
       sendError(error.message);
     } finally {
       isRunning = false;

@@ -1,4 +1,15 @@
+export type Exam = 'ap1' | 'ap2';
+
+export interface ExamInfo {
+	id: Exam;
+	title: Record<string, string>;
+	subtitle: Record<string, string>;
+}
+
 export interface ContentManifest {
+	exam?: Exam;
+	title?: Record<string, string>;
+	subtitle?: Record<string, string>;
 	version: string;
 	buildDate: string;
 	languages: string[];

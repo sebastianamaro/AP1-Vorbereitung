@@ -5,13 +5,15 @@
 	import { language } from '$lib/stores/language';
 	import { progress } from '$lib/stores/progress';
 	import ChapterNode from './ChapterNode.svelte';
-	import type { ContentManifest } from '$lib/types/content';
+	import type { ContentManifest, Exam } from '$lib/types/content';
 
 	export let manifest: ContentManifest;
+	export let exam: Exam;
 
 	const dispatch = createEventDispatcher();
 
 	$: currentPath = $page.url.pathname;
+	$: examProgress = $progress[exam] || {};
 </script>
 
 <aside class="sidebar">
@@ -27,11 +29,12 @@
 	
 	<nav class="sidebar-nav">
 		{#each manifest.chapters as chapter}
-			<ChapterNode 
+			<ChapterNode
 				{chapter}
+				{exam}
 				lang={$language}
 				{currentPath}
-				progressState={$progress}
+				progressState={examProgress}
 				{base}
 			/>
 		{/each}

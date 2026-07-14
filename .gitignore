@@ -421,6 +421,7 @@ FodyWeavers.xsd
 ap1-lernen/.svelte-kit/
 ap1-lernen/build/
 ap1-lernen/static/content/
-ap1-lernen/static/manifest.json
-ap1-lernen/static/search-index-*.json
+ap1-lernen/static/*-manifest.json
+ap1-lernen/static/*-search-index-*.json
+ap1-lernen/static/exams.json
 ap1-lernen/*.timestamp-*

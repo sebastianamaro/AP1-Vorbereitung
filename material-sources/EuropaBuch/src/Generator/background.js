@@ -20,6 +20,48 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   }
 
+  // Screenshot mode: capture the visible tab as JPG and save it.
+  if (message.type === 'CAPTURE_TAB') {
+    const windowId = sender.tab ? sender.tab.windowId : undefined;
+    try {
+      chrome.tabs.captureVisibleTab(windowId, { format: 'jpeg', quality: 95 }, (dataUrl) => {
+        if (chrome.runtime.lastError || !dataUrl) {
+          sendResponse({ success: false, error: (chrome.runtime.lastError && chrome.runtime.lastError.message) || 'no image data' });
+          return;
+        }
+        // conflictAction 'overwrite' so a retry replaces the file instead of
+        // creating "capture-NNN (1).jpg", which would break page ordering.
+        chrome.downloads.download(
+          { url: dataUrl, filename: message.filename, saveAs: false, conflictAction: 'overwrite' },
+          (downloadId) => {
+            if (chrome.runtime.lastError) {
+              sendResponse({ success: false, error: chrome.runtime.lastError.message });
+            } else {
+              sendResponse({ success: true, downloadId });
+            }
+          }
+        );
+      });
+    } catch (e) {
+      // captureVisibleTab can throw synchronously (e.g. capture throttle);
+      // always reply so the caller's await never hangs.
+      sendResponse({ success: false, error: (e && e.message) || String(e) });
+    }
+    return true; // keep the message channel open for the async sendResponse
+  }
+
+  // Screenshot mode: relay a "go to next spread" request to every europathek frame.
+  if (message.type === 'ADVANCE_REQUEST') {
+    chrome.tabs.query({ url: '*://www.europathek.de/*' }, (tabs) => {
+      tabs.forEach(tab => {
+        chrome.tabs.sendMessage(tab.id, { type: 'ADVANCE' })
+          .catch(() => { /* frame may not have a listener */ });
+      });
+    });
+    sendResponse({ success: true });
+    return true;
+  }
+
   // Handle PDF download from iframe
   if (message.type === 'IFRAME_DOWNLOAD') {
     console.log('[EUROPATHEK-BG] Downloading:', message.filename);
