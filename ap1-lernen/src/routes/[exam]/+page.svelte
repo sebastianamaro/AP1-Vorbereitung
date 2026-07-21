@@ -2,11 +2,26 @@
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 	import { language } from '$lib/stores/language';
 	import { progress, getChapterProgress, getReviewTopics } from '$lib/stores/progress';
 	import type { ContentManifest, Exam } from '$lib/types/content';
+	import type { TestsManifest } from '$lib/types/test';
 
 	export let data: { exam: Exam; manifest: ContentManifest };
+
+	let testCount = 0;
+	onMount(async () => {
+		try {
+			const res = await fetch(`${base}/tests-manifest.json`);
+			if (res.ok) {
+				const m: TestsManifest = await res.json();
+				testCount = m.tests.filter((tt) => tt.exam === data.exam).length;
+			}
+		} catch {
+			/* no tests available */
+		}
+	});
 
 	$: examProgress = $progress[data.exam] || {};
 	$: stats = getChapterProgress(data.manifest, examProgress);
@@ -100,6 +115,26 @@
 			{stats.read > 0 ? t('Weiterlernen', 'Continue', 'Continuar') : t('Jetzt starten', 'Start now', 'Empezar')}
 		</button>
 	</div>
+
+	{#if testCount > 0}
+		<a class="simulator-card" href="{base}/{data.exam}/tests">
+			<div class="sim-icon">
+				<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M9 11l3 3L22 4"></path>
+					<path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+				</svg>
+			</div>
+			<div class="sim-text">
+				<span class="sim-title">{t('Prüfungssimulator', 'Exam Simulator', 'Simulador de examen')}</span>
+				<span class="sim-sub">{t(
+					'Übe mit echten IHK-Prüfungen und werte sie sofort aus',
+					'Practice with real IHK exams and grade them instantly',
+					'Practica con exámenes reales del IHK y evalúalos al instante'
+				)} · {testCount}</span>
+			</div>
+			<span class="sim-arrow">→</span>
+		</a>
+	{/if}
 
 	<div class="offline-section">
 		{#if downloadStatus === 'idle'}
@@ -198,6 +233,19 @@
 	.chapter-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
 	.chapter-id { font-size: var(--text-2xl); font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem; }
 	.chapter-title { color: var(--color-text); font-weight: 500; font-size: var(--text-sm); }
+	.simulator-card {
+		display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+		padding: 1.25rem 1.5rem; text-decoration: none; color: var(--color-text);
+		background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-bg-secondary)), var(--color-bg-secondary));
+		border: 1px solid color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+		border-radius: var(--radius-lg); transition: transform var(--transition-fast), border-color var(--transition-fast);
+	}
+	.simulator-card:hover { transform: translateY(-2px); border-color: var(--color-primary); }
+	.sim-icon { color: var(--color-primary); display: flex; }
+	.sim-text { display: flex; flex-direction: column; }
+	.sim-title { font-weight: 700; font-size: var(--text-lg); }
+	.sim-sub { font-size: var(--text-sm); color: var(--color-text-muted); }
+	.sim-arrow { margin-left: auto; font-size: var(--text-xl); color: var(--color-primary); }
 	.offline-section { text-align: center; margin-bottom: 2rem; padding: 1.5rem; background: var(--color-bg-secondary); border-radius: var(--radius-lg); border: 1px solid var(--color-border); }
 	.btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--color-bg-tertiary); color: var(--color-text); border-radius: var(--radius-md); font-weight: 500; transition: background var(--transition-fast); }
 	.btn-secondary:hover { background: var(--color-border); }

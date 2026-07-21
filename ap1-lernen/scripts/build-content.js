@@ -4,6 +4,7 @@ import { existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import MiniSearch from 'minisearch';
+import { buildTests } from './build-tests.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -315,6 +316,9 @@ async function main() {
 
 	// Small index of available exams for the landing page / switcher
 	await writeFile(join(STATIC_DIR, 'exams.json'), JSON.stringify({ exams: examsIndex }, null, 2));
+
+	// Test simulator content (exam practice tests)
+	await buildTests();
 
 	console.log('\n' + '='.repeat(50));
 	console.log(`Build complete! Exams: ${examsIndex.map((e) => e.id).join(', ')}`);

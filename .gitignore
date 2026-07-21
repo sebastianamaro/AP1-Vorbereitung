@@ -421,7 +421,12 @@ FodyWeavers.xsd
 ap1-lernen/.svelte-kit/
 ap1-lernen/build/
 ap1-lernen/static/content/
+ap1-lernen/static/tests/
 ap1-lernen/static/*-manifest.json
 ap1-lernen/static/*-search-index-*.json
 ap1-lernen/static/exams.json
 ap1-lernen/*.timestamp-*
+
+# Test-simulator OCR artifacts (derived from the exam PDFs; scripts are kept)
+material-sources/AP2-Sommer-2026/extraction/pages/
+material-sources/AP2-Sommer-2026/extraction/ocr/

@@ -1,0 +1,1388 @@
+{
+  "id": "ap2-sommer-2026",
+  "exam": "ap2",
+  "title": "AP2 Sommer 2026",
+  "source": "Gemeinsame Prüfungsaufgaben der IHK – © ZPA Nord-West 2026",
+  "disclaimer": "Nur für die private Prüfungsvorbereitung. Alle Rechte bei den jeweiligen Herausgebern (ZPA Nord-West / IHK).",
+  "parts": [
+    {
+      "id": "ga1",
+      "title": "GA1",
+      "fullTitle": "Planen eines Softwareproduktes",
+      "durationMin": 90,
+      "pointsScheme": "Punkte gemäß Aufgabenstellung (Summe 100). GA1: keine offizielle Musterlösung – Lösungsvorschläge von Claude.",
+      "intro": "**Ausgangssituation (Aufgaben 1–4):** Ein landwirtschaftlicher Betrieb in Mecklenburg (Getreide, Ölfrüchte, Tierhaltung) soll digitalisiert werden. Sie arbeiten im Team des Systemhauses **AMAG AG** mit.\n\n*Hinweis: 4 Aufgaben · 90 Minuten · 100 Punkte. Alle Aufgaben sind offen und werden von dir selbst bewertet.*\n\n⚠️ **Für GA1 liegt keine offizielle Musterlösung vor.** Die angezeigten Lösungen sind **Vorschläge** und dienen der Orientierung.",
+      "questions": [
+        {
+          "id": "ga1-1a",
+          "number": 1,
+          "type": "open",
+          "points": 4,
+          "context": "**1. Aufgabe – Projektplanung „Satellitengestützte Navigation\" (27 Punkte).**",
+          "prompt": "**a)** Beschreiben Sie zwei Aspekte, wie nach dem Projektende der **Projekterfolg** geprüft werden kann. *(4 Punkte)*",
+          "solution": "- **Soll-Ist-Vergleich der Projektziele:** Wurden die vereinbarten Ziele bzgl. Zeit, Kosten und Qualität/Umfang (magisches Dreieck) erreicht?\n- **Abnahme & Zufriedenheit:** Erfüllung der Anforderungen und formale Abnahme durch den Auftraggeber; Nutzer-/Kundenzufriedenheit (z. B. Befragung) sowie Erreichung des angestrebten Nutzens (z. B. tatsächlich verbesserte Navigation).\n\n*Weitere mögliche Aspekte: Wirtschaftlichkeit/ROI, Lessons-Learned-Auswertung.*",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-1b",
+          "number": 2,
+          "type": "open",
+          "points": 4,
+          "prompt": "**b)** Identifizieren Sie – neben dem bereits genannten Risiko („Verzögerungen durch unklare Anforderungen\" → *klare Projektziele und Stakeholder-Workshops*) – ein **weiteres Risiko** und ordnen Sie diesem eine **Gegenmaßnahme** zu. *(4 Punkte)*",
+          "solution": "| Risiko | Gegenmaßnahme |\n|---|---|\n| Lieferverzögerung der Hardware | Frühzeitige Bestellung, Pufferzeiten einplanen, mehrere Lieferanten qualifizieren |\n\n*Weitere gültige Beispiele: Ausfall von Schlüsselpersonal → Wissensdokumentation/Vertretungsregelung; technische Schnittstellenprobleme (GPS/API) → frühe Prototypen und Integrationstests; Budgetüberschreitung → laufendes Kostencontrolling.*",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-1c",
+          "number": 3,
+          "type": "open",
+          "points": 14,
+          "context": "Netzplan – Vorgangsknotennetz (z. B. MPM).",
+          "prompt": "**c)** Erstellen Sie den **Netzplan** für die folgenden Vorgänge. *(14 Punkte)*\n\n| Vorgang | Dauer (Tage) | Vorgänger |\n|---|---|---|\n| A Anforderungsanalyse | 10 | – |\n| B Softwaredesign | 15 | A |\n| C Routenplanung | 45 | B |\n| D GPS-Integration | 50 | B |\n| E Angebotsvergleich | 8 | B |\n| F Hardwarebeschaffung | 12 | E |\n| G Testphase | 22 | C, D, F |\n| H Schulung | 12 | C, D, F |\n| I Bereitstellung | 4 | G, H |\n\n*Zeichne den Netzplan (FAZ/FEZ/SAZ/SEZ, GP) auf Papier und bewerte dich anhand der Lösung.*",
+          "solution": "Vorwärts-/Rückwärtsrechnung (FAZ = frühester Anfang, FEZ = frühestes Ende, SAZ/SEZ = spätester Anfang/Ende, GP = Gesamtpuffer = SAZ − FAZ):\n\n| Vorgang | Dauer | FAZ | FEZ | SAZ | SEZ | GP |\n|---|---|---|---|---|---|---|\n| A | 10 | 0 | 10 | 0 | 10 | **0** |\n| B | 15 | 10 | 25 | 10 | 25 | **0** |\n| C | 45 | 25 | 70 | 30 | 75 | 5 |\n| D | 50 | 25 | 75 | 25 | 75 | **0** |\n| E | 8 | 25 | 33 | 55 | 63 | 30 |\n| F | 12 | 33 | 45 | 63 | 75 | 30 |\n| G | 22 | 75 | 97 | 75 | 97 | **0** |\n| H | 12 | 75 | 87 | 85 | 97 | 10 |\n| I | 4 | 97 | 101 | 97 | 101 | **0** |\n\n**Projektdauer = 101 Tage.** G und H starten erst, wenn C, D **und** F fertig sind (FAZ = max(70, 75, 45) = 75).",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-1d",
+          "number": 4,
+          "type": "open",
+          "points": 3,
+          "prompt": "**d)** Geben Sie den **kritischen Pfad** für Ihren Netzplan an. *(3 Punkte)*",
+          "solution": "**Kritischer Pfad: A → B → D → G → I** (alle mit Gesamtpuffer 0). Länge = 10 + 15 + 50 + 22 + 4 = **101 Tage**.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-1e",
+          "number": 5,
+          "type": "open",
+          "points": 2,
+          "prompt": "**e)** Beschreiben Sie den Unterschied zwischen **freiem Puffer** und **Gesamtpuffer** einer Aktivität. *(2 Punkte)*",
+          "solution": "- **Gesamtpuffer (GP):** Zeitspanne, um die ein Vorgang verschoben oder verlängert werden kann, **ohne das Projektende** (den Endtermin) zu gefährden. GP = SAZ − FAZ = SEZ − FEZ.\n- **Freier Puffer (FP):** Zeitspanne, um die ein Vorgang verschoben werden kann, **ohne den frühesten Anfang seiner Nachfolger** zu beeinflussen. FP = min(FAZ der Nachfolger) − FEZ. Der freie Puffer ist stets ≤ Gesamtpuffer.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-2a",
+          "number": 6,
+          "type": "open",
+          "points": 16,
+          "prompt": "**a)** Erstellen Sie für den beschriebenen Ablauf der Bewässerungssteuerung ein **UML-Aktivitätsdiagramm**. *(16 Punkte)*\n\nAblauf: (1) parallel Bodensensoren **und** Wetterdaten/Vorhersage abrufen; (2) Daten auswerten, Bewässerungsbedarf ermitteln; (3) kein Bedarf → Ende; (4) Bedarf → Wassermenge & Dauer berechnen; (5) Tankfüllstand abfragen, bei < 30 % Warnmeldung an Landwirt; (6) parallel bewässern **und** Landwirt informieren; (7) Daten speichern, Ende.\n\n*Zeichne auf Papier und bewerte dich anhand der Lösung.*",
+          "solution": "```\n         ● (Start)\n         │\n     ┌───┴─── Fork ───┐        (Parallelität)\n [Bodensensoren]  [Wetterdaten &\n  abrufen]         Vorhersage abrufen]\n     └───┬─── Join ───┘\n         │\n [Daten auswerten & Bewässerungsbedarf ermitteln]\n         │\n        ◇ [Bewässerung erforderlich?]\n     nein│              │ ja\n         ⊗ (Ende)       │\n                 [Wassermenge & Dauer berechnen]\n                        │\n                 [Tankfüllstand abfragen]\n                        │\n                       ◇ [Füllstand < 30 %?]\n                    ja │        │ nein\n            [Warnmeldung        │\n             an Landwirt] ──────┤\n                        │\n              ┌── Fork ─┴───────┐\n        [Bewässerung        [Landwirt\n         durchführen]        informieren]\n              └── Join ────────┘\n                        │\n                 [Daten speichern]\n                        │\n                        ⊗ (Ende)\n```\nWichtige Elemente: **Start-/Endknoten**, **Fork/Join** für die parallelen Aktionen (Schritt 1 und 6), **Entscheidungsknoten (Raute)** für „Bewässerung erforderlich?\" und „Füllstand < 30 %?\". Die Warnmeldung führt anschließend wieder in den Hauptfluss zurück.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-2ba",
+          "number": 7,
+          "type": "open",
+          "points": 3,
+          "context": "**2. Aufgabe – Prozesssteuerung & REST-API (28 Punkte).** Request: `GET https://api.wetterdienst.com/weather?location=Rostock&units=metric&apikey=XYZ123`",
+          "prompt": "**ba)** Erläutern Sie das Konzept einer **REST-API** (Representational State Transfer). *(3 Punkte)*",
+          "solution": "REST ist ein **Architekturstil für Webservices**. Kernprinzipien: **Ressourcen** werden über eindeutige **URLs** adressiert; die Kommunikation läuft **zustandslos** (stateless) über **HTTP**; für Operationen werden die **HTTP-Methoden** (GET, POST, PUT, DELETE) genutzt; Daten werden in **Repräsentationen** wie JSON oder XML ausgetauscht. Jede Anfrage enthält alle nötigen Informationen (keine Sitzung auf dem Server).",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-2bb",
+          "number": 8,
+          "type": "open",
+          "points": 3,
+          "prompt": "**bb)** Beschreiben Sie die Parameter der gegebenen URL. *(Beispiel: `weather` = die abzufragende Ressource, hier die Wettervorhersagen.)* *(3 Punkte)*",
+          "solution": "- **`location=Rostock`** – Abfrageparameter: Ort, für den die Wetterdaten geliefert werden.\n- **`units=metric`** – Einheitensystem der Rückgabe (metrisch, z. B. Temperatur in °C).\n- **`apikey=XYZ123`** – Authentifizierungsschlüssel, der den Zugriff auf die API berechtigt/identifiziert.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-2bc",
+          "number": 9,
+          "type": "open",
+          "points": 6,
+          "prompt": "**bc)** Nennen und beschreiben Sie **zwei weitere HTTP-Methoden** (neben GET), die mit einer REST-API verwendet werden können. *(6 Punkte)*",
+          "solution": "| HTTP-Methode | Beschreibung |\n|---|---|\n| **POST** | Erstellt eine neue Ressource bzw. sendet Daten an den Server (Create). |\n| **PUT** | Aktualisiert/ersetzt eine bestehende Ressource vollständig (Update). |\n\n*Ebenfalls korrekt: **DELETE** (Ressource löschen) oder **PATCH** (teilweise aktualisieren).*",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-3aa",
+          "number": 10,
+          "type": "open",
+          "points": 3,
+          "context": "**3. Aufgabe – Datenübertragung & Sicherheit (22 Punkte).** Die Bodensensoren sind weiträumig verteilt, ohne feste Stromversorgung. Fachartikel-Auszug: *„LoRa … derived from Chirp Spread Spectrum … ideal for applications that transmit small chunks of data with low bit rates … longer range … low power mode.\"*",
+          "prompt": "**aa)** Nennen Sie drei **Merkmale von LoRa**. *(3 Punkte)*",
+          "solution": "- **Große Reichweite** (mehrere Kilometer, auch ländlich).\n- **Geringer Energieverbrauch** (Low-Power, langer Batteriebetrieb).\n- **Niedrige Datenrate** / kleine Datenmengen.\n\n*Ebenfalls gültig: lizenzfreies Frequenzband, gute Gebäudedurchdringung.*",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-3ab",
+          "number": 11,
+          "type": "open",
+          "points": 6,
+          "prompt": "**ab)** Erläutern Sie zwei Gründe, weshalb der Einsatz von **LoRa** für dieses Projekt sinnvoll ist. *(6 Punkte)*",
+          "solution": "- **Große Fläche / weite Verteilung der Sensoren:** Die große Reichweite von LoRa deckt weiträumig verteilte Felder mit wenigen Gateways ab – WLAN/Bluetooth reichen dafür nicht.\n- **Keine feste Stromversorgung:** Der geringe Energieverbrauch erlaubt langen batterie-/solarbetriebenen Betrieb der Sensoren.\n- *(Zusätzlich:)* Es werden nur **kleine Messwerte** (Bodenfeuchte) übertragen – die niedrige Datenrate von LoRa genügt vollständig.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-3ba",
+          "number": 12,
+          "type": "open",
+          "points": 3,
+          "prompt": "**ba)** Erläutern Sie das **IT-Schutzziel nach BSI**, das der Kunde angesprochen hat (Schutz vor manipulierter Übertragung). *(3 Punkte)*",
+          "solution": "Der Kunde spricht die **Integrität** an (einer der BSI-Grundwerte: Vertraulichkeit, Integrität, Verfügbarkeit). Integrität bedeutet die **Unversehrtheit / Korrektheit von Daten**: Daten dürfen während Übertragung und Speicherung **nicht unbemerkt verändert (manipuliert)** werden; jede unautorisierte Änderung muss erkennbar sein.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-3bb",
+          "number": 13,
+          "type": "open",
+          "points": 4,
+          "prompt": "**bb)** Erläutern Sie ein Verfahren, das sicherstellt, dass die Daten während der Übertragung **nicht unbemerkt manipuliert** werden können. *(4 Punkte)*",
+          "solution": "**Kryptografische Prüfsumme (Hash) bzw. MAC/HMAC oder digitale Signatur.** Der Sender berechnet über die Nutzdaten einen Hash-/MAC-Wert (bei HMAC/Signatur zusätzlich mit einem geheimen bzw. privaten Schlüssel) und überträgt ihn mit. Der Empfänger berechnet den Wert erneut und vergleicht: Stimmen die Werte nicht überein, wurden die Daten verändert. HMAC/Signatur schützt zusätzlich davor, dass ein Angreifer Daten **und** Prüfwert passend fälscht (Authentizität).",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-3bc",
+          "number": 14,
+          "type": "open",
+          "points": 3,
+          "prompt": "**bc)** Erläutern Sie, was man unter dem **RSA-Algorithmus** versteht. *(3 Punkte)*",
+          "solution": "RSA ist ein **asymmetrisches** Verschlüsselungsverfahren mit einem **Schlüsselpaar** aus öffentlichem und privatem Schlüssel. Seine Sicherheit beruht auf der **Schwierigkeit der Primfaktorzerlegung** sehr großer Zahlen. Zur **Verschlüsselung** wird der öffentliche Schlüssel des Empfängers verwendet, zur **Entschlüsselung** dessen privater Schlüssel (für **Signaturen** umgekehrt: privat signieren, öffentlich prüfen).",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-3bd",
+          "number": 15,
+          "type": "open",
+          "points": 3,
+          "prompt": "**bd)** Begründen Sie, ob die Verschlüsselung mittels **RSA** in Ihrem Projekt sinnvoll ist. *(3 Punkte)*",
+          "solution": "**Eher nicht bzw. nur eingeschränkt sinnvoll.** RSA ist **rechen- und energieintensiv**; für die batteriebetriebenen, leistungsschwachen LoRa-Sensoren mit sehr kleinen Datenmengen ist es ineffizient. Zudem ging es dem Kunden um **Integrität**, nicht um Vertraulichkeit – dafür genügen ressourcenschonende Verfahren wie **HMAC** (symmetrisch). Falls Verschlüsselung nötig wäre, wäre für die kontinuierliche Datenübertragung eine **symmetrische** Verschlüsselung (z. B. AES) passender; RSA höchstens zum einmaligen Schlüsselaustausch.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-4a",
+          "number": 16,
+          "type": "open",
+          "points": 5,
+          "context": "**4. Aufgabe – Softwarequalität (23 Punkte).** Es soll eine Smartphone-App zur Überwachung/Steuerung des Bewässerungssystems entwickelt werden.",
+          "prompt": "**a)** Beschreiben Sie das Qualitätsmerkmal **Zuverlässigkeit** (ISO/IEC 25010) und nennen + beschreiben Sie ein **weiteres** Produktqualitätsmerkmal. *(5 Punkte)*",
+          "solution": "- **Zuverlässigkeit (Reliability):** Grad, in dem das System unter festgelegten Bedingungen über einen bestimmten Zeitraum seine Funktionen **fehlerfrei** erfüllt (Untermerkmale u. a. Verfügbarkeit, Fehlertoleranz, Wiederherstellbarkeit).\n- **Weiteres Merkmal – Benutzbarkeit (Usability):** Grad, in dem Nutzer das Produkt effektiv, effizient und zufriedenstellend bedienen können (Erlernbarkeit, Bedienbarkeit).\n\n*Weitere Merkmale der ISO/IEC 25010: funktionale Eignung, Performanz/Effizienz, Kompatibilität, Sicherheit, Wartbarkeit, Portabilität. (Die Aufgabe nennt „25070\" – gemeint ist die 25010.)*",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-4b",
+          "number": 17,
+          "type": "open",
+          "points": 8,
+          "prompt": "**b)** Beschreiben Sie **zwei Anforderungen** an „Barrierefreie Software\" und je eine **geeignete Maßnahme** zur Erfüllung. *(8 Punkte)*",
+          "solution": "| Anforderung | Geeignete Maßnahme |\n|---|---|\n| **Wahrnehmbarkeit** – Inhalte müssen für alle wahrnehmbar sein | Textalternativen (Alt-Texte) für Bilder/Icons; ausreichender Farbkontrast; skalierbare, frei vergrößerbare Schrift |\n| **Bedienbarkeit** – Bedienung ohne Einschränkung möglich | Vollständige Tastatur-/Screenreader-Bedienung, klare Fokusreihenfolge, ausreichend große Touch-Ziele, keine reinen Farbcodierungen |\n\n*Orientierung: WCAG-Prinzipien (wahrnehmbar, bedienbar, verständlich, robust) bzw. BITV.*",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-4ca",
+          "number": 18,
+          "type": "open",
+          "points": 4,
+          "prompt": "**ca)** Beschreiben Sie zwei **Vorteile** der Erstellung von **Mockups** in der App-Entwicklung. *(4 Punkte)*",
+          "solution": "- **Frühes Feedback:** Kunde/Nutzer können das Aussehen vor der (teuren) Implementierung bewerten – Missverständnisse und Fehler werden früh erkannt und günstig korrigiert.\n- **Gemeinsame Kommunikationsgrundlage:** Mockups konkretisieren die Anforderungen und schaffen ein einheitliches Verständnis zwischen Kunde, Design und Entwicklung.",
+          "solutionOfficial": false
+        },
+        {
+          "id": "ga1-4cb",
+          "number": 19,
+          "type": "open",
+          "points": 6,
+          "prompt": "**cb)** Ergänzen Sie den Entwurf (Mockup) für die App-Seite „Bewässerungstank\": angezeigt werden sollen der **aktuelle Füllstand** sowie eine **grafische Darstellung der Wassermenge im zeitlichen Verlauf** mit auswählbarem Start- und Enddatum. *(6 Punkte)*\n\n*Zeichne das Mockup auf Papier und bewerte dich anhand der Lösung.*",
+          "solution": "```\n┌───────────────────────────────────┐\n│ ←   Bewässerungstank                │\n├───────────────────────────────────┤\n│  Aktueller Füllstand                │\n│   ┌───────────────┐                 │\n│   │ ▓▓▓▓▓▓░░░░░░░ │  68 %           │\n│   └───────────────┘                 │\n│                                     │\n│  Wassermenge im Verlauf             │\n│  von [ 01.04.2026 ▾]  bis [30.04. ▾]│\n│   L/│                               │\n│     │      ╱╲      ╱╲               │\n│     │  ╱╲ ╱  ╲╱╲  ╱                 │\n│     │ ╱  ╲     ╲ ╱                  │\n│     └───────────────────► Zeit      │\n│              [ Anzeigen ]           │\n└───────────────────────────────────┘\n```\nWichtige Elemente: Titel/Zurück-Navigation, **Füllstandsanzeige** (Prozentwert + Balken/Tank-Symbol), **Liniendiagramm** der Wassermenge über die Zeit, **zwei Datumsauswahlfelder** (Start/Ende) mit Datepicker sowie ein Button zum Aktualisieren der Ansicht.",
+          "solutionOfficial": false
+        }
+      ]
+    },
+    {
+      "id": "ga2",
+      "title": "GA2",
+      "fullTitle": "Entwicklung und Umsetzung von Algorithmen",
+      "durationMin": 90,
+      "pointsScheme": "Punkte gemäß Aufgabenstellung (offizieller Punkteschlüssel, Summe 100).",
+      "intro": "**Ausgangssituation (Aufgaben 1–4):** Ein landwirtschaftlicher Betrieb in Mecklenburg ist in der Produktion von Getreide, Ölfrüchten sowie in der Tierhaltung tätig. Die IT-gestützten Verfahren sind nicht mehr auf dem aktuellen Stand; im Projekt soll die Digitalisierung modernisiert werden. Sie arbeiten im Team des Systemhauses **AMAG AG** mit.\n\n*Hinweis: 4 Aufgaben · 90 Minuten · 100 Punkte. Alle Aufgaben sind offen und werden von dir selbst bewertet (Musterlösung wird nach dem Abgeben angezeigt).*",
+      "questions": [
+        {
+          "id": "ga2-1a",
+          "number": 1,
+          "type": "open",
+          "points": 12,
+          "context": "**1. Aufgabe – Milchproduktionsdaten (30 Punkte).** Die Produktionsdaten liegen als `List<ProdData>` vor (Tagesdatum, eindeutiger Kuhname, Milch-Tagesleistung). Benötigt wird eine `List<KuhData>` mit je einem Objekt pro Kuh und deren Durchschnittsleistung.\n\n**Klassen & Listen-Methoden (für Aufgabe 1):**\n\n```\nProdData                     KuhData\n- date : Date                - name : String\n- name : String              - avgLeistung : double\n- leistung : double          + KuhData(name : String, avgLeistung : double)\n```\n\nFür alle Attribute existieren Getter/Setter. Verfügbare Listen-Methoden:\n\n- `add(t : T) : void` — fügt ein Objekt ans Ende der Liste hinzu\n- `size() : Integer` — Anzahl der Objekte\n- `get(i : Integer) : T` — Objekt an Position i\n- `contains(t : T) : Boolean` — true, wenn ein namensgleiches Objekt enthalten ist\n\n`Date.between(start, ende)` liefert true, wenn das Datum im Bereich [start, ende] liegt. Hinweis: String-Werte dürfen mit `==` verglichen werden.",
+          "prompt": "**a)** Entwickeln Sie eine Methode `erzeugeKuhData`, die für jede Kuh ein `KuhData`-Objekt erzeugt, es der Liste hinzufügt und die Liste zurückgibt. Die `avgLeistung` sollen zunächst mit `0.0` vorinitialisiert werden. *(12 Punkte)*",
+          "solution": "```java\nList<KuhData> erzeugeKuhData(List<ProdData> prodData) {\n    List<KuhData> kuhData = new List<KuhData>();\n    for (int i = 0; i < prodData.size(); i++) {\n        ProdData p = prodData.get(i);\n        KuhData kuh = new KuhData(p.getName(), 0.0);\n        if (!kuhData.contains(kuh)) {\n            kuhData.add(kuh);\n        }\n    }\n    return kuhData;\n}\n```\nKernpunkte: Schleife über alle `ProdData`, neues `KuhData` mit Name und `0.0`, Duplikate über `contains` vermeiden, Liste zurückgeben.",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-1b",
+          "number": 2,
+          "type": "open",
+          "points": 18,
+          "prompt": "**b)** Entwickeln Sie die Methode `calcAvgLeistung`, welche die Durchschnittsleistung je Kuh im Zeitraum `start`…`ende` berechnet, die vorinitialisierten `0.0`-Werte überschreibt und die Liste zurückgibt. Gehen Sie davon aus, dass `erzeugeKuhData` vorliegt. *(18 Punkte)*",
+          "solution": "```java\nList<KuhData> calcAvgLeistung(List<ProdData> prodData, Date start, Date ende) {\n    List<KuhData> kuhData = erzeugeKuhData(prodData);\n    for (int i = 0; i < kuhData.size(); i++) {\n        double summe = 0.0;\n        int anzahl = 0;\n        for (int j = 0; j < prodData.size(); j++) {\n            ProdData p = prodData.get(j);\n            if (p.getDate().between(start, ende)\n                    && p.getName() == kuhData.get(i).getName()) {\n                summe = summe + p.getLeistung();\n                anzahl = anzahl + 1;\n            }\n        }\n        if (anzahl > 0) {\n            kuhData.get(i).setAvgLeistung(summe / anzahl);\n        }\n    }\n    return kuhData;\n}\n```\nKernpunkte: äußere Schleife über die Kühe, innere Schleife über alle Produktionsdaten, Filter über `between` **und** gleichen Namen, Summe/Anzahl bilden und nur bei `anzahl > 0` den Durchschnitt setzen (Division durch 0 vermeiden).",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-2a",
+          "number": 3,
+          "type": "open",
+          "points": 12,
+          "context": "**2. Aufgabe – Aufgabenplanung, objektorientiert (20 Punkte).** Es gibt eine allgemeine Klasse `Aufgabe` und Spezialklassen `AufgabeFixTermin` und `AufgabeWetterabhängig`; weitere Aufgabenarten sollen später leicht ergänzbar sein.\n\n- `Aufgabe`: `beschreibung` (String), `anzahlMitarbeiter` (int); Methoden `aufgabeBeschreiben()` (String), `heuteAusführbar()` (Boolean).\n- `AufgabeFixTermin`: zusätzlich `termin` (Date).\n- `AufgabeWetterabhängig`: zusätzlich `wetterVoraussetzung` (Wetter).\n- `AufgabenContainer`: `aufgaben : List<Aufgabe>`; Methoden `aufgabeHinzufügen(Aufgabe)`, `aufgabenHeute() : List<Aufgabe>`.",
+          "prompt": "**a)** Zeichnen Sie ein Klassendiagramm mit `AufgabenContainer`, `Aufgabe`, `AufgabeFixTermin`, `AufgabeWetterabhängig`. Tragen Sie Eigenschaften und Methoden mit vollständiger Signatur und Sichtbarkeiten ein und zeichnen Sie die Beziehungen (ohne Kardinalitäten). *(12 Punkte)*\n\n*Zeichne auf Papier und bewerte dich anschließend selbst anhand der Musterlösung.*",
+          "solution": "```\n┌──────────────────────────────┐\n│ AufgabenContainer            │\n├──────────────────────────────┤\n│ - aufgaben : List<Aufgabe>   │\n├──────────────────────────────┤\n│ + aufgabeHinzufuegen(a : Aufgabe) : void │\n│ + aufgabenHeute() : List<Aufgabe>        │\n└──────────────────────────────┘\n            │ verwaltet 0..*\n            ▼\n┌──────────────────────────────┐\n│ Aufgabe   {abstrakt}         │\n├──────────────────────────────┤\n│ - beschreibung : String      │\n│ - anzahlMitarbeiter : int    │\n├──────────────────────────────┤\n│ + aufgabeBeschreiben() : String   │\n│ + heuteAusfuehrbar() : Boolean    │\n└──────────────────────────────┘\n            △ (Vererbung)\n     ┌──────┴───────┐\n┌────────────────┐ ┌───────────────────────┐\n│ AufgabeFixTermin│ │ AufgabeWetterabhaengig │\n├────────────────┤ ├───────────────────────┤\n│ - termin : Date │ │ - wetterVoraussetzung : Wetter │\n├────────────────┤ ├───────────────────────┤\n│ + heuteAusfuehrbar() : Boolean │ + heuteAusfuehrbar() : Boolean │\n└────────────────┘ └───────────────────────┘\n```\n- `Aufgabe` ist **abstrakt**; die Unterklassen überschreiben `heuteAusfuehrbar()`.\n- `AufgabenContainer` steht in einer Assoziation/Aggregation zu `Aufgabe` (0..*).\n- Sichtbarkeiten: Attribute `-` (privat), Methoden `+` (öffentlich).",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-2ba",
+          "number": 4,
+          "type": "open",
+          "points": 4,
+          "prompt": "**ba)** Erstellen Sie im Pseudocode die Methode `List<Aufgabe> aufgabenHeute()`. Hinweis: Mit `heuteAusführbar()` kann geprüft werden, ob eine Aufgabe heute ausführbar ist. *(4 Punkte)*",
+          "solution": "```java\nList<Aufgabe> aufgabenHeute() {\n    List<Aufgabe> liste = new List<Aufgabe>();\n    for (int i = 0; i < aufgaben.size(); i++) {\n        Aufgabe a = aufgaben.get(i);\n        if (a.heuteAusfuehrbar()) {\n            liste.add(a);\n        }\n    }\n    return liste;\n}\n```",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-2bb",
+          "number": 5,
+          "type": "open",
+          "points": 4,
+          "prompt": "**bb)** `aufgabenHeute` ruft intern `heuteAusführbar` der verschiedenen Aufgaben-Klassen auf. Erst zur Laufzeit wird entschieden, welche Methode konkret ausgeführt wird. Nennen und erklären Sie den Mechanismus, der dies bewirkt. *(4 Punkte)*",
+          "solution": "**Polymorphie mit dynamischer Bindung (late binding).** Obwohl die Liste den statischen Typ `Aufgabe` enthält, wird zur Laufzeit anhand des **tatsächlichen Objekttyps** die passende überschriebene Methode `heuteAusfuehrbar()` ausgeführt.",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-3a",
+          "number": 6,
+          "type": "open",
+          "points": 20,
+          "context": "**3. Aufgabe – Datenbank (25 Punkte).** Gegebenes ER-Modell:\n\n```\nFeld ──(n:1)── Bodentyp ──(m:n)── Feldfrucht\n                     „optimal für\"\n```\n\n**Informationen aus der Ist-Analyse:**\n- Für jeden **Bearbeitungsschritt** auf einem Feld werden das Feld, die angebaute Feldfrucht und der Zeitraum (von/bis) erfasst.\n- Jedem Bearbeitungsschritt kann genau eine **Tätigkeit** (z. B. Aussaat, Ernte) zugeordnet werden.\n- Zu jeder Tätigkeit gibt es eine Beschreibung.",
+          "prompt": "**a)** Überführen Sie das ER-Modell in ein relationales Datenbankmodell in **3. Normalform** und erweitern Sie es anhand der Ist-Analyse. Übernehmen Sie alle Attribute, bestimmen Sie je Tabelle einen **Primärschlüssel (PK)**, bilden Sie alle Beziehungen mit Kardinalitäten ab und tragen Sie die nötigen **Fremdschlüssel (FK)** ein. *(20 Punkte)*",
+          "solution": "| Tabelle | Attribute |\n|---|---|\n| **Bodentyp** | <u>BodentypID</u> (PK), Bezeichnung |\n| **Feld** | <u>FeldID</u> (PK), BodentypID (FK), weitere Felddaten |\n| **Feldfrucht** | <u>FeldfruchtID</u> (PK), Bezeichnung |\n| **Bodentyp_Feldfrucht** | <u>BodentypID</u> (PK/FK), <u>FeldfruchtID</u> (PK/FK) |\n| **Taetigkeit** | <u>TaetigkeitID</u> (PK), Beschreibung |\n| **Bearbeitungsschritt** | <u>BearbeitungID</u> (PK), FeldID (FK), FeldfruchtID (FK), TaetigkeitID (FK), ZeitraumVon, ZeitraumBis |\n\n- Die **m:n**-Beziehung „optimal für\" (Bodentyp ↔ Feldfrucht) wird über die Zwischentabelle **Bodentyp_Feldfrucht** aufgelöst.\n- **Feld → Bodentyp** ist n:1 → FK `BodentypID` in `Feld`.\n- **Bearbeitungsschritt** verweist per FK auf Feld, Feldfrucht und Tätigkeit.",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-3b",
+          "number": 7,
+          "type": "open",
+          "points": 5,
+          "prompt": "**b)** Drohnen fliegen einmal wöchentlich und erfassen pro Flug **500 Bilder** im unkomprimierten Raw-Format (Auflösung **50 Megapixel**, Farbtiefe **24 Bit**). Berechnen Sie den Speicherbedarf in **TiB** für ein Jahr (52 Wochen), gerundet auf zwei Nachkommastellen. Rechenweg angeben. *(5 Punkte)*",
+          "solution": "- Pro Bild: 50.000.000 Pixel × 24 Bit = 1.200.000.000 Bit = **150.000.000 Byte**.\n- Bilder/Jahr: 500 × 52 = **26.000 Bilder**.\n- Gesamt: 26.000 × 150.000.000 Byte = 3.900.000.000.000 Byte.\n- In TiB: 3.900.000.000.000 ÷ 1024⁴ ≈ **3,55 TiB**.",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-4a",
+          "number": 8,
+          "type": "open",
+          "points": 3,
+          "context": "**4. Aufgabe – SQL & CRUD (25 Punkte).** CRUD steht für die vier grundlegenden Datenoperationen.",
+          "prompt": "**a)** Ordnen Sie den CRUD-Operationen die passenden SQL-Befehle (DDL / DML / DQL) zu. *(3 Punkte)*",
+          "solution": "| CRUD | DDL (Definition) | DML (Manipulation) | DQL (Query) |\n|---|---|---|---|\n| **Create** | CREATE | INSERT | – |\n| **Read** | – | – | SELECT |\n| **Update** | – | UPDATE | – |\n| **Delete** | DROP | DELETE | – |",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-4b",
+          "number": 9,
+          "type": "open",
+          "points": 8,
+          "context": "Für die folgenden SQL-Aufgaben gelten diese (vereinfachten) Tabellen:\n\n```\nTierkategorie(TK_ID PK, TK_Kategorie)\nTierbestand(TB_ID PK, TB_TKID FK, TB_ChipNr, TB_GebDat, TB_SchlachtDat)   -- SchlachtDat = NULL: Tier lebt\nTierZusatzInfo(TZI_ID PK, TZI_TBID FK, TZI_Gewicht)\nArchiv_Tierbestand(A_TBID, A_Tierkategorie, A_ChipNr, A_GebDat, A_SchlachtDat, A_MaxGewicht)\n```",
+          "prompt": "**b)** Erstellen Sie eine SQL-Abfrage, die je Tier-Kategorie über die **lebenden** Tiere ausgibt: Anzahl des Tierbestandes, Gewicht des schwersten Tieres, Alter des ältesten Tieres und das durchschnittliche Alter. *(8 Punkte)*",
+          "solution": "```sql\nSELECT\n    tk.TK_Kategorie,\n    COUNT(tb.TB_ID) AS AnzahlTiere,\n    MAX(g.MaxGewicht) AS SchwerstesTier,\n    MAX(TIMESTAMPDIFF(YEAR, tb.TB_GebDat, CURRENT_DATE)) AS AeltestesTier,\n    AVG(TIMESTAMPDIFF(YEAR, tb.TB_GebDat, CURRENT_DATE)) AS DurchschnittAlter\nFROM Tierkategorie tk\nLEFT JOIN Tierbestand tb\n    ON tb.TB_TKID = tk.TK_ID\n   AND tb.TB_SchlachtDat IS NULL\nLEFT JOIN (\n    SELECT TZI_TBID, MAX(TZI_Gewicht) AS MaxGewicht\n    FROM TierZusatzInfo\n    GROUP BY TZI_TBID\n) g ON g.TZI_TBID = tb.TB_ID\nGROUP BY tk.TK_ID, tk.TK_Kategorie;\n```\nWichtig: `LEFT JOIN`, damit auch Kategorien ohne lebende Tiere (Anzahl 0) erscheinen; Filter `TB_SchlachtDat IS NULL` für „lebend\"; Aggregatfunktionen `COUNT`, `MAX`, `AVG`.",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-4ca",
+          "number": 10,
+          "type": "open",
+          "points": 10,
+          "prompt": "**ca)** Erstellen Sie eine SQL-Anweisung, die alle Daten der **geschlachteten** Tiere samt Tierkategorie und höchstem gewogenen Gewicht mit **einem** Befehl in die Tabelle `Archiv_Tierbestand` archiviert. *(10 Punkte)*",
+          "solution": "```sql\nINSERT INTO Archiv_Tierbestand\n    (A_TBID, A_Tierkategorie, A_ChipNr, A_GebDat, A_SchlachtDat, A_MaxGewicht)\nSELECT\n    tb.TB_ID,\n    tk.TK_Kategorie,\n    tb.TB_ChipNr,\n    tb.TB_GebDat,\n    tb.TB_SchlachtDat,\n    MAX(tzi.TZI_Gewicht)\nFROM Tierbestand tb\nJOIN Tierkategorie tk ON tk.TK_ID = tb.TB_TKID\nLEFT JOIN TierZusatzInfo tzi ON tzi.TZI_TBID = tb.TB_ID\nWHERE tb.TB_SchlachtDat IS NOT NULL\nGROUP BY tb.TB_ID, tk.TK_Kategorie, tb.TB_ChipNr, tb.TB_GebDat, tb.TB_SchlachtDat;\n```\n`INSERT INTO … SELECT` überträgt in einem Befehl; Filter `TB_SchlachtDat IS NOT NULL` (geschlachtet); `MAX(TZI_Gewicht)` für das höchste Gewicht.",
+          "solutionOfficial": true
+        },
+        {
+          "id": "ga2-4cb",
+          "number": 11,
+          "type": "open",
+          "points": 4,
+          "prompt": "**cb)** Entfernen Sie anschließend alle zugehörigen Daten der archivierten (geschlachteten) Datensätze aus den Tabellen. *(4 Punkte)*",
+          "solution": "```sql\nDELETE FROM TierZusatzInfo\nWHERE TZI_TBID IN (\n    SELECT TB_ID FROM Tierbestand WHERE TB_SchlachtDat IS NOT NULL\n);\n\nDELETE FROM Tierbestand\nWHERE TB_SchlachtDat IS NOT NULL;\n```\nReihenfolge beachten: zuerst die abhängigen Datensätze in `TierZusatzInfo` löschen (Fremdschlüssel), dann die Zeilen in `Tierbestand`.",
+          "solutionOfficial": true
+        }
+      ]
+    },
+    {
+      "id": "wiso",
+      "title": "WISO",
+      "fullTitle": "Wirtschafts- und Sozialkunde",
+      "durationMin": 60,
+      "questionCount": 30,
+      "pointsScheme": "Gleichgewichtung je Aufgabe (offizieller Punkteschlüssel liegt nicht vor).",
+      "intro": "**Situation:** Die *CBA-IT-Service GmbH* ist ein IT-Dienstleistungsunternehmen mit Sitz in Erfurt. Kunden sind klein- und mittelständische Unternehmen in ganz Deutschland. Die Aufgaben beziehen sich – sofern nicht anders angegeben – auf die CBA-IT-Service GmbH.\n\n*Hinweis: 30 Aufgaben · 60 Minuten Prüfungszeit · 100 Punkte (offiziell). In diesem Simulator werden die Aufgaben gleich gewichtet.*",
+      "questions": [
+        {
+          "id": "wiso-1",
+          "number": 1,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Frau Müller, 18 Jahre alt, möchte in der CBA-IT-Service GmbH eine Ausbildung zur Fachinformatikerin Fachrichtung Anwendungsentwicklung beginnen. Sie sollen folgende Vereinbarungen im Ausbildungsvertrag überprüfen.",
+          "prompt": "Welche der folgenden Vereinbarungen ist **zulässig**?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Frau Müller muss keinen Ausbildungsnachweis führen."
+            },
+            {
+              "key": "2",
+              "text": "Die Ausbildungsvergütung für den jeweils laufenden Kalendermonat wird in den ersten beiden Wochen des nächsten Monats gezahlt."
+            },
+            {
+              "key": "3",
+              "text": "Frau Müller verpflichtet sich zum Stillschweigen über Betriebsgeheimnisse."
+            },
+            {
+              "key": "4",
+              "text": "Ein Jobangebot zur Weiterbeschäftigung bei der CBA-IT-Service GmbH muss bei bestandener Prüfung angenommen werden."
+            },
+            {
+              "key": "5",
+              "text": "Nach ihrer Ausbildung ist Frau Müller verpflichtet, mindestens zwei Jahre bei der CBA-IT-Service GmbH zu arbeiten."
+            }
+          ],
+          "correct": [
+            "3"
+          ],
+          "solution": "Die Verschwiegenheitspflicht über Betriebsgeheimnisse ist zulässig (§ 13 BBiG). Die übrigen Vereinbarungen verstoßen gegen das BBiG: Ausbildungsnachweis ist Pflicht, die Vergütung ist spätestens am letzten Arbeitstag des Monats zu zahlen, und Bindungs-/Übernahmeklauseln nach der Ausbildung sind nichtig (§ 12 BBiG)."
+        },
+        {
+          "id": "wiso-2",
+          "number": 2,
+          "type": "single-choice",
+          "points": 1,
+          "prompt": "Welche der nachstehenden rechtlichen Folgen hätte eine **unzulässige Vereinbarung** für den restlichen Berufsausbildungsvertrag von Frau Müller?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Der gesamte Berufsausbildungsvertrag ist nichtig."
+            },
+            {
+              "key": "2",
+              "text": "Die betroffene Vereinbarung ist nichtig, der restliche Berufsausbildungsvertrag bleibt gültig."
+            },
+            {
+              "key": "3",
+              "text": "Der Berufsausbildungsvertrag ist gültig, wenn die IHK damit einverstanden ist."
+            },
+            {
+              "key": "4",
+              "text": "Der Berufsausbildungsvertrag ist gültig, wenn Frau Müller der fraglichen Vereinbarung ausdrücklich zustimmt."
+            },
+            {
+              "key": "5",
+              "text": "Der Berufsausbildungsvertrag ist gültig, wenn die Eltern von Frau Müller der fraglichen Vereinbarung ausdrücklich zustimmen."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Nur die unzulässige (nichtige) Einzelklausel entfällt; der übrige Vertrag bleibt wirksam (Grundsatz der geltungserhaltenden Reduktion, § 139 BGB i. V. m. § 25 BBiG)."
+        },
+        {
+          "id": "wiso-3",
+          "number": 3,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Berufsausbildung für Frau Müller in der CBA-IT-Service GmbH soll am 01.09.2026 beginnen.",
+          "prompt": "Zu welchem der folgenden Zeitpunkte muss der Vertrag **spätestens** abgeschlossen werden?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Am ersten Werktag im September 2026"
+            },
+            {
+              "key": "2",
+              "text": "Am 31.08.2026"
+            },
+            {
+              "key": "3",
+              "text": "Am 02.09.2026"
+            },
+            {
+              "key": "4",
+              "text": "Bis zum Beginn des Berufsschulunterrichts nach den Sommerferien"
+            },
+            {
+              "key": "5",
+              "text": "Nach Ablauf der Probezeit"
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Der Ausbildungsvertrag muss vor Beginn der Ausbildung schriftlich niedergelegt sein (§ 11 BBiG) – hier spätestens am Tag vor dem Ausbildungsbeginn, also am 31.08.2026."
+        },
+        {
+          "id": "wiso-4",
+          "number": 4,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Frau Müller wird ihre Berufsausbildung voraussichtlich am 13.07.2029 mit dem letzten Prüfungsteil abschließen.",
+          "prompt": "Welche der folgenden Aussagen zur Beendigung des Ausbildungsverhältnisses trifft zu?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Das Ausbildungsverhältnis endet nach der schriftlichen Abschlussprüfung."
+            },
+            {
+              "key": "2",
+              "text": "Mit der Bekanntgabe des positiven Prüfungsergebnisses der Abschlussprüfung endet das Ausbildungsverhältnis."
+            },
+            {
+              "key": "3",
+              "text": "Der dreijährige Ausbildungsvertrag mit der CBA-IT-Service GmbH kann nur mit Fristablauf am 31.08.2029 beendet werden."
+            },
+            {
+              "key": "4",
+              "text": "Das Ausbildungsverhältnis endet an einem von der IHK festgelegten Termin im September 2029."
+            },
+            {
+              "key": "5",
+              "text": "Das Ausbildungsverhältnis endet mit Beginn der Sommerferien der Berufsschule."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Bei bestandener Prüfung endet das Ausbildungsverhältnis vorzeitig mit der Bekanntgabe des Ergebnisses durch den Prüfungsausschuss (§ 21 Abs. 2 BBiG)."
+        },
+        {
+          "id": "wiso-5",
+          "number": 5,
+          "type": "multiple-choice",
+          "points": 1,
+          "selectCount": 2,
+          "context": "In der CBA-IT-Service GmbH sollen zum 01.09.2026 zwei neue Auszubildende (Valentina Eberle, 21 Jahre und Robert Traber, 22 Jahre) eingestellt werden.",
+          "prompt": "Welche der folgenden Aussagen sind in diesem Zusammenhang **zutreffend**? (Zwei Antworten)",
+          "options": [
+            {
+              "key": "1",
+              "text": "Mit den Auszubildenden darf eine Probezeit von sechs Monaten vereinbart werden, da sie das 18. Lebensjahr bereits vollendet haben."
+            },
+            {
+              "key": "2",
+              "text": "Die Ausbildungsvergütung muss von einem Ausbildungsjahr auf das nächste Ausbildungsjahr ansteigen."
+            },
+            {
+              "key": "3",
+              "text": "Die CBA-IT-Service GmbH ist verpflichtet, den beiden Auszubildenden die monatliche Ausbildungsvergütung bis zum 15. eines Monats zu zahlen."
+            },
+            {
+              "key": "4",
+              "text": "Den beiden Auszubildenden steht spätestens nach sechs Stunden Arbeitszeit eine Ruhepause zu."
+            },
+            {
+              "key": "5",
+              "text": "Da die beiden Auszubildenden volljährig sind, müssen sie sich selbst um die Anmeldung zum Berufsschulunterricht kümmern."
+            },
+            {
+              "key": "6",
+              "text": "Da die beiden Auszubildenden volljährig sind, sind sie nicht verpflichtet, ein Berichtsheft zu führen."
+            }
+          ],
+          "correct": [
+            "2",
+            "4"
+          ],
+          "solution": "Die Ausbildungsvergütung muss jährlich ansteigen (§ 17 BBiG). Nach spätestens sechs Stunden steht eine Ruhepause zu (§ 4 ArbZG). Die Probezeit beträgt höchstens vier Monate (§ 20 BBiG), die Vergütung ist spätestens zum Monatsende zu zahlen, der Arbeitgeber meldet zur Berufsschule an und das Berichtsheft (Ausbildungsnachweis) ist stets Pflicht."
+        },
+        {
+          "id": "wiso-6",
+          "number": 6,
+          "type": "ordering",
+          "points": 1,
+          "context": "**Situation zur 6. bis 8. Aufgabe:** Frau Kermann ist bei der CBA-IT-Service GmbH angestellt. Sie rutscht während der Arbeit an einem Aufsteller aus und zieht sich dabei erhebliche Verletzungen zu.",
+          "prompt": "Bringen Sie die folgenden Schritte nach dem Unfall von Frau Kermann in die **richtige Reihenfolge**. (1 = erster Schritt … 5 = letzter Schritt)",
+          "left": [
+            {
+              "key": "a",
+              "text": "Eine Arbeitskollegin leistet Erste Hilfe."
+            },
+            {
+              "key": "b",
+              "text": "Frau Kermann nimmt nach insgesamt sieben Wochen die Arbeit wieder auf."
+            },
+            {
+              "key": "c",
+              "text": "Spätestens nach Kenntniserlangung von dem Befund des Durchgangsarztes muss die CBA-IT-Service GmbH die Unfallmeldung an die Berufsgenossenschaft schicken."
+            },
+            {
+              "key": "d",
+              "text": "Wegen der Unfallfolgen muss Frau Kermann im Anschluss an die Arbeitsunfähigkeit zu einer stationären Reha-Maßnahme in eine Klinik. Sie tritt diese fünfwöchige Reha-Maßnahme sofort an."
+            },
+            {
+              "key": "e",
+              "text": "Die CBA-IT-Service GmbH schickt Frau Kermann unverzüglich zu einem Durchgangsarzt. Dieser schreibt sie für zwei Wochen arbeitsunfähig."
+            }
+          ],
+          "right": [
+            {
+              "key": "1",
+              "text": "1. Schritt"
+            },
+            {
+              "key": "2",
+              "text": "2. Schritt"
+            },
+            {
+              "key": "3",
+              "text": "3. Schritt"
+            },
+            {
+              "key": "4",
+              "text": "4. Schritt"
+            },
+            {
+              "key": "5",
+              "text": "5. Schritt"
+            }
+          ],
+          "correctPairs": {
+            "a": "1",
+            "e": "2",
+            "c": "3",
+            "d": "4",
+            "b": "5"
+          },
+          "solution": "Zeitlicher Ablauf: (a) Erste Hilfe → (e) Durchgangsarzt, 2 Wochen AU → (c) Unfallmeldung an die Berufsgenossenschaft → (d) fünfwöchige Reha-Maßnahme → (b) Wiederaufnahme der Arbeit nach insgesamt sieben Wochen (2 Wochen AU + 5 Wochen Reha)."
+        },
+        {
+          "id": "wiso-7",
+          "number": 7,
+          "type": "single-choice",
+          "points": 1,
+          "prompt": "Welche der folgenden Versicherungen kommt für die Kosten der Reha-Maßnahme nach dem Arbeitsunfall von Frau Kermann auf?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Gesetzliche Unfallversicherung"
+            },
+            {
+              "key": "2",
+              "text": "Gesetzliche Pflegeversicherung"
+            },
+            {
+              "key": "3",
+              "text": "Betriebsunterbrechungsversicherung"
+            },
+            {
+              "key": "4",
+              "text": "Betriebshaftpflichtversicherung"
+            },
+            {
+              "key": "5",
+              "text": "Private Unfallversicherung von Frau Kermann"
+            }
+          ],
+          "correct": [
+            "1"
+          ],
+          "solution": "Für Arbeitsunfälle und deren Folgen (inkl. Reha) ist die gesetzliche Unfallversicherung (Berufsgenossenschaft) zuständig (SGB VII)."
+        },
+        {
+          "id": "wiso-8",
+          "number": 8,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Frau Kermann ist mit dem Bescheid zur Kostenübernahme der Reha-Maßnahme nicht einverstanden und möchte den Sachverhalt vor Gericht klären lassen.",
+          "prompt": "Welches der folgenden Gerichte ist zunächst zuständig?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Familiengericht"
+            },
+            {
+              "key": "2",
+              "text": "Verwaltungsgericht"
+            },
+            {
+              "key": "3",
+              "text": "Arbeitsgericht"
+            },
+            {
+              "key": "4",
+              "text": "Amtsgericht"
+            },
+            {
+              "key": "5",
+              "text": "Sozialgericht"
+            }
+          ],
+          "correct": [
+            "5"
+          ],
+          "solution": "Streitigkeiten mit einem Sozialversicherungsträger (hier: Berufsgenossenschaft/gesetzliche Unfallversicherung) werden vor dem Sozialgericht verhandelt (SGG)."
+        },
+        {
+          "id": "wiso-9",
+          "number": 9,
+          "type": "numeric",
+          "points": 1,
+          "context": "Die Fachinformatikerin Wiebke Völker ist seit dem 1. März 2023 bei der CBA-IT-Service GmbH angestellt. Ihr Bruttogehalt beträgt 4.200,00 EUR. Frau Völker ist Mitglied einer gesetzlichen Krankenkasse, die den Zusatzbeitrag auf 2,4 % erhöht hat. Der allgemeine Beitragssatz beträgt 14,6 %.",
+          "prompt": "Berechnen Sie **Frau Völkers** Beitrag (Arbeitnehmeranteil) zur gesetzlichen Krankenversicherung.",
+          "answer": {
+            "value": 357,
+            "unit": "EUR",
+            "tolerance": 0.5,
+            "accepted": [
+              "357",
+              "357,00",
+              "357,00 EUR",
+              "357 EUR"
+            ]
+          },
+          "solution": "Gesamtbeitragssatz = 14,6 % + 2,4 % = 17 %. Der Beitrag wird hälftig getragen → Arbeitnehmeranteil = 8,5 %. 4.200,00 EUR × 8,5 % = **357,00 EUR**."
+        },
+        {
+          "id": "wiso-10",
+          "number": 10,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Auszubildende der CBA-IT-Service GmbH, Paula Kaiser, 20 Jahre alt, ist schwanger. Der vom Arzt errechnete Geburtstermin ist der 1. Dezember 2026. Frau Kaiser hat den Arbeitgeber über die Schwangerschaft informiert.",
+          "prompt": "Welche der folgenden Aussagen zum Ausbildungsvertrag von Frau Kaiser trifft zu?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Das Ausbildungsverhältnis endet mit der Bekanntgabe des Geburtstermins an den Arbeitgeber."
+            },
+            {
+              "key": "2",
+              "text": "Das Ausbildungsverhältnis endet mit der Geburt des Kindes."
+            },
+            {
+              "key": "3",
+              "text": "Für werdende Mütter gilt ein besonderer Kündigungsschutz."
+            },
+            {
+              "key": "4",
+              "text": "Frau Kaiser steht für die Zeit der Schwangerschaft keine Ausbildungsvergütung zu."
+            },
+            {
+              "key": "5",
+              "text": "Frau Kaiser muss Elterngeld als Lohnersatzleistung beantragen."
+            }
+          ],
+          "correct": [
+            "3"
+          ],
+          "solution": "Während der Schwangerschaft und bis vier Monate nach der Entbindung besteht ein besonderer Kündigungsschutz (§ 17 MuSchG). Das Ausbildungsverhältnis endet nicht durch Geburt/Bekanntgabe, und die Vergütung läuft weiter."
+        },
+        {
+          "id": "wiso-11",
+          "number": 11,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Am 30. November 2026 bringt Frau Kaiser ihre Tochter Lara zur Welt. Am 27. Dezember 2026 meldet sich Frau Kaiser bei der CBA-IT-Service GmbH. Sie fühlt sich fit und möchte wieder zur Arbeit kommen.\n\n**Auszug aus dem Mutterschutzgesetz (MuSchG):**\n\n*§ 3 Beschäftigungsverbote für werdende Mütter* — (2) Werdende Mütter dürfen in den letzten sechs Wochen vor der Entbindung nicht beschäftigt werden, es sei denn, dass sie sich zur Arbeitsleistung ausdrücklich bereit erklären; die Erklärung kann jederzeit widerrufen werden.\n\n*§ 6 Beschäftigungsverbote nach der Entbindung* — (1) Mütter dürfen bis zum Ablauf von acht Wochen, bei Früh- und Mehrlingsgeburten bis zum Ablauf von zwölf Wochen nach der Entbindung nicht beschäftigt werden. (…)",
+          "prompt": "Ab wann darf Frau Kaiser **frühestens** wieder arbeiten?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Frühestens sechs Wochen nach der Entbindung; vorher besteht ein Beschäftigungsverbot."
+            },
+            {
+              "key": "2",
+              "text": "Frühestens acht Wochen nach der Entbindung; vorher besteht ein Beschäftigungsverbot."
+            },
+            {
+              "key": "3",
+              "text": "Frühestens zwölf Wochen nach der Entbindung; vorher besteht ein Beschäftigungsverbot."
+            },
+            {
+              "key": "4",
+              "text": "Sofort, wenn Frau Kaiser vom Arzt ihre Arbeitsfähigkeit bescheinigt wird."
+            },
+            {
+              "key": "5",
+              "text": "Sofort, sofern es die CBA-IT-Service GmbH erlaubt."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Nach § 6 Abs. 1 MuSchG besteht nach der Entbindung ein absolutes Beschäftigungsverbot von acht Wochen (bei Früh-/Mehrlingsgeburten zwölf Wochen). Es ist unverzichtbar – eine ärztliche Bescheinigung oder das Einverständnis des Arbeitgebers ändern daran nichts."
+        },
+        {
+          "id": "wiso-12",
+          "number": 12,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die CBA-IT-Service GmbH ist Mitglied des Arbeitgeberverbandes.",
+          "prompt": "In welchem der folgenden Bestandteile des Arbeitsvertrages ist die CBA-IT-Service GmbH an **kollektives Arbeitsrecht** gebunden?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Das Arbeitsverhältnis beginnt am 1. Juli 2026."
+            },
+            {
+              "key": "2",
+              "text": "Mit Zustimmung des Vorgesetzten kann an einem Arbeitstag in der Woche mobil gearbeitet werden („Homeoffice“)."
+            },
+            {
+              "key": "3",
+              "text": "Der Mitarbeiter erhält eine individuelle Zulage von 200 EUR monatlich."
+            },
+            {
+              "key": "4",
+              "text": "Der Mitarbeiter wird am Standort Erfurt eingesetzt."
+            },
+            {
+              "key": "5",
+              "text": "Die wöchentliche Arbeitszeit beträgt laut Tarifvertrag 38,5 Stunden."
+            }
+          ],
+          "correct": [
+            "5"
+          ],
+          "solution": "Kollektives Arbeitsrecht sind v. a. Tarifverträge. Die tariflich festgelegte Wochenarbeitszeit (38,5 Std.) ist an das kollektive Arbeitsrecht gebunden; die übrigen Punkte sind individuelle Vereinbarungen."
+        },
+        {
+          "id": "wiso-13",
+          "number": 13,
+          "type": "multiple-choice",
+          "points": 1,
+          "selectCount": 2,
+          "context": "Die Geschäftsleitung der CBA-IT-Service GmbH arbeitet vertrauensvoll mit dem Betriebsrat zusammen.",
+          "prompt": "In welchen der folgenden Angelegenheiten hat der Betriebsrat laut Betriebsverfassungsgesetz ein **Mitbestimmungsrecht**? (Zwei Antworten)",
+          "options": [
+            {
+              "key": "1",
+              "text": "Beginn und Ende der täglichen Arbeitszeit"
+            },
+            {
+              "key": "2",
+              "text": "Planung des Fortbildungsbedarfs"
+            },
+            {
+              "key": "3",
+              "text": "Überwachung der Arbeitnehmer durch technische Einrichtungen"
+            },
+            {
+              "key": "4",
+              "text": "Bau einer neuen Lagerhalle"
+            },
+            {
+              "key": "5",
+              "text": "Anschaffung neuer Lagertechnik"
+            },
+            {
+              "key": "6",
+              "text": "Gründung einer neuen Filiale"
+            }
+          ],
+          "correct": [
+            "1",
+            "3"
+          ],
+          "solution": "Echte Mitbestimmung in sozialen Angelegenheiten (§ 87 BetrVG) besteht u. a. bei Beginn/Ende der täglichen Arbeitszeit und bei der Einführung technischer Überwachungseinrichtungen. Wirtschaftliche Entscheidungen (Hallenbau, Technikkauf, Filialgründung) unterliegen nicht der Mitbestimmung."
+        },
+        {
+          "id": "wiso-14",
+          "number": 14,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Viele Mitarbeiter der CBA-IT-Service GmbH sind Mitglied einer Gewerkschaft.",
+          "prompt": "Welche der folgenden Aussagen über gewerkschaftliche Aufgaben und Forderungen in der Bundesrepublik Deutschland trifft zu?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Das Grundgesetz räumt den Gewerkschaften lediglich ein Recht für den Abschluss von Lohntarifverträgen ein."
+            },
+            {
+              "key": "2",
+              "text": "Die Gewerkschaften verhandeln u. a. mit Arbeitgeberverbänden über die Verbesserung von Arbeitsbedingungen."
+            },
+            {
+              "key": "3",
+              "text": "Gewerkschaftsvertreter dürfen zu Betriebsversammlungen nicht eingeladen werden."
+            },
+            {
+              "key": "4",
+              "text": "Die Gewerkschaften dürfen sich nicht für eine Humanisierung der Arbeitsbedingungen einsetzen."
+            },
+            {
+              "key": "5",
+              "text": "Die Gewerkschaften dürfen ihren Mitgliedern keinen Rechtsschutz in arbeitsgerichtlichen Rechtsstreitigkeiten gewähren."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Gewerkschaften vertreten die Interessen der Arbeitnehmer und verhandeln mit den Arbeitgeberverbänden Tarifverträge über Löhne und Arbeitsbedingungen."
+        },
+        {
+          "id": "wiso-15",
+          "number": 15,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die CBA-IT-Service GmbH wird in der Rechtsform einer GmbH geführt.",
+          "prompt": "Welche der folgenden Aussagen trifft auf die Rechtsform der GmbH zu?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Die GmbH erzielt immer die beste Eigenkapitalrentabilität."
+            },
+            {
+              "key": "2",
+              "text": "Die GmbH gehört zu den Personengesellschaften."
+            },
+            {
+              "key": "3",
+              "text": "Die Gesellschafter der GmbH dürfen nicht gleichzeitig Geschäftsführer der GmbH sein."
+            },
+            {
+              "key": "4",
+              "text": "Das Stammkapital muss mindestens 50.000 EUR betragen."
+            },
+            {
+              "key": "5",
+              "text": "Die Gesellschafter der GmbH haften nur mit ihrer Stammeinlage."
+            }
+          ],
+          "correct": [
+            "5"
+          ],
+          "solution": "Die GmbH ist eine Kapitalgesellschaft mit beschränkter Haftung: Die Gesellschafter haften grundsätzlich nur mit ihrer Einlage. Das Mindeststammkapital beträgt 25.000 EUR; Gesellschafter können zugleich Geschäftsführer sein."
+        },
+        {
+          "id": "wiso-16",
+          "number": 16,
+          "type": "numeric",
+          "points": 1,
+          "context": "Die CBA-IT-Service GmbH erzielte im vergangenen Geschäftsjahr einen Reingewinn von 24.860,00 EUR. Das Eigenkapital betrug 220.000,00 EUR.",
+          "prompt": "Berechnen Sie die **Eigenkapitalrentabilität** der CBA-IT-Service GmbH (in %).",
+          "answer": {
+            "value": 11.3,
+            "unit": "%",
+            "tolerance": 0.1,
+            "accepted": [
+              "11,3",
+              "11,3 %",
+              "11,3%",
+              "11.3"
+            ]
+          },
+          "solution": "Eigenkapitalrentabilität = Reingewinn ÷ Eigenkapital × 100 = 24.860 ÷ 220.000 × 100 = **11,3 %**."
+        },
+        {
+          "id": "wiso-17",
+          "number": 17,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Geschäftsführung der CBA-IT-Service GmbH diskutiert verschiedene Maßnahmen, den Umsatz im nächsten Geschäftsjahr zu steigern.",
+          "prompt": "Welche der folgenden Einzelmaßnahmen ist geeignet, diese Zielsetzung **kurzfristig und unmittelbar** zu erreichen?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Der Verkauf einer eigenen Software soll durch geeignete Marketingmaßnahmen gefördert werden."
+            },
+            {
+              "key": "2",
+              "text": "Die CBA-IT-Service GmbH stellt einen weiteren Lageristen ein."
+            },
+            {
+              "key": "3",
+              "text": "Zur Senkung der Lohnkosten werden vermehrt Dienstleistungen an andere Unternehmen vergeben."
+            },
+            {
+              "key": "4",
+              "text": "Durch Umbaumaßnahmen wird das Versandlager um 20 % vergrößert."
+            },
+            {
+              "key": "5",
+              "text": "Der Werbeetat wird um die Hälfte gekürzt."
+            }
+          ],
+          "correct": [
+            "1"
+          ],
+          "solution": "Nur Marketingmaßnahmen für den Softwareverkauf wirken direkt umsatzsteigernd. Die übrigen Maßnahmen senken Kosten, erhöhen Kapazitäten oder wirken (Werbekürzung) sogar umsatzmindernd."
+        },
+        {
+          "id": "wiso-18",
+          "number": 18,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Nach ihrer Ausbildung möchte Frau Müller eine Zeitlang im Ausland arbeiten. In diesem Zusammenhang liest Frau Müller vom Dienst Europass.",
+          "prompt": "Welche der folgenden Aussagen zum Europass trifft zu? *Der Dienst Europass …*",
+          "options": [
+            {
+              "key": "1",
+              "text": "… ist ein kostenpflichtiger Dienst der EU."
+            },
+            {
+              "key": "2",
+              "text": "… unterstützt Auszubildende, erworbene Qualifikationen, Fähigkeiten und Kompetenzen bei Bewerbungen europaweit verständlich darzustellen."
+            },
+            {
+              "key": "3",
+              "text": "… beglaubigt Ausbildungsabschnitte von Auszubildenden, die im europäischen Ausland durchgeführt wurden."
+            },
+            {
+              "key": "4",
+              "text": "… ist für eine Berufsausbildung im Ausland verpflichtend."
+            },
+            {
+              "key": "5",
+              "text": "… zertifiziert Fremdsprachenkenntnisse im Europass-Sprachenpass."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Der Europass ist ein kostenloser EU-Dienst, der Qualifikationen und Kompetenzen europaweit einheitlich und verständlich darstellt. Er ist freiwillig und beglaubigt/zertifiziert nichts verbindlich."
+        },
+        {
+          "id": "wiso-19",
+          "number": 19,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Herr Korok soll die Aufgaben des Arbeitsschutzbeauftragten bei der CBA-IT-Service GmbH übernehmen.",
+          "prompt": "Welche der folgenden Aufgaben hat der Arbeitsschutzbeauftragte in einem Betrieb? *Der Arbeitsschutzbeauftragte …*",
+          "options": [
+            {
+              "key": "1",
+              "text": "… ist für den Arbeitsschutz im Betrieb allein verantwortlich."
+            },
+            {
+              "key": "2",
+              "text": "… unterstützt den Arbeitgeber bei der Durchführung des Unfallschutzes."
+            },
+            {
+              "key": "3",
+              "text": "… ist ein selbstständiges Organ im Sinne des Betriebsverfassungsgesetzes."
+            },
+            {
+              "key": "4",
+              "text": "… prüft das Vorhandensein, nicht jedoch die ordnungsgemäße Benutzung von Schutzeinrichtungen."
+            },
+            {
+              "key": "5",
+              "text": "… ist automatisch Mitglied im Arbeitssicherheitsausschuss des Betriebsrates."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Der Sicherheits-/Arbeitsschutzbeauftragte unterstützt den Arbeitgeber beim Unfall- und Arbeitsschutz (§ 22 SGB VII); die Verantwortung verbleibt beim Arbeitgeber. Er prüft auch die ordnungsgemäße Benutzung von Schutzeinrichtungen."
+        },
+        {
+          "id": "wiso-20",
+          "number": 20,
+          "type": "multiple-choice",
+          "points": 1,
+          "selectCount": 2,
+          "context": "In einem Seminar bei der CBA-IT-Service GmbH werden Sofortmaßnahmen im Brandfall thematisiert.",
+          "prompt": "Welche der folgenden Maßnahmen müssen im Falle eines Brandes **sofort** ergriffen werden? (Zwei Antworten)",
+          "options": [
+            {
+              "key": "1",
+              "text": "Alle Fenster öffnen, damit der Rauch abziehen kann."
+            },
+            {
+              "key": "2",
+              "text": "Notruf absetzen."
+            },
+            {
+              "key": "3",
+              "text": "Die Sicherheitsbeauftragte informieren, da sie für die technischen Anlagen zuständig ist."
+            },
+            {
+              "key": "4",
+              "text": "Den Vorgesetzten informieren, da dieser die Verantwortung für die Abteilung hat."
+            },
+            {
+              "key": "5",
+              "text": "Gefährdete Personen evakuieren."
+            },
+            {
+              "key": "6",
+              "text": "Alle erreichbaren Wasserstellen öffnen."
+            }
+          ],
+          "correct": [
+            "2",
+            "5"
+          ],
+          "solution": "Sofortmaßnahmen im Brandfall: Notruf absetzen und gefährdete Personen in Sicherheit bringen (Menschenrettung vor Brandbekämpfung). Fenster öffnen fördert das Feuer; Wasserstellen öffnen ist keine geordnete Sofortmaßnahme."
+        },
+        {
+          "id": "wiso-21",
+          "number": 21,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Das Lager der CBA-IT-Service GmbH soll auf Emissionen überprüft werden.",
+          "prompt": "Welche der folgenden Darstellungen ist in diesem Zusammenhang richtig?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Emissionen entstehen in der CBA-IT-Service GmbH allein durch den Transport von Waren zwischen verschiedenen Lagerorten."
+            },
+            {
+              "key": "2",
+              "text": "Zu den umweltbelastenden Emissionen gehören neben umweltschädlichen Abgasen auch mögliche Schallemissionen und Elektrosmog/Strahlung."
+            },
+            {
+              "key": "3",
+              "text": "Emissionen können durch den Bau höherer Schornsteine für Abgase reduziert oder vermieden werden."
+            },
+            {
+              "key": "4",
+              "text": "Für die Luftreinhaltung ist gemäß Bundesemissionsschutzgesetz der Sicherheitsbeauftragte der CBA-IT-Service GmbH zuständig."
+            },
+            {
+              "key": "5",
+              "text": "Die Verringerung der Emissionen ist wichtiger als deren Vermeidung."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Emissionen umfassen nicht nur Abgase, sondern auch Lärm (Schall), Strahlung/Elektrosmog usw. Höhere Schornsteine verlagern nur, und nach dem Vermeidungs-vor-Verminderungs-Grundsatz ist Vermeidung vorrangig."
+        },
+        {
+          "id": "wiso-22",
+          "number": 22,
+          "type": "multiple-choice",
+          "points": 1,
+          "selectCount": 2,
+          "context": "Die CBA-IT-Service GmbH sucht nach Maßnahmen zur Gesundheitsförderung. Nach einer betrieblichen Umfrage steht der Wunsch nach Stressreduzierung an erster Stelle.",
+          "prompt": "Welche der folgenden Maßnahmen sind dafür **nicht geeignet**? (Zwei Antworten)",
+          "options": [
+            {
+              "key": "1",
+              "text": "Kundenbeschwerden werden nicht mehr in persönlicher Gegenwart des Kunden, sondern ausschließlich am Telefon bearbeitet und am schwarzen Brett veröffentlicht."
+            },
+            {
+              "key": "2",
+              "text": "Es werden Workshops zur Work-Life-Balance angeboten."
+            },
+            {
+              "key": "3",
+              "text": "Es wird eine angenehme Arbeitsatmosphäre geschaffen."
+            },
+            {
+              "key": "4",
+              "text": "Das Betriebssportangebot wird stark erweitert."
+            },
+            {
+              "key": "5",
+              "text": "Misserfolge der Mitarbeiter werden für alle und nicht nur für die Vorgesetzten bekanntgegeben."
+            },
+            {
+              "key": "6",
+              "text": "Die Möglichkeit zum Homeoffice wird offener und flexibler gestaltet."
+            }
+          ],
+          "correct": [
+            "1",
+            "5"
+          ],
+          "solution": "Das öffentliche Bekanntgeben von Beschwerden (1) und Misserfolgen (5) erzeugt zusätzlichen Druck und Stress. Die übrigen Maßnahmen fördern Wohlbefinden und Stressabbau."
+        },
+        {
+          "id": "wiso-23",
+          "number": 23,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die CBA-IT-Service GmbH formuliert für ein internes Audit Ziele zur Nachhaltigkeit und zum Umweltschutz.",
+          "prompt": "Welches der folgenden Ziele stellt ein **ökologisches** Ziel dar?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Alle Produkte sollen von ökologisch zertifizierten Lieferanten bezogen werden, ohne Abstriche bei Qualität und Funktionalität."
+            },
+            {
+              "key": "2",
+              "text": "Hohe Investitionen zur Verringerung der Umweltbelastung führen zur Zielharmonie zwischen einem ökologischen und einem ökonomischen Ziel."
+            },
+            {
+              "key": "3",
+              "text": "Die Verbesserung der Kundenzufriedenheit und damit der Kundenbindung."
+            },
+            {
+              "key": "4",
+              "text": "Die Umstellung des Fuhrparks der Geschäftsführung auf größere, leistungsstärkere Fahrzeuge mit Verbrennermotor."
+            },
+            {
+              "key": "5",
+              "text": "Die Umsatzsteigerung durch stetige Erweiterung des Sortiments."
+            }
+          ],
+          "correct": [
+            "1"
+          ],
+          "solution": "Der Bezug von ökologisch zertifizierten Lieferanten ist ein rein ökologisches Ziel. Option 2 beschreibt eine Zielharmonie (nicht rein ökologisch), 3 und 5 sind ökonomisch, und 4 wirkt umweltschädlich."
+        },
+        {
+          "id": "wiso-24",
+          "number": 24,
+          "type": "single-choice",
+          "points": 1,
+          "context": "In der CBA-IT-Service GmbH wird Drucker- und Kopierpapier verwendet, das mit dem „Blauen Engel“ ausgezeichnet ist.",
+          "prompt": "Welche der folgenden Aussagen zum Umweltzeichen „Blauer Engel“ ist zutreffend? *Das Drucker- und Kopierpapier …*",
+          "options": [
+            {
+              "key": "1",
+              "text": "… ist besonders haltbar."
+            },
+            {
+              "key": "2",
+              "text": "… ist besonders sicher in der Handhabung."
+            },
+            {
+              "key": "3",
+              "text": "… ist aus schadstoffarmen Rohstoffen und umweltschonend produziert worden."
+            },
+            {
+              "key": "4",
+              "text": "… hat bereits mehrere Umweltpreise gewonnen."
+            },
+            {
+              "key": "5",
+              "text": "… ist nach seiner Benutzung ausschließlich über das Duale System zu entsorgen."
+            }
+          ],
+          "correct": [
+            "3"
+          ],
+          "solution": "Der „Blaue Engel“ kennzeichnet besonders umweltschonende Produkte – hier Papier aus schadstoffarmen Rohstoffen mit umweltschonender Produktion."
+        },
+        {
+          "id": "wiso-25",
+          "number": 25,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Wirtschaftsordnung in der Bundesrepublik Deutschland wird als soziale Marktwirtschaft bezeichnet.",
+          "prompt": "Welches der folgenden Merkmale beschreibt die soziale Marktwirtschaft?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Das Wirtschaftsgeschehen wird zentral vom Staat gelenkt."
+            },
+            {
+              "key": "2",
+              "text": "Der Staat schützt die wirtschaftlich Schwächeren."
+            },
+            {
+              "key": "3",
+              "text": "Die Produktionsmittel sind ausschließlich staatlich."
+            },
+            {
+              "key": "4",
+              "text": "Es dürfen nur die Berufe ausgebildet werden, die auf dem Arbeitsmarkt auch nachgefragt werden."
+            },
+            {
+              "key": "5",
+              "text": "Die staatliche Wettbewerbspolitik hat das Ziel, den Wettbewerb auszuschalten."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Die soziale Marktwirtschaft verbindet Marktfreiheit mit sozialem Ausgleich: Der Staat greift korrigierend ein und schützt die wirtschaftlich Schwächeren."
+        },
+        {
+          "id": "wiso-26",
+          "number": 26,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Arbeitsleistungen der CBA-IT-Service GmbH werden von verschiedenen Wirtschaftseinheiten erbracht.",
+          "prompt": "In welchem der folgenden Fälle handelt es sich um eine **betriebliche Arbeitsteilung (Arbeitszerlegung)**? *Die CBA-IT-Service GmbH …*",
+          "options": [
+            {
+              "key": "1",
+              "text": "… gliedert einen Schritt des Arbeitsprozesses an die Byte GmbH aus."
+            },
+            {
+              "key": "2",
+              "text": "… gliedert einen Beschaffungsprozess für Hardware in mehrere Teilprozesse, die von mehreren Arbeitskräften ausgeführt werden."
+            },
+            {
+              "key": "3",
+              "text": "… lässt von einer Mitarbeiterin ein Produkt aus Komponenten zusammenbauen, die von verschiedenen externen Unternehmen hergestellt werden."
+            },
+            {
+              "key": "4",
+              "text": "… organisiert mehrere Prozesse als „supply chain“, in denen Lieferanten, Abteilungen und Kunden vernetzt sind."
+            },
+            {
+              "key": "5",
+              "text": "… schließt eine Filiale in Niedersachsen, deren Kunden zukünftig von der Hamburger Filiale beliefert werden."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Betriebliche Arbeitsteilung (Arbeitszerlegung) liegt vor, wenn ein Prozess innerhalb des Betriebs in Teilprozesse zerlegt und auf mehrere Arbeitskräfte verteilt wird. Auslagern an andere Unternehmen ist überbetriebliche Arbeitsteilung."
+        },
+        {
+          "id": "wiso-27",
+          "number": 27,
+          "type": "multiple-choice",
+          "points": 1,
+          "selectCount": 2,
+          "context": "Ein Mitbewerber der CBA-IT-Service GmbH, die GROTHE AG, bietet Dienstleistungen für IT-Unternehmen an.",
+          "prompt": "Welche der folgenden Angaben treffen auf die GROTHE AG zu? (Zwei Antworten)",
+          "options": [
+            {
+              "key": "1",
+              "text": "Unternehmen des primären Sektors"
+            },
+            {
+              "key": "2",
+              "text": "Unternehmen des tertiären Sektors"
+            },
+            {
+              "key": "3",
+              "text": "Erwerbswirtschaftliches Unternehmen"
+            },
+            {
+              "key": "4",
+              "text": "Gemeinwirtschaftliches Unternehmen"
+            },
+            {
+              "key": "5",
+              "text": "Personengesellschaft"
+            },
+            {
+              "key": "6",
+              "text": "Gesellschaft bürgerlichen Rechts"
+            }
+          ],
+          "correct": [
+            "2",
+            "3"
+          ],
+          "solution": "Als Dienstleister gehört die GROTHE AG zum tertiären Sektor (Dienstleistungen) und ist als AG gewinnorientiert, also erwerbswirtschaftlich. Eine AG ist zudem eine Kapitalgesellschaft, keine Personengesellschaft/GbR."
+        },
+        {
+          "id": "wiso-28",
+          "number": 28,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Volkswirtschaft der Bundesrepublik Deutschland profitiert von der Globalisierung.",
+          "prompt": "Welche der folgenden Maßnahmen **fördert** die Globalisierung?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Die EU plant, für bestimmte Produkte aus China die Zölle zu erhöhen."
+            },
+            {
+              "key": "2",
+              "text": "Die EU schließt ein Freihandelsabkommen mit den südamerikanischen Staaten ab."
+            },
+            {
+              "key": "3",
+              "text": "Die Bundesregierung beschließt die Erhöhung der Steuern für Transportdienstleistungen."
+            },
+            {
+              "key": "4",
+              "text": "Die GROTHE AG schließt ihre Niederlassung in den USA."
+            },
+            {
+              "key": "5",
+              "text": "Ein deutsches Unternehmen zentralisiert seine weltweite Fertigung in Deutschland."
+            }
+          ],
+          "correct": [
+            "2"
+          ],
+          "solution": "Freihandelsabkommen bauen Handelshemmnisse ab und fördern die internationale Verflechtung (Globalisierung). Zölle, höhere Transportsteuern, Rückzug aus dem Ausland und Zentralisierung im Inland wirken gegenläufig."
+        },
+        {
+          "id": "wiso-29",
+          "number": 29,
+          "type": "matching",
+          "points": 1,
+          "context": "Die CBA-IT-Service GmbH arbeitet mit anderen Unternehmen zusammen. Daraus entstehen unterschiedliche Unternehmensverbindungen.\n\n*Hinweis: Eine der folgenden Unternehmensverbindungen kann zwei Sachverhalten zugeordnet werden.*",
+          "prompt": "Ordnen Sie die folgenden Unternehmensverbindungen den nachstehenden Sachverhalten zu.",
+          "left": [
+            {
+              "key": "a",
+              "text": "Zwei Kunden der CBA-IT-Service GmbH, die Byte GmbH und die IT-Sec GmbH, schließen sich zur Byte-Sec GmbH zusammen."
+            },
+            {
+              "key": "b",
+              "text": "Die CBA-IT-Service GmbH führt gemeinsam mit zwei anderen Unternehmen einen Großauftrag aus."
+            },
+            {
+              "key": "c",
+              "text": "Die SecureSoft AG gründet in Düsseldorf und Stuttgart Tochtergesellschaften."
+            },
+            {
+              "key": "d",
+              "text": "Die CBA-IT-Service GmbH hat die Mehrheit an der SecureSoft AG übernommen."
+            },
+            {
+              "key": "e",
+              "text": "Die CBA-IT-Service GmbH vereinbart mit Wettbewerbern einheitliche Verkaufskonditionen."
+            }
+          ],
+          "right": [
+            {
+              "key": "1",
+              "text": "Fusion"
+            },
+            {
+              "key": "2",
+              "text": "Kartell"
+            },
+            {
+              "key": "3",
+              "text": "Konzern"
+            },
+            {
+              "key": "4",
+              "text": "Arbeitsgemeinschaft"
+            }
+          ],
+          "correctPairs": {
+            "a": "1",
+            "b": "4",
+            "c": "3",
+            "d": "3",
+            "e": "2"
+          },
+          "solution": "a) Verschmelzung zweier Firmen zu einer neuen = **Fusion (1)**. b) Zeitlich begrenzte Zusammenarbeit für einen Auftrag = **Arbeitsgemeinschaft (4)**. c) und d) rechtlich selbstständige Firmen unter einheitlicher Leitung = **Konzern (3)** (daher zweifach). e) Absprache über Verkaufskonditionen unter Wettbewerbern = **Kartell (2)**."
+        },
+        {
+          "id": "wiso-30",
+          "number": 30,
+          "type": "single-choice",
+          "points": 1,
+          "context": "Die Bundesrepublik Deutschland ist ein sozialer und demokratischer Bundesstaat.",
+          "prompt": "Welcher der folgenden Sachverhalte entspricht diesem Grundsatz (Sozialstaatsprinzip)?",
+          "options": [
+            {
+              "key": "1",
+              "text": "Der Staat erhöht die Abschreibungen auf Gewerbeimmobilien."
+            },
+            {
+              "key": "2",
+              "text": "Die Freibeträge bei der Erbschaftssteuer werden erhöht."
+            },
+            {
+              "key": "3",
+              "text": "Der Erwerb von Immobilien durch Kapitalgesellschaften wird steuerlich gefördert."
+            },
+            {
+              "key": "4",
+              "text": "Der Staat senkt die Steuersätze für Einkünfte aus Zinsen und Dividenden."
+            },
+            {
+              "key": "5",
+              "text": "Das Wohngeld wird erhöht."
+            }
+          ],
+          "correct": [
+            "5"
+          ],
+          "solution": "Die Erhöhung des Wohngeldes ist eine soziale Leistung zugunsten einkommensschwacher Bürger und entspricht dem Sozialstaatsprinzip. Die übrigen Maßnahmen begünstigen v. a. Vermögende/Unternehmen."
+        }
+      ]
+    }
+  ]
+}
